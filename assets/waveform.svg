@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 120" width="100%" height="120" style="background: #111218; border-radius: 12px; border: 1px solid #232634;">
+  <defs>
+    <linearGradient id="neonGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#587bf8" />
+      <stop offset="50%" stop-color="#45c8b2" />
+      <stop offset="100%" stop-color="#e94879" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background Grid Dots -->
+  <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+    <circle cx="2" cy="2" r="1" fill="#1e2230" />
+  </pattern>
+  <rect width="800" height="120" fill="url(#grid)" />
+
+  <!-- Telemetry Header -->
+  <text x="24" y="24" fill="#7d869a" font-family="'Courier New', monospace" font-size="10" font-weight="bold" letter-spacing="1">LIVE DSP SPECTRUM // DUAL DECK BUFFER // 60 FPS ESSENTIA WASM</text>
+  <text x="776" y="24" text-anchor="end" fill="#45c8b2" font-family="'Courier New', monospace" font-size="10" font-weight="bold">● SYNC LOCK: ON</text>
+
+  <!-- Animated EQ Spectrum Bars -->
+  <g filter="url(#glow)" fill="url(#neonGrad)">
+    <!-- 32 bars with CSS pulse animations -->
+    <style>
+      @keyframes eq1 { 0%, 100% { height: 16px; y: 78px; } 50% { height: 58px; y: 36px; } }
+      @keyframes eq2 { 0%, 100% { height: 48px; y: 46px; } 50% { height: 22px; y: 72px; } }
+      @keyframes eq3 { 0%, 100% { height: 32px; y: 62px; } 50% { height: 64px; y: 30px; } }
+      @keyframes eq4 { 0%, 100% { height: 60px; y: 34px; } 50% { height: 36px; y: 58px; } }
+      .bar { rx: 3; }
+      .b1 { animation: eq1 1.2s infinite ease-in-out; }
+      .b2 { animation: eq2 0.9s infinite ease-in-out; }
+      .b3 { animation: eq3 1.5s infinite ease-in-out; }
+      .b4 { animation: eq4 0.8s infinite ease-in-out; }
+    </style>
+
+    <rect class="bar b1" x="30"  y="60" width="16" height="34" />
+    <rect class="bar b2" x="54"  y="45" width="16" height="49" />
+    <rect class="bar b3" x="78"  y="70" width="16" height="24" />
+    <rect class="bar b4" x="102" y="38" width="16" height="56" />
+    <rect class="bar b2" x="126" y="52" width="16" height="42" />
+    <rect class="bar b1" x="150" y="32" width="16" height="62" />
+    <rect class="bar b3" x="174" y="66" width="16" height="28" />
+    <rect class="bar b4" x="198" y="40" width="16" height="54" />
+    <rect class="bar b2" x="222" y="58" width="16" height="36" />
+    <rect class="bar b1" x="246" y="28" width="16" height="66" />
+    <rect class="bar b3" x="270" y="48" width="16" height="46" />
+    <rect class="bar b4" x="294" y="36" width="16" height="58" />
+    <rect class="bar b2" x="318" y="64" width="16" height="30" />
+    <rect class="bar b1" x="342" y="42" width="16" height="52" />
+    <rect class="bar b4" x="366" y="26" width="16" height="68" />
+    <rect class="bar b3" x="390" y="50" width="16" height="44" />
+    <rect class="bar b1" x="414" y="34" width="16" height="60" />
+    <rect class="bar b2" x="438" y="62" width="16" height="32" />
+    <rect class="bar b4" x="462" y="24" width="16" height="70" />
+    <rect class="bar b3" x="486" y="46" width="16" height="48" />
+    <rect class="bar b1" x="510" y="56" width="16" height="38" />
+    <rect class="bar b2" x="534" y="38" width="16" height="56" />
+    <rect class="bar b4" x="558" y="68" width="16" height="26" />
+    <rect class="bar b3" x="582" y="32" width="16" height="62" />
+    <rect class="bar b1" x="606" y="52" width="16" height="42" />
+    <rect class="bar b2" x="630" y="44" width="16" height="50" />
+    <rect class="bar b4" x="654" y="62" width="16" height="32" />
+    <rect class="bar b3" x="678" y="30" width="16" height="64" />
+    <rect class="bar b1" x="702" y="50" width="16" height="44" />
+    <rect class="bar b2" x="726" y="66" width="16" height="28" />
+    <rect class="bar b4" x="750" y="40" width="16" height="54" />
+  </g>
+
+  <!-- Baseline -->
+  <line x1="24" y1="98" x2="776" y2="98" stroke="#252938" stroke-width="1.5" />
+  <text x="24" y="112" fill="#545c72" font-family="'Courier New', monospace" font-size="8.5">20Hz SUB</text>
+  <text x="390" y="112" fill="#545c72" font-family="'Courier New', monospace" font-size="8.5">1kHz MID VOCALS</text>
+  <text x="776" y="112" text-anchor="end" fill="#545c72" font-family="'Courier New', monospace" font-size="8.5">20kHz AIR</text>
+</svg>

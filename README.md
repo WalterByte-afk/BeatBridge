@@ -1,7 +1,7 @@
 <div align="center">
 
-  <img src="assets/banner.jpg" alt="BeatBridge Banner" width="100%" style="border-radius: 14px; box-shadow: 0 10px 30px rgba(0,0,0,0.8);" />
-
+  <br/>
+  <img src="assets/banner.jpg" alt="BeatBridge Logo" width="140" height="140" style="border-radius: 28px; box-shadow: 0 14px 40px rgba(0,0,0,0.7); border: 2px solid #232738;" />
   <br/><br/>
 
   # 🎛️ BeatBridge
@@ -20,13 +20,20 @@
     <img src="https://img.shields.io/badge/PRs-Welcome-brightgreen?style=for-the-badge" alt="PRs Welcome" />
   </p>
 
+  <br/>
+
+  <!-- Animated Live DSP Visualizer SVG Card -->
+  <img src="assets/waveform.svg" alt="BeatBridge Animated Spectrum Analyzer" width="100%" />
+
+  <br/><br/>
+
   <p align="center">
     <a href="#-the-problem">The Problem</a> •
     <a href="#-feature-matrix">Feature Matrix</a> •
-    <a href="#-how-it-works">How It Works</a> •
-    <a href="#-vibe-transition-engine">The 4 Transition Modes</a> •
+    <a href="#-the-4-transition-modes">Transition Modes</a> •
+    <a href="#-architecture">Architecture</a> •
     <a href="#-installation">Install</a> •
-    <a href="#-faq">FAQ</a>
+    <a href="#%EF%B8%8F-legal-disclaimer">Legal & Terms</a>
   </p>
 
 </div>
@@ -180,6 +187,17 @@ Yes! Click and drag the vinyl platter in the popup UI to scratch the audio in re
 <br/>
 Honestly, probably better. At least you won't shout awkward motivational speeches into the mic right before the drop :p
 </details>
+
+---
+
+## ⚖️ Legal Disclaimer & Terms of Use
+
+> [!NOTE]
+> BeatBridge is an independent, community-driven open-source project and is **not affiliated, associated, authorized, endorsed by, or in any way officially connected with Google LLC, YouTube, Alphabet Inc., Apple Inc., or Spotify AB**, or any of their subsidiaries or affiliates.
+
+* **Trademarks:** "YouTube" and "YouTube Music" are registered trademarks of Google LLC. "Apple", "Apple Music", and "AutoMix" are registered trademarks of Apple Inc. "Spotify" is a registered trademark of Spotify AB. All trademarks, service marks, trade names, product names, and logos appearing on this site are the property of their respective owners. Any reference to these marks is strictly for identification, comparative, and compatibility purposes under Fair Use.
+* **100% Client-Side DSP (No Content Theft):** BeatBridge **does not** download, rip, record, decrypt, bypass DRM, store, or redistribute any copyrighted audio, video, or intellectual property. It functions solely in volatile browser memory as a real-time digital audio signal processor (identical in nature to hardware headphone amplifiers, operating system equalizers, or accessibility visualizers).
+* **Compliance & Privacy:** BeatBridge does not collect, log, track, or transmit any user information, listening history, or session data. All processing occurs 100% on the user's local machine.
 
 ---
 
