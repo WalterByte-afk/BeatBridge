@@ -511,24 +511,22 @@ window.AuraDJ = (function() {
 
     if (tipBtn && tipModal) {
       tipBtn.addEventListener('click', () => {
-        tipModal.classList.remove('hidden');
-        tipModal.classList.add('flex');
+        tipModal.style.display = 'flex';
+        tipModal.scrollIntoView({ behavior: 'smooth' });
       });
     }
 
     if (closeBtn && tipModal) {
       closeBtn.addEventListener('click', (e) => {
         e.stopPropagation();
-        tipModal.classList.add('hidden');
-        tipModal.classList.remove('flex');
+        tipModal.style.display = 'none';
       });
     }
 
     if (tipModal) {
       tipModal.addEventListener('click', (e) => {
         if (e.target === tipModal) {
-          tipModal.classList.add('hidden');
-          tipModal.classList.remove('flex');
+          tipModal.style.display = 'none';
         }
       });
     }
@@ -539,9 +537,11 @@ window.AuraDJ = (function() {
         if (!cryptoData[coin]) return;
 
         tabs.forEach(t => {
-          t.className = 'crypto-tab flex-1 py-1 text-center rounded-lg text-[9px] font-mono font-bold text-[#7d869a] hover:text-white';
+          t.style.background = 'transparent';
+          t.style.color = '#7d869a';
         });
-        tab.className = 'crypto-tab flex-1 py-1 text-center rounded-lg text-[9px] font-mono font-bold bg-[#587bf8] text-white';
+        tab.style.background = '#587bf8';
+        tab.style.color = '#ffffff';
 
         if (qrImg) qrImg.src = cryptoData[coin].qr;
         if (addrText) addrText.textContent = cryptoData[coin].address;
