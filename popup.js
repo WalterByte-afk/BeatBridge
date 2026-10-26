@@ -437,8 +437,8 @@ window.AuraDJ = (function() {
 
     if (cardBtn && modal) {
       cardBtn.addEventListener('click', () => {
-        modal.classList.remove('hidden');
-        modal.classList.add('flex');
+        modal.style.display = 'flex';
+        modal.scrollIntoView({ behavior: 'smooth' });
         updateGameUI();
       });
     }
@@ -446,16 +446,14 @@ window.AuraDJ = (function() {
     if (closeBtn && modal) {
       closeBtn.addEventListener('click', (e) => {
         e.stopPropagation();
-        modal.classList.add('hidden');
-        modal.classList.remove('flex');
+        modal.style.display = 'none';
       });
     }
 
     if (modal) {
       modal.addEventListener('click', (e) => {
         if (e.target === modal) {
-          modal.classList.add('hidden');
-          modal.classList.remove('flex');
+          modal.style.display = 'none';
         }
       });
     }

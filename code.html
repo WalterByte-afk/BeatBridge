@@ -79,6 +79,24 @@
     ::-webkit-scrollbar {
       width: 0px;
     }
+
+    #mascot-card-btn {
+      transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+      box-shadow: 0 0 0px transparent;
+    }
+    #mascot-card-btn:hover {
+      border-color: #45c8b2 !important;
+      box-shadow: 0 0 20px rgba(69, 200, 178, 0.5), 0 0 8px rgba(69, 200, 178, 0.3), inset 0 0 12px rgba(69, 200, 178, 0.18) !important;
+      transform: translateY(-1.5px);
+    }
+    #passport-mascot-preview svg {
+      width: 100% !important;
+      height: 100% !important;
+      max-width: 44px !important;
+      max-height: 44px !important;
+      display: block !important;
+      object-fit: contain !important;
+    }
   </style>
 </head>
 <body class="min-h-screen flex items-center justify-center p-2 sm:p-4 bg-[#08090c]">
@@ -323,54 +341,57 @@ YT MUSIC
 </div></footer>
 </div>
 <!-- DJ LEVEL & STREAK PASSPORT MODAL -->
-<div id="modal-level-passport" class="fixed inset-0 bg-black/85 backdrop-blur-sm z-50 hidden flex items-center justify-center p-3 select-none">
-  <div class="w-[330px] bg-[#14161f] border border-[#2b3044] rounded-2xl p-4 flex flex-col gap-3 shadow-2xl relative">
-    <button id="btn-close-passport" class="absolute top-3 right-3 text-[#7d869a] hover:text-white text-xs font-mono w-6 h-6 rounded-full bg-[#1b1e2a] flex items-center justify-center">✕</button>
+<div id="modal-level-passport" style="position: fixed; inset: 0; background: rgba(0,0,0,0.85); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); z-index: 50; display: none; align-items: center; justify-content: center; padding: 12px; user-select: none; box-sizing: border-box;">
+  <div style="width: 334px; max-width: 100%; max-height: 520px; overflow-y: auto; background: #13151f; border: 1px solid #2b3046; border-radius: 18px; padding: 14px; display: flex; flex-direction: column; gap: 10px; box-shadow: 0 20px 50px rgba(0,0,0,0.95); position: relative; box-sizing: border-box;">
+    <button id="btn-close-passport" style="position: absolute; top: 12px; right: 12px; color: #7d869a; font-family: monospace; font-size: 11px; width: 24px; height: 24px; border-radius: 9999px; background: #1c202d; border: 1px solid #282f44; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s ease;">✕</button>
     
-    <div class="flex items-center gap-3">
-      <div id="passport-mascot-preview" class="w-12 h-12 rounded-xl bg-[#1a1d29] border border-[#30374e] flex items-center justify-center overflow-hidden p-0.5"></div>
-      <div>
-        <div class="text-[8.5px] font-mono text-[#587bf8] uppercase tracking-wider font-bold">BEATBRIDGE DJ PASSPORT</div>
-        <div class="text-sm font-bold text-white leading-tight" id="passport-rank-title">BEDROOM DJ</div>
-        <div class="text-[9.5px] font-mono text-[#a6adbe]">LEVEL <span id="passport-level-num" class="text-[#fbbf24] font-bold">1</span> • <span id="passport-streak-num" class="text-[#fbbf24] font-bold">1</span> DAY STREAK 🔥</div>
+    <!-- Top Identity Row -->
+    <div style="display: flex; align-items: center; gap: 12px; padding-right: 28px;">
+      <div id="passport-mascot-preview" style="width: 48px; height: 48px; min-width: 48px; max-width: 48px; min-height: 48px; max-height: 48px; border-radius: 12px; background: #191c28; border: 1px solid #333b54; display: flex; align-items: center; justify-content: center; overflow: hidden; flex-shrink: 0; padding: 2px; box-sizing: border-box; box-shadow: inset 0 0 10px rgba(0,0,0,0.6);"></div>
+      <div style="flex: 1; min-width: 0;">
+        <div style="font-family: monospace; font-size: 8px; color: #587bf8; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase;">BEATBRIDGE DJ PASSPORT</div>
+        <div id="passport-rank-title" style="font-size: 13.5px; font-weight: 800; color: #ffffff; line-height: 1.2; margin-top: 2px; letter-spacing: -0.01em;">BEDROOM DJ</div>
+        <div style="font-family: monospace; font-size: 8.5px; color: #a6adbe; margin-top: 3px; display: flex; align-items: center; gap: 5px;">
+          <span>LEVEL <span id="passport-level-num" style="color: #fbbf24; font-weight: bold;">1</span></span>
+          <span style="color: #4b556b;">•</span>
+          <span><span id="passport-streak-num" style="color: #fbbf24; font-weight: bold;">1</span> DAY STREAK 🔥</span>
+        </div>
       </div>
     </div>
     
     <!-- XP Card -->
-    <div class="bg-[#0f1016] border border-[#232737] rounded-xl p-2.5 space-y-1.5">
-      <div class="flex justify-between text-[9px] font-mono">
-        <span class="text-[#7d869a]">EXPERIENCE (XP)</span>
-        <span id="passport-xp-detail" class="text-white font-bold">0 / 150</span>
+    <div style="background: #0b0d13; border: 1px solid #1f2333; border-radius: 12px; padding: 10px; display: flex; flex-direction: column; gap: 6px; box-sizing: border-box;">
+      <div style="display: flex; justify-content: space-between; font-family: monospace; font-size: 8.5px;">
+        <span style="color: #7d869a; font-weight: bold; letter-spacing: 0.04em;">EXPERIENCE (XP)</span>
+        <span id="passport-xp-detail" style="color: #ffffff; font-weight: bold;">0 / 150</span>
       </div>
-      <div class="w-full bg-[#181b24] h-2 rounded-full overflow-hidden border border-[#252938]">
+      <div style="width: 100%; background: #161822; height: 6px; border-radius: 9999px; overflow: hidden; border: 1px solid #232738;">
         <div id="passport-progress-fill" style="width: 0%; height: 100%; background: linear-gradient(90deg, #587bf8, #45c8b2); transition: width 0.3s ease;"></div>
       </div>
-      <div class="text-[8px] font-mono text-[#626b80] text-right" id="passport-xp-needed">150 XP to Next Level</div>
+      <div id="passport-xp-needed" style="font-family: monospace; font-size: 8px; color: #626b80; text-align: right;">150 XP to Next Level</div>
     </div>
 
     <!-- Stats Grid -->
-    <div class="grid grid-cols-2 gap-2 text-center font-mono">
-      <div class="bg-[#0f1016] border border-[#232737] rounded-xl p-2">
-        <div class="text-[7.5px] text-[#7d869a] uppercase">DAILY STREAK</div>
-        <div class="text-sm font-bold text-[#fbbf24] flex items-center justify-center gap-1 mt-0.5">
-          <span>🔥</span><span id="passport-streak-val">1</span> <span class="text-[8px] text-[#7d869a]">DAYS</span>
-        </div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; width: 100%; box-sizing: border-box;">
+      <div style="background: #0b0d13; border: 1px solid #1f2333; border-radius: 10px; padding: 8px; text-align: center; box-sizing: border-box;">
+        <div style="font-family: monospace; font-size: 7.5px; color: #7d869a; text-transform: uppercase; font-weight: bold;">DAILY STREAK</div>
+        <div style="font-family: monospace; font-size: 13px; font-weight: bold; color: #fbbf24; margin-top: 2px;">🔥 <span id="passport-streak-val">1</span> <span style="font-size: 8px; color: #7d869a;">DAYS</span></div>
       </div>
-      <div class="bg-[#0f1016] border border-[#232737] rounded-xl p-2">
-        <div class="text-[7.5px] text-[#7d869a] uppercase">ACTIVE VIBE</div>
-        <div class="text-[11px] font-bold text-[#45c8b2] mt-0.5 truncate uppercase" id="passport-vibe-name">NORMAL</div>
+      <div style="background: #0b0d13; border: 1px solid #1f2333; border-radius: 10px; padding: 8px; text-align: center; box-sizing: border-box;">
+        <div style="font-family: monospace; font-size: 7.5px; color: #7d869a; text-transform: uppercase; font-weight: bold;">ACTIVE VIBE</div>
+        <div id="passport-vibe-name" style="font-family: monospace; font-size: 11px; font-weight: bold; color: #45c8b2; margin-top: 3px; text-transform: uppercase;">NORMAL</div>
       </div>
-      <div class="bg-[#0f1016] border border-[#232737] rounded-xl p-2">
-        <div class="text-[7.5px] text-[#7d869a] uppercase">TRACKS MIXED</div>
-        <div class="text-sm font-bold text-white mt-0.5" id="passport-tracks-mixed">0</div>
+      <div style="background: #0b0d13; border: 1px solid #1f2333; border-radius: 10px; padding: 8px; text-align: center; box-sizing: border-box;">
+        <div style="font-family: monospace; font-size: 7.5px; color: #7d869a; text-transform: uppercase; font-weight: bold;">TRACKS MIXED</div>
+        <div id="passport-tracks-mixed" style="font-family: monospace; font-size: 13px; font-weight: bold; color: #ffffff; margin-top: 2px;">0</div>
       </div>
-      <div class="bg-[#0f1016] border border-[#232737] rounded-xl p-2">
-        <div class="text-[7.5px] text-[#7d869a] uppercase">NEXT UNLOCK</div>
-        <div class="text-[9px] font-bold text-[#e94879] mt-1 truncate" id="passport-next-unlock">GOLDEN DISK</div>
+      <div style="background: #0b0d13; border: 1px solid #1f2333; border-radius: 10px; padding: 8px; text-align: center; box-sizing: border-box;">
+        <div style="font-family: monospace; font-size: 7.5px; color: #7d869a; text-transform: uppercase; font-weight: bold;">NEXT UNLOCK</div>
+        <div id="passport-next-unlock" style="font-family: monospace; font-size: 8.5px; font-weight: bold; color: #e94879; margin-top: 4px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">GOLDEN DISK</div>
       </div>
     </div>
 
-    <div class="text-[7.5px] font-mono text-[#5e6678] text-center">
+    <div style="font-family: monospace; font-size: 7.5px; color: #5e6678; text-align: center; margin-top: 2px;">
       🎧 Listen on YouTube Music to gain XP, unlock badges & level up!
     </div>
   </div>
