@@ -158,42 +158,95 @@ window.AuraDJ = (function() {
 
     const text = `${state.trackTitle || ''} ${state.trackArtist || ''}`.toLowerCase();
 
-    // 1. Text-based heuristic matches
-    if (/(hardstyle|hardtek|phonk|dnb|drum and bass|drum & bass|speedcore|gabber|metal|nightcore|aggro)/i.test(text)) {
-      return 'hardstyle';
+    // 0. Compute real-time audio spectral dynamics from live analyser
+    let totalEnergy = 0;
+    let bassEnergy = 0;
+    let midEnergy = 0;
+    let highEnergy = 0;
+    if (state.waveformData && state.waveformData.length > 0) {
+      const len = state.waveformData.length;
+      let sum = 0, bSum = 0, mSum = 0, hSum = 0;
+      const bCount = Math.min(10, len);
+      for (let i = 0; i < bCount; i++) bSum += state.waveformData[i];
+      bassEnergy = bSum / bCount;
+
+      const mStart = bCount;
+      const mEnd = Math.min(32, len);
+      for (let i = mStart; i < mEnd; i++) mSum += state.waveformData[i];
+      midEnergy = (mEnd > mStart) ? mSum / (mEnd - mStart) : 0;
+
+      for (let i = mEnd; i < len; i++) hSum += state.waveformData[i];
+      highEnergy = (len > mEnd) ? hSum / (len - mEnd) : 0;
+
+      for (let i = 0; i < len; i++) sum += state.waveformData[i];
+      totalEnergy = sum / len;
     }
-    if (/(rave|techno|house|edm|club|electro|trance|acid|dubstep|festival|dance)/i.test(text)) {
-      return 'rave';
-    }
-    if (/(lofi|lo-fi|chill|relax|ambient|calm|coffee|study|sleep|peaceful|piano|slow|acoustic)/i.test(text)) {
+
+    const isSoftAudio = (totalEnergy > 0 && totalEnergy < 68) || (bassEnergy > 0 && bassEnergy < 78);
+    const isHeavyBanger = bassEnergy > 135 && totalEnergy > 90;
+
+    // 1. Explicit Soft / Acoustic / Ballad / Hindi-Urdu Romance Heuristics (e.g. Pal Pal, acoustic covers)
+    if (/(pal pal|acoustic|piano|unplugged|guitar|soft|slowed|reverb|ambient|sleep|calm|peace|chill|sad|ballad|emotional|sufi|ghazal|lofi|lo-fi|soul|folk|indie|mellow|bedroom|relax|serenade|meditation)/i.test(text)) {
       return 'lofi';
     }
-    if (/(trap|hip hop|hip-hop|rap|drill|grillz|808|freestyle|rhyme|bars)/i.test(text)) {
+
+    // 2. Love / Romance / R&B / Affection
+    if (/(love|heart|romance|romantic|ishq|pyar|mohabbat|dil|jaan|sweet|crush|baby|kiss|darling)/i.test(text)) {
+      return 'hearts';
+    }
+
+    // 3. Hardcore / Hardstyle / Phonk / Extreme Bass
+    if (/(hardstyle|hardtek|speedcore|gabber|uptempo|rawstyle|metal|deathcore|phonk|terror|dnb|drum and bass|drum & bass)/i.test(text)) {
+      return 'hardstyle';
+    }
+
+    // 4. Trap / Hip-Hop / Drill / Bars
+    if (/(trap|hip hop|hip-hop|rap|drill|grillz|808|freestyle|rhyme|bars|cypher|boombap)/i.test(text)) {
       return 'trap';
     }
-    if (/(pop|disco|funk|synthwave|k-pop|synth|chart)/i.test(text)) {
+
+    // 5. Pop / Dance / Funk
+    if (/(pop|disco|funk|synthwave|k-pop|chart|anthem)/i.test(text)) {
       return 'pop';
     }
+
+    // 6. Chiptune / Retro / 8-bit
     if (/(8bit|8-bit|chiptune|retro|arcade|glitch|breakcore)/i.test(text)) {
       return 'chiptune';
     }
-    if (/(robot|cyber|tech|matrix|synthetic|future)/i.test(text)) {
+
+    // 7. Futuristic / Cyber / Robotic
+    if (/(robot|cyber|tech|matrix|synthetic|future|ai)/i.test(text)) {
       return 'robotic';
     }
-    if (/(love|heart|romance|romantic|baby|crush|sweet)/i.test(text)) {
-      return 'hearts';
+
+    // 8. Rave / Festival / Techno (STRICT: only if energetic and not soft acoustic)
+    if (!isSoftAudio && /(rave|techno|trance|acid|psytrance|dubstep|hard dance|festival|club banger)/i.test(text)) {
+      return 'rave';
     }
+
+    // 9. Rainbow / Euphoric
     if (/(rainbow|euphori|happy|pride|sunshine)/i.test(text)) {
       return 'rainbow';
     }
 
-    // 2. Tempo / BPM based classification
+    // 10. Dynamic Audio Spectral Energy & Tempo Fallbacks
+    if (isSoftAudio) {
+      return 'lofi';
+    }
+
+    if (isHeavyBanger && state.bpm >= 140) {
+      return 'hardstyle';
+    }
+    if (isHeavyBanger && state.bpm >= 126) {
+      return 'rave';
+    }
+
     const bpm = state.bpm || 120;
-    if (bpm <= 88) return 'lofi';
-    if (bpm <= 108) return 'trap';
-    if (bpm <= 126) return 'pop';
-    if (bpm <= 144) return 'rave';
-    if (bpm > 144) return 'hardstyle';
+    if (bpm <= 85) return 'lofi';
+    if (bpm <= 105) return 'trap';
+    if (bpm <= 125) return 'pop';
+    if (bpm > 145 && isHeavyBanger) return 'hardstyle';
 
     return 'normal';
   }
