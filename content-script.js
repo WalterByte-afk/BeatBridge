@@ -295,8 +295,8 @@
     if (duration > 25) {
       const timeRemaining = duration - currentTime;
 
-      // 1. Intelligent AutoMix Natural Outro Trigger (at ~6.5s remaining — perfect Apple AutoMix window)
-      if (automixEnabled && !automixTriggeredForCurrentTrack && timeRemaining > 0 && timeRemaining <= 6.5) {
+      // 1. Intelligent AutoMix Outro Loop Trigger (at ~11s remaining)
+      if (automixEnabled && !automixTriggeredForCurrentTrack && timeRemaining > 0 && timeRemaining <= 11) {
         automixTriggeredForCurrentTrack = true;
         console.log(`[AuraDJ] AutoMix window reached! (${timeRemaining.toFixed(1)}s remaining). Initiating Apple AutoMix transition.`);
         sendMessageSafely({
@@ -305,10 +305,10 @@
           state
         });
 
-        // 400ms musical pre-roll: outgoing deck's warm HPF sweep + echo wash initiates before Track B enters
+        // 800ms musical pre-roll: outgoing deck's warm HPF sweep + echo wash initiates before Track B enters
         setTimeout(() => {
           skipToNextTrack();
-        }, 400);
+        }, 800);
       } else if (timeRemaining > 20 && automixTriggeredForCurrentTrack) {
         // Reset if user seeks back in track
         automixTriggeredForCurrentTrack = false;

@@ -540,15 +540,82 @@ function handleTriggerAutoMix() {
   const transitionBars = bpm > 140 ? 4 : 8;
   const transitionDuration = transitionBars * barSec;
 
-  // Keep live audio streaming smoothly through Deck A so the REAL song outro plays naturally!
-  // No artificial repeating loops, no cut-off audio chunks — the actual song finishes its real musical phrase!
-  if (liveStreamSource) {
-    try {
-      liveStreamSource.connect(outgoingDeck.inputNode);
-    } catch (e) {}
+  // 1. Transient Downbeat Kick-Lock Beat Loop (The iconic DJ outro phrase loop)
+  const loopBars = 4;
+  const loopDuration = Math.min(loopBars * barSec, 10.0);
+  const sampleRate = ctx.sampleRate || 44100;
+  const loopSamples = Math.floor(loopDuration * sampleRate);
+  const numSamples = Math.min(loopSamples + Math.floor(sampleRate * 0.5), totalSamplesBuffered, RING_BUFFER_SIZE);
+
+  if (numSamples > sampleRate && loopSamples > 0) {
+    // Transient Downbeat Snapping: Scan up to 200ms around target start to snap directly to the kick drum onset
+    const searchWindow = Math.min(Math.floor(0.2 * sampleRate), Math.floor(loopSamples * 0.25));
+    let targetStartPos = (ringWritePos - loopSamples + RING_BUFFER_SIZE) % RING_BUFFER_SIZE;
+    let bestOffset = 0;
+    let maxOnset = 0;
+
+    for (let offset = 0; offset < searchWindow; offset += 16) {
+      const idx = (targetStartPos + offset) % RING_BUFFER_SIZE;
+      const prevIdx = (idx - 32 + RING_BUFFER_SIZE) % RING_BUFFER_SIZE;
+      const energy = Math.abs(ringLeft[idx]) + Math.abs(ringRight[idx]);
+      const prevEnergy = Math.abs(ringLeft[prevIdx]) + Math.abs(ringRight[prevIdx]);
+      const onset = energy - prevEnergy;
+      if (onset > maxOnset) {
+        maxOnset = onset;
+        bestOffset = offset;
+      }
+    }
+
+    const snappedStartPos = (targetStartPos + bestOffset) % RING_BUFFER_SIZE;
+    const finalSamples = loopSamples;
+
+    // Extract recent audio into an AudioBuffer
+    const audioBuf = ctx.createBuffer(2, finalSamples, sampleRate);
+    const bufL = audioBuf.getChannelData(0);
+    const bufR = audioBuf.getChannelData(1);
+
+    let readPos = snappedStartPos;
+    for (let i = 0; i < finalSamples; i++) {
+      bufL[i] = ringLeft[readPos];
+      bufR[i] = ringRight[readPos];
+      readPos = (readPos + 1) % RING_BUFFER_SIZE;
+    }
+
+    // Micro-fade boundaries (5ms) to prevent clicks
+    const fadeCount = Math.floor(0.005 * sampleRate);
+    for (let i = 0; i < fadeCount; i++) {
+      const g = i / fadeCount;
+      bufL[i] *= g;
+      bufR[i] *= g;
+      bufL[finalSamples - 1 - i] *= g;
+      bufR[finalSamples - 1 - i] *= g;
+    }
+
+    // Disconnect live stream from outgoing deck (stays floating until Phase 2 connects to incoming)
+    if (liveStreamSource) {
+      try { liveStreamSource.disconnect(outgoingDeck.inputNode); } catch (e) {}
+    }
+
+    // Play the beat loop seamlessly on outgoing deck
+    outgoingDeck.disconnectSource();
+    const sourceNode = ctx.createBufferSource();
+    sourceNode.buffer = audioBuf;
+    sourceNode.loop = true;
+    sourceNode.loopStart = 0;
+    sourceNode.loopEnd = audioBuf.duration;
+    sourceNode.connect(outgoingDeck.inputNode);
+    outgoingDeck.activeSource = sourceNode;
+
+    sourceNode.start(0);
+    console.log(`[AuraDJ] Deck ${outgoingDeck.id} looping ${loopBars}-bar outro phrase (${audioBuf.duration.toFixed(2)}s) with transient kick-lock`);
+  } else {
+    if (liveStreamSource) {
+      try { liveStreamSource.disconnect(outgoingDeck.inputNode); } catch (e) {}
+      liveStreamSource.connect(incomingDeck.inputNode);
+    }
   }
 
-  // 2. Start Phase 1: Outgoing deck warm HPF sweep + BPM stereo echo wash on the ACTUAL song outro
+  // 2. Start Phase 1: Outgoing deck warm HPF sweep + BPM stereo echo wash
   startOutgoingTransition(outgoingDeck, bpm, barSec, transitionDuration);
 
   // 3. Store transition context for Phase 2 (incoming FX triggered on TRACK_CHANGED)
