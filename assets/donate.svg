@@ -1,21 +1,21 @@
-<svg height="512" viewbox="0 0 512 512" width="512" xmlns="http://www.w3.org/2000/svg">
+<svg height="512" viewBox="100 40 312 400" width="512" xmlns="http://www.w3.org/2000/svg">
 <defs>
-<radialgradient cx="50%" cy="50%" id="bgGradTip" r="65%">
+<radialGradient cx="50%" cy="50%" id="bgGradTip" r="65%">
 <stop offset="0%" stop-color="#18231c"></stop>
 <stop offset="60%" stop-color="#0d1410"></stop>
 <stop offset="100%" stop-color="#050806"></stop>
-</radialgradient>
+</radialGradient>
 <filter height="160%" id="goldCoinGlow" width="160%" x="-30%" y="-30%">
-<fedropshadow dx="0" dy="0" flood-color="#f59e0b" flood-opacity="0.9" stddeviation="6"></fedropshadow>
+<feDropShadow dx="0" dy="0" flood-color="#f59e0b" flood-opacity="0.9" stdDeviation="6"></feDropShadow>
 </filter>
 <filter height="160%" id="emeraldJarGlow" width="160%" x="-30%" y="-30%">
-<fedropshadow dx="0" dy="0" flood-color="#10b981" flood-opacity="0.85" stddeviation="5"></fedropshadow>
+<feDropShadow dx="0" dy="0" flood-color="#10b981" flood-opacity="0.85" stdDeviation="5"></feDropShadow>
 </filter>
 <filter height="160%" id="cyanSparkGlow" width="160%" x="-30%" y="-30%">
-<fedropshadow dx="0" dy="0" flood-color="#38bdf8" flood-opacity="0.9" stddeviation="5"></fedropshadow>
+<feDropShadow dx="0" dy="0" flood-color="#38bdf8" flood-opacity="0.9" stdDeviation="5"></feDropShadow>
 </filter>
 <filter height="140%" id="whiteGlint" width="140%" x="-20%" y="-20%">
-<fedropshadow dx="0" dy="0" flood-color="#ffffff" flood-opacity="0.9" stddeviation="4"></fedropshadow>
+<feDropShadow dx="0" dy="0" flood-color="#ffffff" flood-opacity="0.9" stdDeviation="4"></feDropShadow>
 </filter>
 </defs>
 <style>
