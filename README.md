@@ -204,7 +204,7 @@ Honestly, probably better. At least you won't shout awkward motivational speeche
 ## ☕ Support & Tip Jar
 
 <div align="center">
-  <img src="assets/donate.svg" width="110" height="110" alt="BeatBridge Tip Jar Animation" />
+  <img src="https://raw.githubusercontent.com/WalterByte-afk/BeatBridge/main/assets/donate.svg" width="110" height="110" alt="BeatBridge Tip Jar Animation" />
   <p><b>BeatBridge is 100% free and open-source under the MIT License.</b><br/>If it saved your playlist, party, or late-night coding session, drop some gas in the tip jar!</p>
 </div>
 
