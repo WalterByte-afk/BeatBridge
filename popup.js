@@ -158,91 +158,58 @@ window.AuraDJ = (function() {
 
     const text = `${state.trackTitle || ''} ${state.trackArtist || ''}`.toLowerCase();
 
-    // 0. Compute real-time audio spectral dynamics from live analyser
-    let bassEnergy = 0;
-    let midEnergy = 0;
-    if (state.waveformData && state.waveformData.length > 0) {
-      const len = state.waveformData.length;
-      let bSum = 0, mSum = 0;
-      const bCount = Math.min(8, len);
-      for (let i = 0; i < bCount; i++) bSum += state.waveformData[i];
-      bassEnergy = bSum / bCount;
-
-      const mStart = bCount;
-      const mEnd = Math.min(30, len);
-      for (let i = mStart; i < mEnd; i++) mSum += state.waveformData[i];
-      midEnergy = (mEnd > mStart) ? mSum / (mEnd - mStart) : 0;
-    }
-
-    const bpm = state.bpm || 120;
-    // Audio is only truly soft if bass is minimal, mids are quiet, and tempo is slow
-    const isSoftAudio = bassEnergy > 0 && bassEnergy < 55 && midEnergy < 45 && bpm < 115;
-    const isHeavyBanger = bassEnergy > 105 || bpm >= 138;
-
-    // 1. Hardcore / Hardtek / Hardstyle / Phonk / Fast Driving Beats (High Priority!)
-    if (/(hardstyle|hardtek|hard-tek|tekno|frenchcore|speedcore|gabber|uptempo|rawstyle|phonk|dnb|drum and bass|drum & bass|deathcore|terror|metalcore|aggro|drift|boosted|хард|фонк|хардтек)/i.test(text)) {
+    // 1. Hardcore / Hardtek / Frenchcore / Hardstyle / Phonk / DnB (Highest priority genre)
+    if (/(hardtek|hardcore|hardstyle|frenchcore|speedcore|gabber|uptempo|rawstyle|metal|deathcore|phonk|terror|dnb|drum and bass|drum & bass|breakcore|schranz)/i.test(text)) {
       return 'hardstyle';
     }
 
-    // 2. Explicit Soft / Acoustic / Ballad / Lo-Fi
-    if (/(pal pal|acoustic|piano|unplugged|guitar|soft|slowed|reverb|ambient|sleep|calm|peace|chill|sad|ballad|emotional|sufi|ghazal|lofi|lo-fi|soul|folk|indie|mellow|bedroom|relax|serenade|meditation)/i.test(text)) {
-      return 'lofi';
+    // 2. Rave / Techno / Trance / EDM / House / Club
+    if (/(rave|techno|trance|acid|psytrance|dubstep|hard dance|festival|club|house|edm|electro|electronic|future bass|bass house)/i.test(text)) {
+      return 'rave';
     }
 
-    // 3. Love / Romance / R&B / Hearts
+    // 3. Pop / Dance / Commercial / Disco / Synthwave
+    if (/(pop|disco|funk|synthwave|k-pop|chart|anthem|hit|radio|dance|dancepop|dance-pop|dua|ariana|taylor|weekend|katy|bruno|billie|bts|blackpink)/i.test(text)) {
+      return 'pop';
+    }
+
+    // 4. Trap / Hip-Hop / Drill / Rap
+    if (/(trap|hip hop|hip-hop|rap|drill|grillz|808|freestyle|rhyme|bars|cypher|boombap|boom bap)/i.test(text)) {
+      return 'trap';
+    }
+
+    // 5. Romance / Love / R&B / Hearts
     if (/(love|heart|romance|romantic|ishq|pyar|mohabbat|dil|jaan|sweet|crush|baby|kiss|darling)/i.test(text)) {
       return 'hearts';
     }
 
-    // 4. Rave / Festival / Techno / EDM / Club
-    if (/(rave|techno|trance|acid|psytrance|dubstep|hard dance|festival|club banger|big room|remix|dance)/i.test(text)) {
-      return 'rave';
-    }
-
-    // 5. Trap / Hip-Hop / Drill / Bars / Grillz
-    if (/(trap|hip hop|hip-hop|rap|drill|grillz|808|freestyle|rhyme|bars|cypher|boombap|реп)/i.test(text)) {
-      return 'trap';
-    }
-
-    // 6. Pop / Disco / Funk / Upbeat
-    if (/(pop|disco|funk|synthwave|k-pop|chart|anthem)/i.test(text)) {
-      return 'pop';
-    }
-
-    // 7. Chiptune / Retro / 8-bit
-    if (/(8bit|8-bit|chiptune|retro|arcade|glitch|breakcore)/i.test(text)) {
+    // 6. Chiptune / Retro / 8-bit / Glitch
+    if (/(8bit|8-bit|chiptune|retro|arcade|glitch|game boy|nintendo)/i.test(text)) {
       return 'chiptune';
     }
 
-    // 8. Futuristic / Cyber / Robotic
-    if (/(robot|cyber|tech|matrix|synthetic|future|ai)/i.test(text)) {
+    // 7. Futuristic / Cyber / Robotic
+    if (/(robot|cyber|tech|matrix|synthetic|future|ai|cyborg)/i.test(text)) {
       return 'robotic';
     }
 
-    // 9. Rainbow / Euphoric
-    if (/(rainbow|euphori|happy|pride|sunshine)/i.test(text)) {
+    // 8. Explicit Soft / Acoustic / Ballads / Lofi
+    if (/(pal pal|acoustic|piano|unplugged|guitar|soft|slowed|reverb|ambient|sleep|calm|peace|chill|sad|ballad|emotional|sufi|ghazal|lofi|lo-fi|soul|folk|indie|mellow|bedroom|relax|serenade|meditation)/i.test(text)) {
+      return 'lofi';
+    }
+
+    // 9. Rainbow / Euphoric / Hyperpop
+    if (/(rainbow|euphori|happy|pride|sunshine|hyperpop)/i.test(text)) {
       return 'rainbow';
     }
 
-    // 10. Tempo & Live Audio Energy Classification
-    if (isSoftAudio) {
-      return 'lofi';
-    }
-    if (bpm >= 142 || (bpm >= 134 && isHeavyBanger)) {
-      return 'hardstyle';
-    }
-    if (bpm >= 124) {
-      return 'rave';
-    }
-    if (bpm >= 106) {
-      return 'pop';
-    }
-    if (bpm >= 86) {
-      return 'trap';
-    }
-    if (bpm < 86) {
-      return 'lofi';
-    }
+    // 10. Tempo (BPM) based intelligent classification
+    const bpm = state.bpm || 120;
+    if (bpm >= 148) return 'hardstyle';
+    if (bpm >= 124) return 'rave';
+    if (bpm >= 108) return 'pop';
+    if (bpm >= 88) return 'trap';
+    if (bpm < 88) return 'lofi';
 
     return 'normal';
   }

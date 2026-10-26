@@ -295,8 +295,8 @@
     if (duration > 25) {
       const timeRemaining = duration - currentTime;
 
-      // 1. Intelligent AutoMix Outro Loop Trigger (at ~11s remaining)
-      if (automixEnabled && !automixTriggeredForCurrentTrack && timeRemaining > 0 && timeRemaining <= 11) {
+      // 1. Intelligent AutoMix Early Trigger (at ~12s remaining)
+      if (automixEnabled && !automixTriggeredForCurrentTrack && timeRemaining > 0 && timeRemaining <= 12) {
         automixTriggeredForCurrentTrack = true;
         console.log(`[AuraDJ] AutoMix window reached! (${timeRemaining.toFixed(1)}s remaining). Initiating Apple AutoMix transition.`);
         sendMessageSafely({

@@ -540,7 +540,7 @@ function handleTriggerAutoMix() {
   const transitionBars = bpm > 140 ? 4 : 8;
   const transitionDuration = transitionBars * barSec;
 
-  // 1. Transient Downbeat Kick-Lock Beat Loop (The iconic DJ outro phrase loop)
+  // We loop the last 4 bars (e.g. 7.5s @ 128BPM) of Track A that JUST played
   const loopBars = 4;
   const loopDuration = Math.min(loopBars * barSec, 10.0);
   const sampleRate = ctx.sampleRate || 44100;
@@ -594,6 +594,7 @@ function handleTriggerAutoMix() {
     // Disconnect live stream from outgoing deck (stays floating until Phase 2 connects to incoming)
     if (liveStreamSource) {
       try { liveStreamSource.disconnect(outgoingDeck.inputNode); } catch (e) {}
+      // DO NOT connect to incoming deck here — Phase 2 (handleTrackChanged) handles it
     }
 
     // Play the beat loop seamlessly on outgoing deck
@@ -606,16 +607,18 @@ function handleTriggerAutoMix() {
     sourceNode.connect(outgoingDeck.inputNode);
     outgoingDeck.activeSource = sourceNode;
 
+    // Start playing seamlessly locked to the downbeat
     sourceNode.start(0);
     console.log(`[AuraDJ] Deck ${outgoingDeck.id} looping ${loopBars}-bar outro phrase (${audioBuf.duration.toFixed(2)}s) with transient kick-lock`);
   } else {
+    // Fallback if not enough samples buffered: just switch live stream
     if (liveStreamSource) {
       try { liveStreamSource.disconnect(outgoingDeck.inputNode); } catch (e) {}
       liveStreamSource.connect(incomingDeck.inputNode);
     }
   }
 
-  // 2. Start Phase 1: Outgoing deck warm HPF sweep + BPM stereo echo wash
+  // 2. Start Phase 1: Outgoing deck resonant HPF sweep + BPM echo freeze
   startOutgoingTransition(outgoingDeck, bpm, barSec, transitionDuration);
 
   // 3. Store transition context for Phase 2 (incoming FX triggered on TRACK_CHANGED)
@@ -709,7 +712,6 @@ function handleTrackChanged() {
   }
 
   // Manual skip or sudden track change:
-  // Smoothly blend to the incoming deck over 100ms with ZERO playback of old audio!
   const ctx = getAudioContext();
   if (!deckA || !deckB) {
     buildMasterAudioGraph();
@@ -718,6 +720,13 @@ function handleTrackChanged() {
   const incomingDeck = (engineState.activeDeck === 'A') ? deckB : deckA;
 
   if (!outgoingDeck || !incomingDeck) return;
+
+  // If AutoMix is enabled, execute a seamless quick-mix AutoMix instead of an abrupt cut!
+  const sampleRate = ctx.sampleRate || 44100;
+  if (engineState.automixEnabled && totalSamplesBuffered > sampleRate * 1.5) {
+    executeInstantSkipAutoMix(outgoingDeck, incomingDeck);
+    return;
+  }
 
   if (liveStreamSource) {
     try { liveStreamSource.disconnect(outgoingDeck.inputNode); } catch (e) {}
@@ -728,15 +737,107 @@ function handleTrackChanged() {
 
   const now = ctx.currentTime;
   outgoingDeck.masterGain.gain.setValueAtTime(1.0, now);
-  outgoingDeck.masterGain.gain.linearRampToValueAtTime(0.0, now + 0.1);
+  outgoingDeck.masterGain.gain.linearRampToValueAtTime(0.0, now + 0.3);
 
   incomingDeck.resetGains();
   incomingDeck.masterGain.gain.setValueAtTime(0.0, now);
-  incomingDeck.masterGain.gain.linearRampToValueAtTime(1.0, now + 0.1);
+  incomingDeck.masterGain.gain.linearRampToValueAtTime(1.0, now + 0.3);
 
   engineState.activeDeck = incomingDeck.id;
   engineState.status = 'LIVE';
   broadcastEngineState();
+}
+
+/**
+ * AutoMix Quick-Mix on Manual Skip
+ * Seamlessly loops the outgoing track's last phrase and blends into the skipped-to track
+ */
+function executeInstantSkipAutoMix(outgoingDeck, incomingDeck) {
+  const ctx = getAudioContext();
+  const now = ctx.currentTime;
+  const bpm = (engineState.bpm && engineState.bpm >= 50 && engineState.bpm <= 220) ? engineState.bpm : 128.0;
+  const barSec = (4 * 60) / bpm;
+  const loopBars = 2; // 2 bars quick mix for rapid skip responsiveness
+  const loopDuration = Math.min(loopBars * barSec, 4.0);
+  const sampleRate = ctx.sampleRate || 44100;
+  const loopSamples = Math.floor(loopDuration * sampleRate);
+
+  if (loopSamples > 0 && totalSamplesBuffered >= loopSamples) {
+    // 1. Extract recent audio from ring buffer
+    const audioBuf = ctx.createBuffer(2, loopSamples, sampleRate);
+    const bufL = audioBuf.getChannelData(0);
+    const bufR = audioBuf.getChannelData(1);
+
+    let readPos = (ringWritePos - loopSamples + RING_BUFFER_SIZE) % RING_BUFFER_SIZE;
+    for (let i = 0; i < loopSamples; i++) {
+      bufL[i] = ringLeft[readPos];
+      bufR[i] = ringRight[readPos];
+      readPos = (readPos + 1) % RING_BUFFER_SIZE;
+    }
+
+    // 5ms micro-fade to eliminate any boundary clicks
+    const fadeCount = Math.floor(0.005 * sampleRate);
+    for (let i = 0; i < fadeCount; i++) {
+      const g = i / fadeCount;
+      bufL[i] *= g;
+      bufR[i] *= g;
+      bufL[loopSamples - 1 - i] *= g;
+      bufR[loopSamples - 1 - i] *= g;
+    }
+
+    // 2. Play loop on outgoing deck
+    outgoingDeck.disconnectSource();
+    const sourceNode = ctx.createBufferSource();
+    sourceNode.buffer = audioBuf;
+    sourceNode.loop = true;
+    sourceNode.connect(outgoingDeck.inputNode);
+    outgoingDeck.activeSource = sourceNode;
+    sourceNode.start(0);
+
+    // 3. Connect live stream to incoming deck (new track)
+    if (liveStreamSource) {
+      try { liveStreamSource.disconnect(outgoingDeck.inputNode); } catch (e) {}
+      liveStreamSource.connect(incomingDeck.inputNode);
+    }
+
+    // 4. Start transition curves
+    startOutgoingTransition(outgoingDeck, bpm, barSec, loopDuration);
+    startIncomingTransition(incomingDeck, outgoingDeck, bpm, barSec);
+
+    activeTransitionCtx = {
+      outgoingDeck,
+      incomingDeck,
+      bpm,
+      barSec,
+      transitionDuration: loopDuration,
+      bassSwapped: false,
+      incomingStarted: true
+    };
+
+    engineState.activeDeck = incomingDeck.id;
+    engineState.isTransitioning = true;
+    engineState.transitionPhase = 'BLENDING';
+    engineState.status = 'QUICK MIX';
+    broadcastEngineState();
+
+    if (transitionCompleteTimeout) clearTimeout(transitionCompleteTimeout);
+    transitionCompleteTimeout = setTimeout(cleanupTransition, (loopDuration + 3.0) * 1000);
+    console.log(`[AuraDJ] Quick AutoMix executed on manual skip (Deck ${outgoingDeck.id} -> Deck ${incomingDeck.id})`);
+  } else {
+    // Fallback if buffer not ready: 300ms smooth crossfade
+    if (liveStreamSource) {
+      try { liveStreamSource.disconnect(outgoingDeck.inputNode); } catch (e) {}
+      liveStreamSource.connect(incomingDeck.inputNode);
+    }
+    outgoingDeck.masterGain.gain.setValueAtTime(1.0, now);
+    outgoingDeck.masterGain.gain.linearRampToValueAtTime(0.0, now + 0.3);
+    incomingDeck.resetGains();
+    incomingDeck.masterGain.gain.setValueAtTime(0.0, now);
+    incomingDeck.masterGain.gain.linearRampToValueAtTime(1.0, now + 0.3);
+    engineState.activeDeck = incomingDeck.id;
+    engineState.status = 'LIVE';
+    broadcastEngineState();
+  }
 }
 
 /**
