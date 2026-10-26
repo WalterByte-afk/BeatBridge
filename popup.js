@@ -100,6 +100,22 @@ window.AuraDJ = (function() {
         noise.connect(gain);
         noise.start(now);
         noise.stop(now + 0.51);
+      } else if (type === 'levelup') {
+        // Triumphant 8-bit Level-Up Chime (C5 -> E5 -> G5 -> C6)
+        const notes = [523.25, 659.25, 783.99, 1046.50];
+        notes.forEach((freq, idx) => {
+          const o = ctx.createOscillator();
+          const g = ctx.createGain();
+          o.type = 'triangle';
+          o.frequency.setValueAtTime(freq, now + idx * 0.08);
+          g.gain.setValueAtTime(0.001, now);
+          g.gain.setValueAtTime(0.25, now + idx * 0.08);
+          g.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.08 + 0.25);
+          o.connect(g);
+          g.connect(ctx.destination);
+          o.start(now + idx * 0.08);
+          o.stop(now + idx * 0.08 + 0.26);
+        });
       }
     } catch (err) {
       // AudioContext restricted before gesture
@@ -107,46 +123,343 @@ window.AuraDJ = (function() {
   }
 
   /**
-   * OP-XY Pixel-Art Headphone Character Canvas
+   * ========================================================
+   * BEATBRIDGE MASCOT & GAMIFIED DJ PROGRESSION ENGINE
+   * ========================================================
    */
-  function renderPixelAvatar() {
-    const canvas = document.getElementById('pixel-avatar-canvas');
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    const p = 2.4;
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  const DJ_LEVELS = [
+    { level: 1, title: 'BEDROOM DJ', reqXp: 0, unlock: 'VINYL PLATTER' },
+    { level: 2, title: 'VINYL ROOKIE', reqXp: 75, unlock: 'TUBE SATURATION' },
+    { level: 3, title: 'GROOVE DIGGER', reqXp: 180, unlock: 'GOLDEN GRILLZ' },
+    { level: 4, title: 'BEAT CULPRIT', reqXp: 320, unlock: 'HALFTIME BRAKE' },
+    { level: 5, title: 'CLUB RESIDENT', reqXp: 500, unlock: 'NEON WAVEFORM SKINS' },
+    { level: 6, title: 'FESTIVAL HEADLINER', reqXp: 750, unlock: 'RESONANT RISER' },
+    { level: 7, title: 'RAVE GOD', reqXp: 1100, unlock: 'SUPER GOLD CROWN' },
+    { level: 8, title: 'AUDIO WIZARD', reqXp: 1600, unlock: 'DUAL DECK ISOLATOR' },
+    { level: 9, title: 'GRANDMASTER OP-XY', reqXp: 2300, unlock: 'MASTER ANALOG COMP' },
+    { level: 10, title: 'LEGENDARY MAESTRO', reqXp: 3200, unlock: 'GOLD ROTARY ENCODERS' }
+  ];
 
-    // OP-XY DJ Mascot Sprite Matrix
-    // 1: White band, 2: Blue cans, 3: Slate face, 4: Highlight/Eyes, 5: Mic
-    const sprite = [
-      [0,0,0,0,1,1,1,1,1,1,1,1,0,0,0,0],
-      [0,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0],
-      [0,0,1,1,0,0,0,0,0,0,0,0,1,1,0,0],
-      [0,1,1,0,0,0,0,0,0,0,0,0,0,1,1,0],
-      [0,2,2,0,3,3,3,3,3,3,3,3,0,2,2,0],
-      [2,2,2,2,3,4,3,3,3,3,4,3,2,2,2,2],
-      [2,2,2,2,3,4,3,3,3,3,4,3,2,2,2,2],
-      [2,2,2,2,3,3,3,3,3,3,3,3,2,2,2,2],
-      [2,2,2,2,3,3,3,4,4,3,3,3,2,2,2,2],
-      [0,2,2,0,3,3,3,3,3,3,3,3,0,2,2,0],
-      [0,0,0,0,0,3,3,3,3,3,3,0,0,0,0,0],
-      [0,0,0,0,0,0,3,3,3,3,0,0,0,0,0,0]
-    ];
+  const gameStats = {
+    xp: 0,
+    level: 1,
+    streak: 1,
+    lastDay: '',
+    tracksMixed: 0,
+    currentVibe: 'normal',
+    isLevelingUp: false
+  };
 
-    const offsetX = (canvas.width - (16 * p)) / 2;
-    const offsetY = (canvas.height - (12 * p)) / 2;
+  /**
+   * Intelligent Music Vibe & Genre Rhythm Classifier
+   */
+  function detectVibe() {
+    if (!state.isPlaying) return 'sleep';
 
-    for (let r = 0; r < sprite.length; r++) {
-      for (let c = 0; c < sprite[r].length; c++) {
-        const val = sprite[r][c];
-        if (val === 0) continue;
-        if (val === 1) ctx.fillStyle = '#ffffff';
-        else if (val === 2) ctx.fillStyle = '#587bf8';
-        else if (val === 3) ctx.fillStyle = '#2d3345';
-        else if (val === 4) ctx.fillStyle = '#f8fafc';
-        ctx.fillRect(offsetX + c * p, offsetY + r * p, p - 0.4, p - 0.4);
+    const text = `${state.trackTitle || ''} ${state.trackArtist || ''}`.toLowerCase();
+
+    // 1. Text-based heuristic matches
+    if (/(hardstyle|hardtek|phonk|dnb|drum and bass|drum & bass|speedcore|gabber|metal|nightcore|aggro)/i.test(text)) {
+      return 'hardstyle';
+    }
+    if (/(rave|techno|house|edm|club|electro|trance|acid|dubstep|festival|dance)/i.test(text)) {
+      return 'rave';
+    }
+    if (/(lofi|lo-fi|chill|relax|ambient|calm|coffee|study|sleep|peaceful|piano|slow|acoustic)/i.test(text)) {
+      return 'lofi';
+    }
+    if (/(trap|hip hop|hip-hop|rap|drill|grillz|808|freestyle|rhyme|bars)/i.test(text)) {
+      return 'trap';
+    }
+    if (/(pop|disco|funk|synthwave|k-pop|synth|chart)/i.test(text)) {
+      return 'pop';
+    }
+    if (/(8bit|8-bit|chiptune|retro|arcade|glitch|breakcore)/i.test(text)) {
+      return 'chiptune';
+    }
+    if (/(robot|cyber|tech|matrix|synthetic|future)/i.test(text)) {
+      return 'robotic';
+    }
+    if (/(love|heart|romance|romantic|baby|crush|sweet)/i.test(text)) {
+      return 'hearts';
+    }
+    if (/(rainbow|euphori|happy|pride|sunshine)/i.test(text)) {
+      return 'rainbow';
+    }
+
+    // 2. Tempo / BPM based classification
+    const bpm = state.bpm || 120;
+    if (bpm <= 88) return 'lofi';
+    if (bpm <= 108) return 'trap';
+    if (bpm <= 126) return 'pop';
+    if (bpm <= 144) return 'rave';
+    if (bpm > 144) return 'hardstyle';
+
+    return 'normal';
+  }
+
+  /**
+   * Mount Animated SVG Mascot into Viewport
+   */
+  function updateMascotVibe(force = false) {
+    if (gameStats.isLevelingUp && !force) return;
+
+    const vibe = detectVibe();
+    const mount = document.getElementById('mascot-svg-mount');
+    if (!mount) return;
+
+    if (gameStats.currentVibe === vibe && !force && mount.firstElementChild) return;
+    gameStats.currentVibe = vibe;
+
+    if (typeof window.MASCOT_SVGS !== 'undefined' && window.MASCOT_SVGS) {
+      const svgCode = window.MASCOT_SVGS[vibe] || window.MASCOT_SVGS['normal'] || '';
+      mount.innerHTML = svgCode;
+
+      // Update miniature preview in passport modal
+      const preview = document.getElementById('passport-mascot-preview');
+      if (preview) preview.innerHTML = svgCode;
+    }
+
+    const vibeLabel = document.getElementById('pod-vibe-label');
+    if (vibeLabel) vibeLabel.textContent = vibe.toUpperCase();
+
+    const passVibe = document.getElementById('passport-vibe-name');
+    if (passVibe) passVibe.textContent = vibe.toUpperCase();
+  }
+
+  /**
+   * Load Game Stats from Chrome Storage
+   */
+  function loadGameStats() {
+    if (typeof chrome !== 'undefined' && chrome.storage && chrome.storage.local) {
+      chrome.storage.local.get(['bb_xp', 'bb_streak', 'bb_last_day', 'bb_tracks_mixed'], (res) => {
+        if (res) {
+          gameStats.xp = res.bb_xp || 0;
+          gameStats.tracksMixed = res.bb_tracks_mixed || 0;
+          gameStats.streak = res.bb_streak || 1;
+          gameStats.lastDay = res.bb_last_day || '';
+
+          // Streak verification
+          const today = new Date().toISOString().slice(0, 10);
+          if (!gameStats.lastDay) {
+            gameStats.lastDay = today;
+            gameStats.streak = 1;
+          } else if (gameStats.lastDay !== today) {
+            const diffDays = Math.round((new Date(today) - new Date(gameStats.lastDay)) / (1000 * 60 * 60 * 24));
+            if (diffDays === 1) {
+              gameStats.streak += 1;
+            } else if (diffDays > 1) {
+              gameStats.streak = 1;
+            }
+            gameStats.lastDay = today;
+          }
+
+          // Calculate Level from XP
+          let currentLvl = 1;
+          for (let i = DJ_LEVELS.length - 1; i >= 0; i--) {
+            if (gameStats.xp >= DJ_LEVELS[i].reqXp) {
+              currentLvl = DJ_LEVELS[i].level;
+              break;
+            }
+          }
+          gameStats.level = currentLvl;
+
+          saveGameStats();
+          updateGameUI();
+          updateMascotVibe(true);
+        }
+      });
+    } else {
+      updateGameUI();
+      updateMascotVibe(true);
+    }
+  }
+
+  /**
+   * Save Game Stats to Chrome Storage
+   */
+  function saveGameStats() {
+    if (typeof chrome !== 'undefined' && chrome.storage && chrome.storage.local) {
+      chrome.storage.local.set({
+        bb_xp: gameStats.xp,
+        bb_streak: gameStats.streak,
+        bb_last_day: gameStats.lastDay,
+        bb_tracks_mixed: gameStats.tracksMixed
+      });
+    }
+  }
+
+  /**
+   * Award XP & Check for Level Up
+   */
+  function addXP(amount) {
+    gameStats.xp += amount;
+
+    // Check if level increased
+    let currentLvl = 1;
+    for (let i = DJ_LEVELS.length - 1; i >= 0; i--) {
+      if (gameStats.xp >= DJ_LEVELS[i].reqXp) {
+        currentLvl = DJ_LEVELS[i].level;
+        break;
       }
     }
+
+    if (currentLvl > gameStats.level) {
+      triggerLevelUp(currentLvl);
+    }
+
+    saveGameStats();
+    updateGameUI();
+  }
+
+  /**
+   * Trigger Level Up Celebration Animation
+   */
+  function triggerLevelUp(newLevel) {
+    gameStats.level = newLevel;
+    gameStats.isLevelingUp = true;
+
+    // Play triumphant sound chime
+    triggerSoundEffect('levelup');
+
+    // Show level up banner overlay
+    const banner = document.getElementById('mascot-levelup-banner');
+    const bannerText = document.getElementById('levelup-banner-text');
+    if (banner) {
+      if (bannerText) bannerText.textContent = `LVL ${newLevel}`;
+      banner.classList.remove('hidden');
+      banner.classList.add('flex');
+    }
+
+    // Mount golden ascension level-up SVG
+    const mount = document.getElementById('mascot-svg-mount');
+    if (mount && window.MASCOT_SVGS && window.MASCOT_SVGS['levelup']) {
+      mount.innerHTML = window.MASCOT_SVGS['levelup'];
+    }
+
+    // Reset after celebration (4.5 seconds)
+    setTimeout(() => {
+      gameStats.isLevelingUp = false;
+      if (banner) {
+        banner.classList.add('hidden');
+        banner.classList.remove('flex');
+      }
+      updateMascotVibe(true);
+    }, 4500);
+  }
+
+  /**
+   * Update UI Badges, Meters & Passport Modal
+   */
+  function updateGameUI() {
+    const streakEl = document.getElementById('streak-days');
+    if (streakEl) streakEl.textContent = gameStats.streak;
+
+    const lvlEl = document.getElementById('user-level');
+    if (lvlEl) lvlEl.textContent = gameStats.level;
+
+    // Level progress calculation
+    const currCfg = DJ_LEVELS.find(l => l.level === gameStats.level) || DJ_LEVELS[0];
+    const nextCfg = DJ_LEVELS.find(l => l.level === gameStats.level + 1) || {
+      level: gameStats.level + 1,
+      reqXp: currCfg.reqXp + 1000,
+      title: 'LEGENDARY MAESTRO',
+      unlock: 'GOLD MASTER BADGE'
+    };
+
+    const xpFloor = currCfg.reqXp;
+    const xpCeil = nextCfg.reqXp;
+    const progress = Math.max(0, gameStats.xp - xpFloor);
+    const needed = Math.max(1, xpCeil - xpFloor);
+    const pct = Math.min(100, Math.max(0, Math.round((progress / needed) * 100)));
+
+    const podXp = document.getElementById('pod-xp-text');
+    if (podXp) podXp.textContent = `${progress}/${needed} XP`;
+
+    const xpBar = document.getElementById('xp-progress-bar');
+    if (xpBar) xpBar.style.width = `${pct}%`;
+
+    // Passport Modal details
+    const passRank = document.getElementById('passport-rank-title');
+    if (passRank) passRank.textContent = currCfg.title;
+
+    const passLvl = document.getElementById('passport-level-num');
+    if (passLvl) passLvl.textContent = gameStats.level;
+
+    const passStreakNum = document.getElementById('passport-streak-num');
+    if (passStreakNum) passStreakNum.textContent = gameStats.streak;
+
+    const passStreakVal = document.getElementById('passport-streak-val');
+    if (passStreakVal) passStreakVal.textContent = gameStats.streak;
+
+    const passXpDetail = document.getElementById('passport-xp-detail');
+    if (passXpDetail) passXpDetail.textContent = `${gameStats.xp} / ${xpCeil} XP`;
+
+    const passFill = document.getElementById('passport-progress-fill');
+    if (passFill) passFill.style.width = `${pct}%`;
+
+    const passNeeded = document.getElementById('passport-xp-needed');
+    if (passNeeded) passNeeded.textContent = `${Math.max(0, xpCeil - gameStats.xp)} XP to Level ${gameStats.level + 1}`;
+
+    const passTracks = document.getElementById('passport-tracks-mixed');
+    if (passTracks) passTracks.textContent = gameStats.tracksMixed;
+
+    const passUnlock = document.getElementById('passport-next-unlock');
+    if (passUnlock) passUnlock.textContent = nextCfg.unlock;
+  }
+
+  /**
+   * Setup Gamification & Passport Modal Listeners
+   */
+  function setupGamification() {
+    loadGameStats();
+
+    // Passport modal open/close
+    const cardBtn = document.getElementById('mascot-card-btn');
+    const modal = document.getElementById('modal-level-passport');
+    const closeBtn = document.getElementById('btn-close-passport');
+
+    if (cardBtn && modal) {
+      cardBtn.addEventListener('click', () => {
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        updateGameUI();
+      });
+    }
+
+    if (closeBtn && modal) {
+      closeBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      });
+    }
+
+    if (modal) {
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          modal.classList.add('hidden');
+          modal.classList.remove('flex');
+        }
+      });
+    }
+
+    // Periodic XP ticker (every 2.5s during playback)
+    setInterval(() => {
+      if (state.isPlaying) {
+        const automixBtn = document.getElementById('btn-automix');
+        const isAuto = automixBtn && automixBtn.dataset.active === 'true';
+        addXP(isAuto ? 4 : 2);
+        updateMascotVibe();
+      }
+    }, 2500);
+  }
+
+  /**
+   * Fallback Avatar render (noop for compatibility)
+   */
+  function renderPixelAvatar() {
+    updateMascotVibe();
   }
 
   /**
@@ -571,6 +884,8 @@ window.AuraDJ = (function() {
         prompt.classList.add('text-[#587bf8]');
       }
     }
+
+    updateMascotVibe();
   }
 
   /**
@@ -690,17 +1005,24 @@ window.AuraDJ = (function() {
       deckBadge.textContent = `DECK ${state.activeDeck}`;
     }
 
+    if (title) state.trackTitle = title;
+    if (artist) state.trackArtist = artist;
+
     if (data.isPlaying !== undefined) {
       setPlaybackState(data.isPlaying);
     } else if (data.isPaused !== undefined) {
       setPlaybackState(!data.isPaused);
     }
+
+    // Refresh mascot vibe according to track genre/rhythm
+    updateMascotVibe();
   }
 
   /**
    * Initialize AuraDJ System & DOM Events
    */
   function init() {
+    setupGamification();
     renderPixelAvatar();
     renderBpmDots();
     renderTurntable();
@@ -899,6 +1221,10 @@ window.AuraDJ = (function() {
           const trackState = message.state || message.current || message;
           if (trackState && window.AuraDJ && typeof window.AuraDJ.updateTrackInfo === 'function') {
             window.AuraDJ.updateTrackInfo(trackState);
+          }
+          if (message.type === 'TRACK_CHANGED') {
+            gameStats.tracksMixed++;
+            addXP(25);
           }
         } else if (message.type === 'ANALYSIS_RESULT') {
           const bpm = message.bpm !== undefined ? message.bpm : (message.result?.bpm ?? message.data?.bpm);

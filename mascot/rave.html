@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #000;
+    }
+  </style>
+</head>
+<body>
+<!-- STITCH_SVG_START:ANIMATION_23 class="fixed inset-0 w-full h-full" --><div class="fixed inset-0 w-full h-full" id="animated-svg-ANIMATION_23" style="display:block;"><svg height="512" viewbox="0 0 512 512" width="512" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<radialgradient cx="50%" cy="50%" id="bgGradTechno" r="65%">
+<stop offset="0%" stop-color="#140608"></stop>
+<stop offset="100%" stop-color="#050203"></stop>
+</radialgradient>
+<filter height="160%" id="acidRedGlow" width="160%" x="-30%" y="-30%">
+<fedropshadow dx="0" dy="0" flood-color="#ff0055" flood-opacity="0.95" stddeviation="6"></fedropshadow>
+</filter>
+<filter height="160%" id="electricAmberGlow" width="160%" x="-30%" y="-30%">
+<fedropshadow dx="0" dy="0" flood-color="#ffaa00" flood-opacity="0.9" stddeviation="5"></fedropshadow>
+</filter>
+</defs>
+<style>
+    @keyframes hardBpmHeadbang {
+      0%, 100% { transform: translateY(0px) scale(1); }
+      20% { transform: translateY(14px) scale(1.06, 0.95); }
+      40% { transform: translateY(-6px) scale(0.96, 1.04); }
+      60% { transform: translateY(10px) scale(1.04, 0.97); }
+      80% { transform: translateY(-3px) scale(0.98, 1.02); }
+    }
+    @keyframes acidStrobeGrid {
+      0%, 100% { opacity: 0.15; }
+      50% { opacity: 0.75; }
+    }
+    @keyframes pulseBassWave {
+      0% { r: 140px; opacity: 1; stroke-width: 4px; }
+      100% { r: 245px; opacity: 0; stroke-width: 0.5px; }
+    }
+    @keyframes raveVisorSweep {
+      0%, 100% { transform: translateX(-16px); }
+      50% { transform: translateX(16px); }
+    }
+    .head-techno { transform-origin: 256px 280px; animation: hardBpmHeadbang 0.42s cubic-bezier(0.1, 0.9, 0.2, 1) infinite; }
+    .strobe-grid { animation: acidStrobeGrid 0.21s steps(2) infinite; }
+    .bass-kick-1 { animation: pulseBassWave 0.84s cubic-bezier(0, 0.6, 0.4, 1) infinite; }
+    .bass-kick-2 { animation: pulseBassWave 0.84s cubic-bezier(0, 0.6, 0.4, 1) 0.42s infinite; }
+    .visor-core { animation: raveVisorSweep 0.84s ease-in-out infinite; }
+  </style>
+<!-- Dark Acid Warehouse Background -->
+<rect fill="url(#bgGradTechno)" height="512" rx="112" width="512"></rect>
+<rect fill="none" height="508" opacity="0.8" rx="110" stroke="#4a0e1b" stroke-width="3" width="508" x="2" y="2"></rect>
+<!-- High-BPM Bass Shockwaves (140+ BPM Kick Pulse) -->
+<circle class="bass-kick-1" cx="256" cy="280" fill="none" filter="url(#acidRedGlow)" r="140" stroke="#ff0055"></circle>
+<circle class="bass-kick-2" cx="256" cy="280" fill="none" filter="url(#electricAmberGlow)" r="140" stroke="#ffaa00"></circle>
+<!-- Industrial Strobe Accent Lines -->
+<g class="strobe-grid">
+<line filter="url(#acidRedGlow)" stroke="#ff0055" stroke-width="4" x1="30" x2="100" y1="256" y2="256"></line>
+<line filter="url(#acidRedGlow)" stroke="#ff0055" stroke-width="4" x1="412" x2="482" y1="256" y2="256"></line>
+<line filter="url(#electricAmberGlow)" stroke="#ffaa00" stroke-width="3" x1="256" x2="256" y1="30" y2="90"></line>
+</g>
+<!-- Hardstyle / Techno Heavy Mascot -->
+<g class="head-techno" transform="translate(16, 16)">
+<!-- MATTE BLACK & NEON CRIMSON HEADBAND -->
+<rect fill="#ff0055" filter="url(#acidRedGlow)" height="20" rx="2" width="20" x="180" y="120"></rect>
+<rect fill="#111827" height="20" rx="2" width="20" x="204" y="120"></rect>
+<rect fill="#ff0055" filter="url(#acidRedGlow)" height="20" rx="2" width="20" x="228" y="120"></rect>
+<rect fill="#111827" height="20" rx="2" width="20" x="252" y="120"></rect>
+<rect fill="#ff0055" filter="url(#acidRedGlow)" height="20" rx="2" width="20" x="276" y="120"></rect>
+<rect fill="#9f1239" height="20" rx="2" width="20" x="156" y="144"></rect>
+<rect fill="#9f1239" height="20" rx="2" width="20" x="300" y="144"></rect>
+<rect fill="#1f2937" height="20" rx="2" width="20" x="132" y="168"></rect>
+<rect fill="#1f2937" height="20" rx="2" width="20" x="324" y="168"></rect>
+<rect fill="#111827" height="20" rx="2" width="20" x="108" y="192"></rect>
+<rect fill="#111827" height="20" rx="2" width="20" x="348" y="192"></rect>
+<!-- LEFT INDUSTRIAL EARPAD (Heavy Red Armor Plates) -->
+<rect fill="#ff0055" filter="url(#acidRedGlow)" height="20" rx="2" width="20" x="84" y="216"></rect>
+<rect fill="#374151" height="20" rx="2" width="20" x="108" y="216"></rect>
+<rect fill="#ff0055" filter="url(#acidRedGlow)" height="20" rx="2" width="20" x="84" y="240"></rect>
+<rect fill="#374151" height="20" rx="2" width="20" x="108" y="240"></rect>
+<rect fill="#ff0055" filter="url(#acidRedGlow)" height="20" rx="2" width="20" x="84" y="264"></rect>
+<rect fill="#374151" height="20" rx="2" width="20" x="108" y="264"></rect>
+<rect fill="#ff0055" filter="url(#acidRedGlow)" height="20" rx="2" width="20" x="84" y="288"></rect>
+<rect fill="#374151" height="20" rx="2" width="20" x="108" y="288"></rect>
+<!-- RIGHT INDUSTRIAL EARPAD -->
+<rect fill="#374151" height="20" rx="2" width="20" x="348" y="216"></rect>
+<rect fill="#ff0055" filter="url(#acidRedGlow)" height="20" rx="2" width="20" x="372" y="216"></rect>
+<rect fill="#374151" height="20" rx="2" width="20" x="348" y="240"></rect>
+<rect fill="#ff0055" filter="url(#acidRedGlow)" height="20" rx="2" width="20" x="372" y="240"></rect>
+<rect fill="#374151" height="20" rx="2" width="20" x="348" y="264"></rect>
+<rect fill="#ff0055" filter="url(#acidRedGlow)" height="20" rx="2" width="20" x="372" y="264"></rect>
+<rect fill="#374151" height="20" rx="2" width="20" x="348" y="288"></rect>
+<rect fill="#ff0055" filter="url(#acidRedGlow)" height="20" rx="2" width="20" x="372" y="288"></rect>
+<!-- PIXEL FACE (Stealth Dark Carbon with High Contrast) -->
+<rect fill="#1f2937" height="20" rx="2" width="20" x="156" y="168"></rect>
+<rect fill="#374151" height="20" rx="2" width="20" x="180" y="168"></rect>
+<rect fill="#374151" height="20" rx="2" width="20" x="204" y="168"></rect>
+<rect fill="#4b5563" height="20" rx="2" width="20" x="228" y="168"></rect>
+<rect fill="#374151" height="20" rx="2" width="20" x="252" y="168"></rect>
+<rect fill="#374151" height="20" rx="2" width="20" x="276" y="168"></rect>
+<rect fill="#1f2937" height="20" rx="2" width="20" x="300" y="168"></rect>
+<!-- Row 9 -->
+<rect fill="#1f2937" height="20" rx="2" width="20" x="132" y="192"></rect>
+<rect fill="#374151" height="20" rx="2" width="20" x="156" y="192"></rect>
+<rect fill="#4b5563" height="20" rx="2" width="20" x="180" y="192"></rect>
+<rect fill="#4b5563" height="20" rx="2" width="20" x="204" y="192"></rect>
+<rect fill="#6b7280" height="20" rx="2" width="20" x="228" y="192"></rect>
+<rect fill="#4b5563" height="20" rx="2" width="20" x="252" y="192"></rect>
+<rect fill="#4b5563" height="20" rx="2" width="20" x="276" y="192"></rect>
+<rect fill="#374151" height="20" rx="2" width="20" x="300" y="192"></rect>
+<rect fill="#1f2937" height="20" rx="2" width="20" x="324" y="192"></rect>
+<!-- Row 10: CYBER CYCLOPS VISOR / TECHNO HUD BAR -->
+<rect fill="#374151" height="20" rx="2" width="20" x="132" y="216"></rect>
+<rect fill="#ff0055" filter="url(#acidRedGlow)" height="20" rx="2" width="20" x="156" y="216"></rect>
+<rect fill="#ff0055" filter="url(#acidRedGlow)" height="20" rx="2" width="20" x="180" y="216"></rect>
+<rect fill="#ffaa00" filter="url(#electricAmberGlow)" height="20" rx="2" width="20" x="204" y="216"></rect>
+<!-- Sweeping central beam -->
+<g class="visor-core">
+<rect fill="#ffffff" filter="url(#acidRedGlow)" height="20" rx="2" width="20" x="228" y="216"></rect>
+</g>
+<rect fill="#ffaa00" filter="url(#electricAmberGlow)" height="20" rx="2" width="20" x="252" y="216"></rect>
+<rect fill="#ff0055" filter="url(#acidRedGlow)" height="20" rx="2" width="20" x="276" y="216"></rect>
+<rect fill="#ff0055" filter="url(#acidRedGlow)" height="20" rx="2" width="20" x="300" y="216"></rect>
+<rect fill="#374151" height="20" rx="2" width="20" x="324" y="216"></rect>
+<!-- Row 11 -->
+<rect fill="#1f2937" height="20" rx="2" width="20" x="132" y="240"></rect>
+<rect fill="#374151" height="20" rx="2" width="20" x="156" y="240"></rect>
+<rect fill="#4b5563" height="20" rx="2" width="20" x="180" y="240"></rect>
+<rect fill="#4b5563" height="20" rx="2" width="20" x="204" y="240"></rect>
+<rect fill="#4b5563" height="20" rx="2" width="20" x="228" y="240"></rect>
+<rect fill="#4b5563" height="20" rx="2" width="20" x="252" y="240"></rect>
+<rect fill="#4b5563" height="20" rx="2" width="20" x="276" y="240"></rect>
+<rect fill="#374151" height="20" rx="2" width="20" x="300" y="240"></rect>
+<rect fill="#1f2937" height="20" rx="2" width="20" x="324" y="240"></rect>
+<!-- Row 12: RESISTOR MASK / INDUSTRIAL VENT MOUTH -->
+<rect fill="#111827" height="20" rx="2" width="20" x="132" y="264"></rect>
+<rect fill="#1f2937" height="20" rx="2" width="20" x="156" y="264"></rect>
+<rect fill="#ffaa00" filter="url(#electricAmberGlow)" height="20" rx="2" width="20" x="180" y="264"></rect>
+<rect fill="#111827" height="20" rx="2" width="20" x="204" y="264"></rect>
+<rect fill="#ffaa00" filter="url(#electricAmberGlow)" height="20" rx="2" width="20" x="228" y="264"></rect>
+<rect fill="#111827" height="20" rx="2" width="20" x="252" y="264"></rect>
+<rect fill="#ffaa00" filter="url(#electricAmberGlow)" height="20" rx="2" width="20" x="276" y="264"></rect>
+<rect fill="#1f2937" height="20" rx="2" width="20" x="300" y="264"></rect>
+<rect fill="#111827" height="20" rx="2" width="20" x="324" y="264"></rect>
+<!-- Row 13 & 14 -->
+<rect fill="#111827" height="20" rx="2" width="20" x="156" y="288"></rect>
+<rect fill="#1f2937" height="20" rx="2" width="20" x="180" y="288"></rect>
+<rect fill="#1f2937" height="20" rx="2" width="20" x="204" y="288"></rect>
+<rect fill="#1f2937" height="20" rx="2" width="20" x="228" y="288"></rect>
+<rect fill="#1f2937" height="20" rx="2" width="20" x="252" y="288"></rect>
+<rect fill="#1f2937" height="20" rx="2" width="20" x="276" y="288"></rect>
+<rect fill="#111827" height="20" rx="2" width="20" x="300" y="288"></rect>
+<rect fill="#030712" height="20" rx="2" width="20" x="180" y="312"></rect>
+<rect fill="#111827" height="20" rx="2" width="20" x="204" y="312"></rect>
+<rect fill="#111827" height="20" rx="2" width="20" x="228" y="312"></rect>
+<rect fill="#111827" height="20" rx="2" width="20" x="252" y="312"></rect>
+<rect fill="#030712" height="20" rx="2" width="20" x="276" y="312"></rect>
+</g>
+</svg></div><!-- STITCH_SVG_END:ANIMATION_23 -->
+</body>
+</html>

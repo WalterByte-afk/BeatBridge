@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #000;
+    }
+  </style>
+</head>
+<body>
+<!-- STITCH_SVG_START:ANIMATION_24 class="fixed inset-0 w-full h-full" --><div class="fixed inset-0 w-full h-full" id="animated-svg-ANIMATION_24" style="display:block;"><svg height="512" viewbox="0 0 512 512" width="512" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<radialgradient cx="50%" cy="50%" id="bgGradPop" r="65%">
+<stop offset="0%" stop-color="#2d0b28"></stop>
+<stop offset="100%" stop-color="#0e040f"></stop>
+</radialgradient>
+<filter height="160%" id="neonPopCyan" width="160%" x="-30%" y="-30%">
+<fedropshadow dx="0" dy="0" flood-color="#00f5ff" flood-opacity="0.9" stddeviation="5"></fedropshadow>
+</filter>
+<filter height="160%" id="hyperPinkGlow" width="160%" x="-30%" y="-30%">
+<fedropshadow dx="0" dy="0" flood-color="#ff007f" flood-opacity="0.9" stddeviation="6"></fedropshadow>
+</filter>
+<filter height="160%" id="sunnyYellowGlow" width="160%" x="-30%" y="-30%">
+<fedropshadow dx="0" dy="0" flood-color="#ffe600" flood-opacity="0.85" stddeviation="5"></fedropshadow>
+</filter>
+</defs>
+<style>
+    @keyframes bouncyPopBeat {
+      0%, 100% { transform: translateY(0px) rotate(0deg) scale(1); }
+      25% { transform: translateY(-12px) rotate(-3deg) scale(1.05); }
+      50% { transform: translateY(4px) rotate(0deg) scale(0.96, 1.03); }
+      75% { transform: translateY(-10px) rotate(3deg) scale(1.04); }
+    }
+    @keyframes rainbowHeadband {
+      0% { fill: #ff007f; }
+      33% { fill: #00f5ff; }
+      66% { fill: #ffe600; }
+      100% { fill: #ff007f; }
+    }
+    @keyframes confettiDrift1 {
+      0% { transform: translate(100px, 190px) rotate(0deg); opacity: 0; }
+      30% { opacity: 1; }
+      80% { opacity: 0.8; }
+      100% { transform: translate(60px, 80px) rotate(180deg); opacity: 0; }
+    }
+    @keyframes confettiDrift2 {
+      0% { transform: translate(380px, 200px) rotate(0deg); opacity: 0; }
+      30% { opacity: 1; }
+      80% { opacity: 0.8; }
+      100% { transform: translate(420px, 90px) rotate(-180deg); opacity: 0; }
+    }
+    @keyframes popWinkLeft {
+      0%, 80%, 100% { transform: scaleY(1); }
+      90% { transform: scaleY(0.2) translateY(8px); }
+    }
+    .head-pop { transform-origin: 256px 280px; animation: bouncyPopBeat 0.75s cubic-bezier(0.2, 0.8, 0.3, 1) infinite; }
+    .rainbow-1 { animation: rainbowHeadband 2s linear infinite; }
+    .rainbow-2 { animation: rainbowHeadband 2s linear 0.4s infinite; }
+    .rainbow-3 { animation: rainbowHeadband 2s linear 0.8s infinite; }
+    .rainbow-4 { animation: rainbowHeadband 2s linear 1.2s infinite; }
+    .rainbow-5 { animation: rainbowHeadband 2s linear 1.6s infinite; }
+    .confetti-l { animation: confettiDrift1 2s ease-out infinite; }
+    .confetti-r { animation: confettiDrift2 2.2s ease-out 0.6s infinite; }
+    .wink-eye { transform-origin: 190px 226px; animation: popWinkLeft 2.5s ease-in-out infinite; }
+  </style>
+<!-- Bright Hyperpop Neon Background -->
+<rect fill="url(#bgGradPop)" height="512" rx="112" width="512"></rect>
+<rect fill="none" height="508" opacity="0.8" rx="110" stroke="#6b1458" stroke-width="3" width="508" x="2" y="2"></rect>
+<!-- Floating Pixel Confetti & Sparkles -->
+<g class="confetti-l" filter="url(#sunnyYellowGlow)">
+<rect fill="#ffe600" height="10" rx="2" width="10" x="0" y="0"></rect>
+<rect fill="#00f5ff" filter="url(#neonPopCyan)" height="8" rx="2" width="8" x="14" y="8"></rect>
+</g>
+<g class="confetti-r" filter="url(#hyperPinkGlow)">
+<rect fill="#ff007f" height="6" rx="2" width="12" x="0" y="0"></rect>
+<rect fill="#ffe600" filter="url(#sunnyYellowGlow)" height="8" rx="2" width="8" x="-10" y="10"></rect>
+</g>
+<!-- Bouncy Pop / Hyperpop Mascot -->
+<g class="head-pop" transform="translate(16, 16)">
+<!-- DYNAMIC RAINBOW COLOR-CYCLING HEADBAND -->
+<rect class="rainbow-1" filter="url(#hyperPinkGlow)" height="20" rx="2" width="20" x="180" y="120"></rect>
+<rect class="rainbow-2" filter="url(#neonPopCyan)" height="20" rx="2" width="20" x="204" y="120"></rect>
+<rect class="rainbow-3" filter="url(#sunnyYellowGlow)" height="20" rx="2" width="20" x="228" y="120"></rect>
+<rect class="rainbow-4" filter="url(#hyperPinkGlow)" height="20" rx="2" width="20" x="252" y="120"></rect>
+<rect class="rainbow-5" filter="url(#neonPopCyan)" height="20" rx="2" width="20" x="276" y="120"></rect>
+<rect fill="#ff007f" height="20" rx="2" width="20" x="156" y="144"></rect>
+<rect fill="#00f5ff" height="20" rx="2" width="20" x="300" y="144"></rect>
+<rect fill="#ff007f" height="20" rx="2" width="20" x="132" y="168"></rect>
+<rect fill="#00f5ff" height="20" rx="2" width="20" x="324" y="168"></rect>
+<rect fill="#ff007f" height="20" rx="2" width="20" x="108" y="192"></rect>
+<rect fill="#00f5ff" height="20" rx="2" width="20" x="348" y="192"></rect>
+<!-- LEFT EARPAD (Hot Neon Pink) -->
+<rect fill="#ff007f" filter="url(#hyperPinkGlow)" height="20" rx="2" width="20" x="84" y="216"></rect>
+<rect fill="#f43f5e" height="20" rx="2" width="20" x="108" y="216"></rect>
+<rect fill="#ff007f" filter="url(#hyperPinkGlow)" height="20" rx="2" width="20" x="84" y="240"></rect>
+<rect fill="#f43f5e" height="20" rx="2" width="20" x="108" y="240"></rect>
+<rect fill="#ff007f" filter="url(#hyperPinkGlow)" height="20" rx="2" width="20" x="84" y="264"></rect>
+<rect fill="#f43f5e" height="20" rx="2" width="20" x="108" y="264"></rect>
+<rect fill="#ff007f" filter="url(#hyperPinkGlow)" height="20" rx="2" width="20" x="84" y="288"></rect>
+<rect fill="#f43f5e" height="20" rx="2" width="20" x="108" y="288"></rect>
+<!-- RIGHT EARPAD (Electric Pop Cyan) -->
+<rect fill="#06b6d4" height="20" rx="2" width="20" x="348" y="216"></rect>
+<rect fill="#00f5ff" filter="url(#neonPopCyan)" height="20" rx="2" width="20" x="372" y="216"></rect>
+<rect fill="#06b6d4" height="20" rx="2" width="20" x="348" y="240"></rect>
+<rect fill="#00f5ff" filter="url(#neonPopCyan)" height="20" rx="2" width="20" x="372" y="240"></rect>
+<rect fill="#06b6d4" height="20" rx="2" width="20" x="348" y="264"></rect>
+<rect fill="#00f5ff" filter="url(#neonPopCyan)" height="20" rx="2" width="20" x="372" y="264"></rect>
+<rect fill="#06b6d4" height="20" rx="2" width="20" x="348" y="288"></rect>
+<rect fill="#00f5ff" filter="url(#neonPopCyan)" height="20" rx="2" width="20" x="372" y="288"></rect>
+<!-- PIXEL FACE (Bright Vibrant Blue-Violet) -->
+<rect fill="#3b4ac8" height="20" rx="2" width="20" x="156" y="168"></rect>
+<rect fill="#4d5fe8" height="20" rx="2" width="20" x="180" y="168"></rect>
+<rect fill="#4d5fe8" height="20" rx="2" width="20" x="204" y="168"></rect>
+<rect fill="#6374f5" height="20" rx="2" width="20" x="228" y="168"></rect>
+<rect fill="#4d5fe8" height="20" rx="2" width="20" x="252" y="168"></rect>
+<rect fill="#4d5fe8" height="20" rx="2" width="20" x="276" y="168"></rect>
+<rect fill="#3b4ac8" height="20" rx="2" width="20" x="300" y="168"></rect>
+<!-- Row 9 -->
+<rect fill="#3b4ac8" height="20" rx="2" width="20" x="132" y="192"></rect>
+<rect fill="#4d5fe8" height="20" rx="2" width="20" x="156" y="192"></rect>
+<rect fill="#6374f5" height="20" rx="2" width="20" x="180" y="192"></rect>
+<rect fill="#6374f5" height="20" rx="2" width="20" x="204" y="192"></rect>
+<rect fill="#818cf8" height="20" rx="2" width="20" x="228" y="192"></rect>
+<rect fill="#6374f5" height="20" rx="2" width="20" x="252" y="192"></rect>
+<rect fill="#6374f5" height="20" rx="2" width="20" x="276" y="192"></rect>
+<rect fill="#4d5fe8" height="20" rx="2" width="20" x="300" y="192"></rect>
+<rect fill="#3b4ac8" height="20" rx="2" width="20" x="324" y="192"></rect>
+<!-- Row 10: CHEERFUL WINKING POP EYES -->
+<rect fill="#4d5fe8" height="20" rx="2" width="20" x="132" y="216"></rect>
+<rect fill="#6374f5" height="20" rx="2" width="20" x="156" y="216"></rect>
+<!-- Left Winking Eye -->
+<g class="wink-eye">
+<rect fill="#ffffff" filter="url(#sunnyYellowGlow)" height="20" rx="2" width="20" x="180" y="216"></rect>
+</g>
+<rect fill="#6374f5" height="20" rx="2" width="20" x="204" y="216"></rect>
+<rect fill="#4d5fe8" height="20" rx="2" width="20" x="228" y="216"></rect>
+<rect fill="#6374f5" height="20" rx="2" width="20" x="252" y="216"></rect>
+<!-- Right Open Pop Eye (Bright Cyan-White) -->
+<rect fill="#ffffff" filter="url(#neonPopCyan)" height="20" rx="2" width="20" x="276" y="216"></rect>
+<rect fill="#6374f5" height="20" rx="2" width="20" x="300" y="216"></rect>
+<rect fill="#4d5fe8" height="20" rx="2" width="20" x="324" y="216"></rect>
+<!-- Row 11: Cute Pixel Blush Cheeks -->
+<rect fill="#3b4ac8" height="20" rx="2" width="20" x="132" y="240"></rect>
+<rect fill="#ff007f" filter="url(#hyperPinkGlow)" height="20" rx="2" width="20" x="156" y="240"></rect>
+<rect fill="#6374f5" height="20" rx="2" width="20" x="180" y="240"></rect>
+<rect fill="#6374f5" height="20" rx="2" width="20" x="204" y="240"></rect>
+<rect fill="#6374f5" height="20" rx="2" width="20" x="228" y="240"></rect>
+<rect fill="#6374f5" height="20" rx="2" width="20" x="252" y="240"></rect>
+<rect fill="#6374f5" height="20" rx="2" width="20" x="276" y="240"></rect>
+<rect fill="#ff007f" filter="url(#hyperPinkGlow)" height="20" rx="2" width="20" x="300" y="240"></rect>
+<rect fill="#3b4ac8" height="20" rx="2" width="20" x="324" y="240"></rect>
+<!-- Row 12: Big Upbeat Cat-Smile / Pop Grin -->
+<rect fill="#2a1f6d" height="20" rx="2" width="20" x="132" y="264"></rect>
+<rect fill="#3b4ac8" height="20" rx="2" width="20" x="156" y="264"></rect>
+<rect fill="#ffe600" filter="url(#sunnyYellowGlow)" height="20" rx="2" width="20" x="180" y="264"></rect>
+<rect fill="#ffffff" height="20" rx="2" width="20" x="204" y="264"></rect>
+<rect fill="#ffffff" height="20" rx="2" width="20" x="228" y="264"></rect>
+<rect fill="#ffffff" height="20" rx="2" width="20" x="252" y="264"></rect>
+<rect fill="#ffe600" filter="url(#sunnyYellowGlow)" height="20" rx="2" width="20" x="276" y="264"></rect>
+<rect fill="#3b4ac8" height="20" rx="2" width="20" x="300" y="264"></rect>
+<rect fill="#2a1f6d" height="20" rx="2" width="20" x="324" y="264"></rect>
+<!-- Row 13 & 14 -->
+<rect fill="#2a1f6d" height="20" rx="2" width="20" x="156" y="288"></rect>
+<rect fill="#3b4ac8" height="20" rx="2" width="20" x="180" y="288"></rect>
+<rect fill="#3b4ac8" height="20" rx="2" width="20" x="204" y="288"></rect>
+<rect fill="#3b4ac8" height="20" rx="2" width="20" x="228" y="288"></rect>
+<rect fill="#3b4ac8" height="20" rx="2" width="20" x="252" y="288"></rect>
+<rect fill="#3b4ac8" height="20" rx="2" width="20" x="276" y="288"></rect>
+<rect fill="#2a1f6d" height="20" rx="2" width="20" x="300" y="288"></rect>
+<rect fill="#1b1248" height="20" rx="2" width="20" x="180" y="312"></rect>
+<rect fill="#2a1f6d" height="20" rx="2" width="20" x="204" y="312"></rect>
+<rect fill="#2a1f6d" height="20" rx="2" width="20" x="228" y="312"></rect>
+<rect fill="#2a1f6d" height="20" rx="2" width="20" x="252" y="312"></rect>
+<rect fill="#1b1248" height="20" rx="2" width="20" x="276" y="312"></rect>
+</g>
+</svg></div><!-- STITCH_SVG_END:ANIMATION_24 -->
+</body>
+</html>

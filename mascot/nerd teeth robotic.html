@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #000;
+    }
+  </style>
+</head>
+<body>
+<!-- STITCH_SVG_START:ANIMATION_15 class="fixed inset-0 w-full h-full" --><div class="fixed inset-0 w-full h-full" id="animated-svg-ANIMATION_15" style="display:block;"><svg height="512" viewbox="0 0 512 512" width="512" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<radialgradient cx="50%" cy="50%" id="bgGradSpin" r="65%">
+<stop offset="0%" stop-color="#141824"></stop>
+<stop offset="100%" stop-color="#0a0b10"></stop>
+</radialgradient>
+<filter height="160%" id="cyanGlow" width="160%" x="-30%" y="-30%">
+<fedropshadow dx="0" dy="0" flood-color="#06b6d4" flood-opacity="0.8" stddeviation="6"></fedropshadow>
+</filter>
+<filter height="160%" id="vinylGlow" width="160%" x="-30%" y="-30%">
+<fedropshadow dx="0" dy="0" flood-color="#3b82f6" flood-opacity="0.7" stddeviation="5"></fedropshadow>
+</filter>
+<filter height="140%" id="whiteGlow" width="140%" x="-20%" y="-20%">
+<fedropshadow dx="0" dy="0" flood-color="#ffffff" flood-opacity="0.6" stddeviation="3"></fedropshadow>
+</filter>
+</defs>
+<style>
+    @keyframes djSpinRecord {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes djScratchHead {
+      0%, 100% { transform: rotate(-5deg) translateY(-2px); }
+      25% { transform: rotate(7deg) translateY(4px); }
+      50% { transform: rotate(-4deg) translateY(-1px); }
+      75% { transform: rotate(6deg) translateY(3px); }
+    }
+    @keyframes eyeHypnoSpin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes soundRingPulse {
+      0% { r: 160px; opacity: 0.8; stroke-width: 4px; }
+      50% { r: 210px; opacity: 0.2; stroke-width: 1px; }
+      100% { r: 235px; opacity: 0; stroke-width: 0.5px; }
+    }
+    @keyframes neonTrackArc {
+      0% { stroke-dashoffset: 0; }
+      100% { stroke-dashoffset: -200; }
+    }
+    .head-scratch { transform-origin: 256px 280px; animation: djScratchHead 0.9s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+    .vinyl-disc { transform-origin: 256px 280px; animation: djSpinRecord 1.8s linear infinite; }
+    .pulse-wave-1 { animation: soundRingPulse 1.8s ease-out infinite; }
+    .pulse-wave-2 { animation: soundRingPulse 1.8s ease-out 0.9s infinite; }
+    .orbit-arc { stroke-dasharray: 20 10; animation: neonTrackArc 1.2s linear infinite; }
+  </style>
+<!-- Badge Background -->
+<rect fill="url(#bgGradSpin)" height="512" rx="112" width="512"></rect>
+<rect fill="none" height="508" opacity="0.8" rx="110" stroke="#1e293b" stroke-width="3" width="508" x="2" y="2"></rect>
+<!-- Sound Shockwaves / Crossmix Rims -->
+<circle class="pulse-wave-1" cx="256" cy="280" fill="none" filter="url(#cyanGlow)" r="160" stroke="#06b6d4"></circle>
+<circle class="pulse-wave-2" cx="256" cy="280" fill="none" filter="url(#vinylGlow)" r="160" stroke="#3b82f6"></circle>
+<!-- Orbiting Neon Turntable Groove Rings around Mascot -->
+<g class="vinyl-disc">
+<circle class="orbit-arc" cx="256" cy="280" fill="none" opacity="0.6" r="195" stroke="#38bdf8" stroke-width="2"></circle>
+<circle cx="256" cy="280" fill="none" opacity="0.4" r="185" stroke="#818cf8" stroke-dasharray="12 12" stroke-width="1.5"></circle>
+<!-- Turntable strobe tick marks -->
+<rect fill="#38bdf8" filter="url(#cyanGlow)" height="14" rx="2" width="8" x="252" y="75"></rect>
+<rect fill="#38bdf8" filter="url(#cyanGlow)" height="14" rx="2" width="8" x="252" y="471"></rect>
+<rect fill="#06b6d4" filter="url(#cyanGlow)" height="8" rx="2" width="14" x="51" y="276"></rect>
+<rect fill="#06b6d4" filter="url(#cyanGlow)" height="8" rx="2" width="14" x="447" y="276"></rect>
+</g>
+<!-- Crossmixing / DJ Mascot -->
+<g class="head-scratch" transform="translate(16, 16)">
+<!-- HEADBAND -->
+<rect fill="#f0f3f8" filter="url(#whiteGlow)" height="20" rx="2" width="20" x="180" y="120"></rect>
+<rect fill="#f0f3f8" filter="url(#whiteGlow)" height="20" rx="2" width="20" x="204" y="120"></rect>
+<rect fill="#f0f3f8" filter="url(#whiteGlow)" height="20" rx="2" width="20" x="228" y="120"></rect>
+<rect fill="#f0f3f8" filter="url(#whiteGlow)" height="20" rx="2" width="20" x="252" y="120"></rect>
+<rect fill="#f0f3f8" filter="url(#whiteGlow)" height="20" rx="2" width="20" x="276" y="120"></rect>
+<rect fill="#f0f3f8" height="20" rx="2" width="20" x="156" y="144"></rect>
+<rect fill="#f0f3f8" height="20" rx="2" width="20" x="300" y="144"></rect>
+<rect fill="#f0f3f8" height="20" rx="2" width="20" x="132" y="168"></rect>
+<rect fill="#f0f3f8" height="20" rx="2" width="20" x="324" y="168"></rect>
+<rect fill="#f0f3f8" height="20" rx="2" width="20" x="108" y="192"></rect>
+<rect fill="#f0f3f8" height="20" rx="2" width="20" x="348" y="192"></rect>
+<!-- LEFT EARPAD (Glow Neon Cyan during transition) -->
+<rect fill="#38bdf8" filter="url(#cyanGlow)" height="20" rx="2" width="20" x="84" y="216"></rect>
+<rect fill="#d2d7e0" height="20" rx="2" width="20" x="108" y="216"></rect>
+<rect fill="#38bdf8" filter="url(#cyanGlow)" height="20" rx="2" width="20" x="84" y="240"></rect>
+<rect fill="#d2d7e0" height="20" rx="2" width="20" x="108" y="240"></rect>
+<rect fill="#38bdf8" filter="url(#cyanGlow)" height="20" rx="2" width="20" x="84" y="264"></rect>
+<rect fill="#d2d7e0" height="20" rx="2" width="20" x="108" y="264"></rect>
+<rect fill="#38bdf8" filter="url(#cyanGlow)" height="20" rx="2" width="20" x="84" y="288"></rect>
+<rect fill="#d2d7e0" height="20" rx="2" width="20" x="108" y="288"></rect>
+<!-- RIGHT EARPAD (Glow Neon Cyan during transition) -->
+<rect fill="#d2d7e0" height="20" rx="2" width="20" x="348" y="216"></rect>
+<rect fill="#38bdf8" filter="url(#cyanGlow)" height="20" rx="2" width="20" x="372" y="216"></rect>
+<rect fill="#d2d7e0" height="20" rx="2" width="20" x="348" y="240"></rect>
+<rect fill="#38bdf8" filter="url(#cyanGlow)" height="20" rx="2" width="20" x="372" y="240"></rect>
+<rect fill="#d2d7e0" height="20" rx="2" width="20" x="348" y="264"></rect>
+<rect fill="#38bdf8" filter="url(#cyanGlow)" height="20" rx="2" width="20" x="372" y="264"></rect>
+<rect fill="#d2d7e0" height="20" rx="2" width="20" x="348" y="288"></rect>
+<rect fill="#38bdf8" filter="url(#cyanGlow)" height="20" rx="2" width="20" x="372" y="288"></rect>
+<!-- PIXEL FACE -->
+<rect fill="#3b6eb8" height="20" rx="2" width="20" x="156" y="168"></rect>
+<rect fill="#4d88e0" height="20" rx="2" width="20" x="180" y="168"></rect>
+<rect fill="#4d88e0" height="20" rx="2" width="20" x="204" y="168"></rect>
+<rect fill="#5c98f5" height="20" rx="2" width="20" x="228" y="168"></rect>
+<rect fill="#4d88e0" height="20" rx="2" width="20" x="252" y="168"></rect>
+<rect fill="#4d88e0" height="20" rx="2" width="20" x="276" y="168"></rect>
+<rect fill="#3b6eb8" height="20" rx="2" width="20" x="300" y="168"></rect>
+<!-- Row 9 -->
+<rect fill="#3b6eb8" height="20" rx="2" width="20" x="132" y="192"></rect>
+<rect fill="#4d88e0" height="20" rx="2" width="20" x="156" y="192"></rect>
+<rect fill="#5c98f5" height="20" rx="2" width="20" x="180" y="192"></rect>
+<rect fill="#5c98f5" height="20" rx="2" width="20" x="204" y="192"></rect>
+<rect fill="#69a5ff" height="20" rx="2" width="20" x="228" y="192"></rect>
+<rect fill="#5c98f5" height="20" rx="2" width="20" x="252" y="192"></rect>
+<rect fill="#5c98f5" height="20" rx="2" width="20" x="276" y="192"></rect>
+<rect fill="#4d88e0" height="20" rx="2" width="20" x="300" y="192"></rect>
+<rect fill="#3b6eb8" height="20" rx="2" width="20" x="324" y="192"></rect>
+<!-- Row 10: EYES - Focused DJ Star / Crosshair Flash -->
+<rect fill="#4d88e0" height="20" rx="2" width="20" x="132" y="216"></rect>
+<rect fill="#5c98f5" height="20" rx="2" width="20" x="156" y="216"></rect>
+<!-- Left DJ eye (cyan/white high energy) -->
+<rect fill="#38bdf8" filter="url(#cyanGlow)" height="20" rx="3" width="20" x="180" y="216"></rect>
+<rect fill="#ffffff" height="8" rx="1" width="8" x="186" y="222"></rect>
+<rect fill="#5c98f5" height="20" rx="2" width="20" x="204" y="216"></rect>
+<rect fill="#4d88e0" height="20" rx="2" width="20" x="228" y="216"></rect>
+<rect fill="#5c98f5" height="20" rx="2" width="20" x="252" y="216"></rect>
+<!-- Right DJ eye (cyan/white high energy) -->
+<rect fill="#38bdf8" filter="url(#cyanGlow)" height="20" rx="3" width="20" x="276" y="216"></rect>
+<rect fill="#ffffff" height="8" rx="1" width="8" x="282" y="222"></rect>
+<rect fill="#5c98f5" height="20" rx="2" width="20" x="300" y="216"></rect>
+<rect fill="#4d88e0" height="20" rx="2" width="20" x="324" y="216"></rect>
+<!-- Row 11 -->
+<rect fill="#3b6eb8" height="20" rx="2" width="20" x="132" y="240"></rect>
+<rect fill="#4d88e0" height="20" rx="2" width="20" x="156" y="240"></rect>
+<rect fill="#5c98f5" height="20" rx="2" width="20" x="180" y="240"></rect>
+<rect fill="#5c98f5" height="20" rx="2" width="20" x="204" y="240"></rect>
+<rect fill="#5c98f5" height="20" rx="2" width="20" x="228" y="240"></rect>
+<rect fill="#5c98f5" height="20" rx="2" width="20" x="252" y="240"></rect>
+<rect fill="#5c98f5" height="20" rx="2" width="20" x="276" y="240"></rect>
+<rect fill="#4d88e0" height="20" rx="2" width="20" x="300" y="240"></rect>
+<rect fill="#3b6eb8" height="20" rx="2" width="20" x="324" y="240"></rect>
+<!-- Row 12: DJ Smile / Grin -->
+<rect fill="#325d9c" height="20" rx="2" width="20" x="132" y="264"></rect>
+<rect fill="#3b6eb8" height="20" rx="2" width="20" x="156" y="264"></rect>
+<rect fill="#1b2c4d" height="20" rx="2" width="20" x="180" y="264"></rect>
+<rect fill="#ffffff" filter="url(#whiteGlow)" height="20" rx="2" width="20" x="204" y="264"></rect>
+<rect fill="#ffffff" filter="url(#whiteGlow)" height="20" rx="2" width="20" x="228" y="264"></rect>
+<rect fill="#ffffff" filter="url(#whiteGlow)" height="20" rx="2" width="20" x="252" y="264"></rect>
+<rect fill="#1b2c4d" height="20" rx="2" width="20" x="276" y="264"></rect>
+<rect fill="#3b6eb8" height="20" rx="2" width="20" x="300" y="264"></rect>
+<rect fill="#325d9c" height="20" rx="2" width="20" x="324" y="264"></rect>
+<!-- Row 13 & 14 (Jaw & Chin) -->
+<rect fill="#2d528b" height="20" rx="2" width="20" x="156" y="288"></rect>
+<rect fill="#3b6eb8" height="20" rx="2" width="20" x="180" y="288"></rect>
+<rect fill="#3b6eb8" height="20" rx="2" width="20" x="204" y="288"></rect>
+<rect fill="#3b6eb8" height="20" rx="2" width="20" x="228" y="288"></rect>
+<rect fill="#3b6eb8" height="20" rx="2" width="20" x="252" y="288"></rect>
+<rect fill="#3b6eb8" height="20" rx="2" width="20" x="276" y="288"></rect>
+<rect fill="#2d528b" height="20" rx="2" width="20" x="300" y="288"></rect>
+<rect fill="#254475" height="20" rx="2" width="20" x="180" y="312"></rect>
+<rect fill="#2d528b" height="20" rx="2" width="20" x="204" y="312"></rect>
+<rect fill="#2d528b" height="20" rx="2" width="20" x="228" y="312"></rect>
+<rect fill="#2d528b" height="20" rx="2" width="20" x="252" y="312"></rect>
+<rect fill="#254475" height="20" rx="2" width="20" x="276" y="312"></rect>
+</g>
+</svg></div><!-- STITCH_SVG_END:ANIMATION_15 -->
+</body>
+</html>

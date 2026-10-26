@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #000;
+    }
+  </style>
+</head>
+<body>
+<!-- STITCH_SVG_START:ANIMATION_19 class="fixed inset-0 w-full h-full" --><div class="fixed inset-0 w-full h-full" id="animated-svg-ANIMATION_19" style="display:block;"><svg height="512" viewbox="0 0 512 512" width="512" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<radialgradient cx="50%" cy="50%" id="bgGradSuccess" r="65%">
+<stop offset="0%" stop-color="#09261a"></stop>
+<stop offset="100%" stop-color="#04120c"></stop>
+</radialgradient>
+<filter height="160%" id="emeraldGlow" width="160%" x="-30%" y="-30%">
+<fedropshadow dx="0" dy="0" flood-color="#10b981" flood-opacity="0.9" stddeviation="6"></fedropshadow>
+</filter>
+<filter height="160%" id="goldTrophyGlow" width="160%" x="-30%" y="-30%">
+<fedropshadow dx="0" dy="0" flood-color="#34d399" flood-opacity="0.8" stddeviation="5"></fedropshadow>
+</filter>
+</defs>
+<style>
+    @keyframes dropBounce {
+      0%, 100% { transform: translateY(0px) scale(1); }
+      30% { transform: translateY(-16px) scale(1.06); }
+      55% { transform: translateY(6px) scale(0.96, 1.04); }
+      75% { transform: translateY(-4px) scale(1.02); }
+    }
+    @keyframes checkmarkPop {
+      0% { transform: scale(0.6) translateY(20px); opacity: 0; }
+      40% { transform: scale(1.2) translateY(-10px); opacity: 1; }
+      80% { transform: scale(1) translateY(-25px); opacity: 0.9; }
+      100% { transform: scale(0.8) translateY(-40px); opacity: 0; }
+    }
+    @keyframes haloGlowRings {
+      0% { r: 150px; opacity: 0.9; stroke-width: 4px; }
+      100% { r: 240px; opacity: 0; stroke-width: 0.5px; }
+    }
+    @keyframes sunglassesShine {
+      0% { transform: translateX(-40px); opacity: 0; }
+      50% { opacity: 0.9; }
+      100% { transform: translateX(60px); opacity: 0; }
+    }
+    .head-drop { transform-origin: 256px 280px; animation: dropBounce 1.2s cubic-bezier(0.2, 0.8, 0.3, 1) infinite; }
+    .halo-ring { animation: haloGlowRings 1.8s ease-out infinite; }
+    .check-left { animation: checkmarkPop 2s ease-out infinite; }
+    .check-right { animation: checkmarkPop 2s ease-out 1s infinite; }
+    .glass-glint { animation: sunglassesShine 2s ease-in-out infinite; }
+  </style>
+<!-- Dark Emerald Background -->
+<rect fill="url(#bgGradSuccess)" height="512" rx="112" width="512"></rect>
+<rect fill="none" height="508" opacity="0.8" rx="110" stroke="#064e3b" stroke-width="3" width="508" x="2" y="2"></rect>
+<!-- Concentric Success Soundwaves -->
+<circle class="halo-ring" cx="256" cy="280" fill="none" filter="url(#emeraldGlow)" r="150" stroke="#10b981"></circle>
+<!-- Floating Pixel Checkmarks / "PERFECT DROP" Marks -->
+<g class="check-left" filter="url(#emeraldGlow)" transform="translate(90, 180)">
+<polygon fill="#34d399" points="6,16 0,10 4,6 8,10 20,0 24,4"></polygon>
+</g>
+<g class="check-right" filter="url(#emeraldGlow)" transform="translate(390, 170)">
+<polygon fill="#10b981" points="6,16 0,10 4,6 8,10 20,0 24,4"></polygon>
+</g>
+<!-- Triumphant / Drop Landed Mascot with DJ Shades -->
+<g class="head-drop" transform="translate(16, 16)">
+<!-- HEADBAND (Emerald Green Winner Lights) -->
+<rect fill="#34d399" filter="url(#emeraldGlow)" height="20" rx="2" width="20" x="180" y="120"></rect>
+<rect fill="#10b981" filter="url(#emeraldGlow)" height="20" rx="2" width="20" x="204" y="120"></rect>
+<rect fill="#34d399" filter="url(#emeraldGlow)" height="20" rx="2" width="20" x="228" y="120"></rect>
+<rect fill="#10b981" filter="url(#emeraldGlow)" height="20" rx="2" width="20" x="252" y="120"></rect>
+<rect fill="#34d399" filter="url(#emeraldGlow)" height="20" rx="2" width="20" x="276" y="120"></rect>
+<rect fill="#10b981" height="20" rx="2" width="20" x="156" y="144"></rect>
+<rect fill="#10b981" height="20" rx="2" width="20" x="300" y="144"></rect>
+<rect fill="#10b981" height="20" rx="2" width="20" x="132" y="168"></rect>
+<rect fill="#10b981" height="20" rx="2" width="20" x="324" y="168"></rect>
+<rect fill="#10b981" height="20" rx="2" width="20" x="108" y="192"></rect>
+<rect fill="#10b981" height="20" rx="2" width="20" x="348" y="192"></rect>
+<!-- LEFT EARPAD (Emerald Glow) -->
+<rect fill="#10b981" filter="url(#emeraldGlow)" height="20" rx="2" width="20" x="84" y="216"></rect>
+<rect fill="#065f46" height="20" rx="2" width="20" x="108" y="216"></rect>
+<rect fill="#10b981" filter="url(#emeraldGlow)" height="20" rx="2" width="20" x="84" y="240"></rect>
+<rect fill="#065f46" height="20" rx="2" width="20" x="108" y="240"></rect>
+<rect fill="#10b981" filter="url(#emeraldGlow)" height="20" rx="2" width="20" x="84" y="264"></rect>
+<rect fill="#065f46" height="20" rx="2" width="20" x="108" y="264"></rect>
+<rect fill="#10b981" filter="url(#emeraldGlow)" height="20" rx="2" width="20" x="84" y="288"></rect>
+<rect fill="#065f46" height="20" rx="2" width="20" x="108" y="288"></rect>
+<!-- RIGHT EARPAD -->
+<rect fill="#065f46" height="20" rx="2" width="20" x="348" y="216"></rect>
+<rect fill="#10b981" filter="url(#emeraldGlow)" height="20" rx="2" width="20" x="372" y="216"></rect>
+<rect fill="#065f46" height="20" rx="2" width="20" x="348" y="240"></rect>
+<rect fill="#10b981" filter="url(#emeraldGlow)" height="20" rx="2" width="20" x="372" y="240"></rect>
+<rect fill="#065f46" height="20" rx="2" width="20" x="348" y="264"></rect>
+<rect fill="#10b981" filter="url(#emeraldGlow)" height="20" rx="2" width="20" x="372" y="264"></rect>
+<rect fill="#065f46" height="20" rx="2" width="20" x="348" y="288"></rect>
+<rect fill="#10b981" filter="url(#emeraldGlow)" height="20" rx="2" width="20" x="372" y="288"></rect>
+<!-- PIXEL FACE -->
+<rect fill="#22543d" height="20" rx="2" width="20" x="156" y="168"></rect>
+<rect fill="#2f855a" height="20" rx="2" width="20" x="180" y="168"></rect>
+<rect fill="#2f855a" height="20" rx="2" width="20" x="204" y="168"></rect>
+<rect fill="#38a169" height="20" rx="2" width="20" x="228" y="168"></rect>
+<rect fill="#2f855a" height="20" rx="2" width="20" x="252" y="168"></rect>
+<rect fill="#2f855a" height="20" rx="2" width="20" x="276" y="168"></rect>
+<rect fill="#22543d" height="20" rx="2" width="20" x="300" y="168"></rect>
+<!-- Row 9 -->
+<rect fill="#22543d" height="20" rx="2" width="20" x="132" y="192"></rect>
+<rect fill="#2f855a" height="20" rx="2" width="20" x="156" y="192"></rect>
+<rect fill="#38a169" height="20" rx="2" width="20" x="180" y="192"></rect>
+<rect fill="#38a169" height="20" rx="2" width="20" x="204" y="192"></rect>
+<rect fill="#48bb78" height="20" rx="2" width="20" x="228" y="192"></rect>
+<rect fill="#38a169" height="20" rx="2" width="20" x="252" y="192"></rect>
+<rect fill="#38a169" height="20" rx="2" width="20" x="276" y="192"></rect>
+<rect fill="#2f855a" height="20" rx="2" width="20" x="300" y="192"></rect>
+<rect fill="#22543d" height="20" rx="2" width="20" x="324" y="192"></rect>
+<!-- Row 10: COOL PIXEL SUNGLASSES / SHADES ROW -->
+<rect fill="#2f855a" height="20" rx="2" width="20" x="132" y="216"></rect>
+<rect fill="#111827" height="20" rx="2" width="20" x="156" y="216"></rect>
+<!-- Sunglasses Lens Left -->
+<rect fill="#0f172a" height="20" rx="2" width="20" x="180" y="216"></rect>
+<rect fill="#0f172a" height="20" rx="2" width="20" x="204" y="216"></rect>
+<!-- Center Bridge -->
+<rect fill="#111827" height="20" rx="2" width="20" x="228" y="216"></rect>
+<!-- Sunglasses Lens Right -->
+<rect fill="#0f172a" height="20" rx="2" width="20" x="252" y="216"></rect>
+<rect fill="#0f172a" height="20" rx="2" width="20" x="276" y="216"></rect>
+<rect fill="#111827" height="20" rx="2" width="20" x="300" y="216"></rect>
+<rect fill="#2f855a" height="20" rx="2" width="20" x="324" y="216"></rect>
+<!-- Glass Glint Highlight Reflection across shades -->
+<g class="glass-glint">
+<rect fill="#ffffff" height="14" opacity="0.8" rx="1" width="6" x="184" y="218"></rect>
+<rect fill="#ffffff" height="14" opacity="0.8" rx="1" width="6" x="256" y="218"></rect>
+</g>
+<!-- Row 11 -->
+<rect fill="#22543d" height="20" rx="2" width="20" x="132" y="240"></rect>
+<rect fill="#2f855a" height="20" rx="2" width="20" x="156" y="240"></rect>
+<rect fill="#38a169" height="20" rx="2" width="20" x="180" y="240"></rect>
+<rect fill="#38a169" height="20" rx="2" width="20" x="204" y="240"></rect>
+<rect fill="#38a169" height="20" rx="2" width="20" x="228" y="240"></rect>
+<rect fill="#38a169" height="20" rx="2" width="20" x="252" y="240"></rect>
+<rect fill="#38a169" height="20" rx="2" width="20" x="276" y="240"></rect>
+<rect fill="#2f855a" height="20" rx="2" width="20" x="300" y="240"></rect>
+<rect fill="#22543d" height="20" rx="2" width="20" x="324" y="240"></rect>
+<!-- Row 12: CONFIDENT WINNER SMIRK -->
+<rect fill="#1c4532" height="20" rx="2" width="20" x="132" y="264"></rect>
+<rect fill="#22543d" height="20" rx="2" width="20" x="156" y="264"></rect>
+<rect fill="#10b981" height="20" rx="2" width="20" x="180" y="264"></rect>
+<rect fill="#34d399" filter="url(#emeraldGlow)" height="20" rx="2" width="20" x="204" y="264"></rect>
+<rect fill="#34d399" filter="url(#emeraldGlow)" height="20" rx="2" width="20" x="228" y="264"></rect>
+<rect fill="#10b981" height="20" rx="2" width="20" x="252" y="264"></rect>
+<rect fill="#2f855a" height="20" rx="2" width="20" x="276" y="264"></rect>
+<rect fill="#22543d" height="20" rx="2" width="20" x="300" y="264"></rect>
+<rect fill="#1c4532" height="20" rx="2" width="20" x="324" y="264"></rect>
+<!-- Row 13 & 14 (Jaw & Chin) -->
+<rect fill="#1c4532" height="20" rx="2" width="20" x="156" y="288"></rect>
+<rect fill="#22543d" height="20" rx="2" width="20" x="180" y="288"></rect>
+<rect fill="#22543d" height="20" rx="2" width="20" x="204" y="288"></rect>
+<rect fill="#22543d" height="20" rx="2" width="20" x="228" y="288"></rect>
+<rect fill="#22543d" height="20" rx="2" width="20" x="252" y="288"></rect>
+<rect fill="#22543d" height="20" rx="2" width="20" x="276" y="288"></rect>
+<rect fill="#1c4532" height="20" rx="2" width="20" x="300" y="288"></rect>
+<rect fill="#143425" height="20" rx="2" width="20" x="180" y="312"></rect>
+<rect fill="#1c4532" height="20" rx="2" width="20" x="204" y="312"></rect>
+<rect fill="#1c4532" height="20" rx="2" width="20" x="228" y="312"></rect>
+<rect fill="#1c4532" height="20" rx="2" width="20" x="252" y="312"></rect>
+<rect fill="#143425" height="20" rx="2" width="20" x="276" y="312"></rect>
+</g>
+</svg></div><!-- STITCH_SVG_END:ANIMATION_19 -->
+</body>
+</html>

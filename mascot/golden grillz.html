@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #000;
+    }
+  </style>
+</head>
+<body>
+<!-- STITCH_SVG_START:ANIMATION_21 class="fixed inset-0 w-full h-full" --><div class="fixed inset-0 w-full h-full" id="animated-svg-ANIMATION_21" style="display:block;"><svg height="512" viewbox="0 0 512 512" width="512" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<radialgradient cx="50%" cy="50%" id="bgGradFunk" r="65%">
+<stop offset="0%" stop-color="#3b1d06"></stop>
+<stop offset="100%" stop-color="#120702"></stop>
+</radialgradient>
+<filter height="160%" id="funkGoldGlow" width="160%" x="-30%" y="-30%">
+<fedropshadow dx="0" dy="0" flood-color="#f59e0b" flood-opacity="0.9" stddeviation="6"></fedropshadow>
+</filter>
+<filter height="160%" id="funkPurpleGlow" width="160%" x="-30%" y="-30%">
+<fedropshadow dx="0" dy="0" flood-color="#ec4899" flood-opacity="0.8" stddeviation="5"></fedropshadow>
+</filter>
+</defs>
+<style>
+    @keyframes funkSway {
+      0%, 100% { transform: translateY(0px) rotate(-4deg); }
+      25% { transform: translateY(-8px) rotate(0deg) scaleY(1.05); }
+      50% { transform: translateY(4px) rotate(4deg); }
+      75% { transform: translateY(-8px) rotate(0deg) scaleY(1.05); }
+    }
+    @keyframes afroShimmer {
+      0%, 100% { filter: drop-shadow(0 0 4px #f59e0b); }
+      50% { filter: drop-shadow(0 0 10px #f43f5e); }
+    }
+    @keyframes starSparkle {
+      0%, 100% { transform: scale(0.6) rotate(0deg); opacity: 0.3; }
+      50% { transform: scale(1.3) rotate(90deg); opacity: 1; }
+    }
+    @keyframes goldEarpadBounce {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.12); }
+    }
+    .head-funk { transform-origin: 256px 300px; animation: funkSway 1.1s ease-in-out infinite; }
+    .sparkle-1 { transform-origin: 100px 140px; animation: starSparkle 1.4s ease-in-out infinite; }
+    .sparkle-2 { transform-origin: 410px 150px; animation: starSparkle 1.4s ease-in-out 0.7s infinite; }
+    .sparkle-3 { transform-origin: 256px 80px; animation: starSparkle 1.8s ease-in-out 0.3s infinite; }
+    .earpad-gold { animation: goldEarpadBounce 0.55s ease-in-out infinite; }
+    .funky-glasses { animation: afroShimmer 2s ease-in-out infinite; }
+  </style>
+<!-- Funk / Disco Badge Background -->
+<rect fill="url(#bgGradFunk)" height="512" rx="112" width="512"></rect>
+<rect fill="none" height="508" opacity="0.8" rx="110" stroke="#78350f" stroke-width="3" width="508" x="2" y="2"></rect>
+<!-- Retro Disco Starburst Sparkles -->
+<g class="sparkle-1" filter="url(#funkGoldGlow)">
+<polygon fill="#fbbf24" points="100,125 104,136 115,140 104,144 100,155 96,144 85,140 96,136"></polygon>
+</g>
+<g class="sparkle-2" filter="url(#funkPurpleGlow)">
+<polygon fill="#f43f5e" points="410,135 414,146 425,150 414,154 410,165 406,154 395,150 406,146"></polygon>
+</g>
+<g class="sparkle-3" filter="url(#funkGoldGlow)">
+<polygon fill="#fef08a" points="256,65 260,76 271,80 260,84 256,95 252,84 241,80 252,76"></polygon>
+</g>
+<!-- Funky Groove Mascot -->
+<g class="head-funk" transform="translate(16, 16)">
+<!-- RETRO GOLD HEADBAND -->
+<rect fill="#f59e0b" filter="url(#funkGoldGlow)" height="20" rx="2" width="20" x="180" y="120"></rect>
+<rect fill="#fbbf24" filter="url(#funkGoldGlow)" height="20" rx="2" width="20" x="204" y="120"></rect>
+<rect fill="#f59e0b" filter="url(#funkGoldGlow)" height="20" rx="2" width="20" x="228" y="120"></rect>
+<rect fill="#fbbf24" filter="url(#funkGoldGlow)" height="20" rx="2" width="20" x="252" y="120"></rect>
+<rect fill="#f59e0b" filter="url(#funkGoldGlow)" height="20" rx="2" width="20" x="276" y="120"></rect>
+<rect fill="#d97706" height="20" rx="2" width="20" x="156" y="144"></rect>
+<rect fill="#d97706" height="20" rx="2" width="20" x="300" y="144"></rect>
+<rect fill="#b45309" height="20" rx="2" width="20" x="132" y="168"></rect>
+<rect fill="#b45309" height="20" rx="2" width="20" x="324" y="168"></rect>
+<rect fill="#b45309" height="20" rx="2" width="20" x="108" y="192"></rect>
+<rect fill="#b45309" height="20" rx="2" width="20" x="348" y="192"></rect>
+<!-- LEFT EARPAD (Gleaming Metallic Gold) -->
+<g class="earpad-gold">
+<rect fill="#fde047" filter="url(#funkGoldGlow)" height="20" rx="2" width="20" x="84" y="216"></rect>
+<rect fill="#d97706" height="20" rx="2" width="20" x="108" y="216"></rect>
+<rect fill="#fde047" filter="url(#funkGoldGlow)" height="20" rx="2" width="20" x="84" y="240"></rect>
+<rect fill="#d97706" height="20" rx="2" width="20" x="108" y="240"></rect>
+<rect fill="#fde047" filter="url(#funkGoldGlow)" height="20" rx="2" width="20" x="84" y="264"></rect>
+<rect fill="#d97706" height="20" rx="2" width="20" x="108" y="264"></rect>
+<rect fill="#fde047" filter="url(#funkGoldGlow)" height="20" rx="2" width="20" x="84" y="288"></rect>
+<rect fill="#d97706" height="20" rx="2" width="20" x="108" y="288"></rect>
+</g>
+<!-- RIGHT EARPAD (Gleaming Metallic Gold) -->
+<g class="earpad-gold">
+<rect fill="#d97706" height="20" rx="2" width="20" x="348" y="216"></rect>
+<rect fill="#fde047" filter="url(#funkGoldGlow)" height="20" rx="2" width="20" x="372" y="216"></rect>
+<rect fill="#d97706" height="20" rx="2" width="20" x="348" y="240"></rect>
+<rect fill="#fde047" filter="url(#funkGoldGlow)" height="20" rx="2" width="20" x="372" y="240"></rect>
+<rect fill="#d97706" height="20" rx="2" width="20" x="348" y="264"></rect>
+<rect fill="#fde047" filter="url(#funkGoldGlow)" height="20" rx="2" width="20" x="372" y="264"></rect>
+<rect fill="#d97706" height="20" rx="2" width="20" x="348" y="288"></rect>
+<rect fill="#fde047" filter="url(#funkGoldGlow)" height="20" rx="2" width="20" x="372" y="288"></rect>
+</g>
+<!-- PIXEL FACE (Rich retro warm blue tone) -->
+<rect fill="#2e4d7b" height="20" rx="2" width="20" x="156" y="168"></rect>
+<rect fill="#3b6eb8" height="20" rx="2" width="20" x="180" y="168"></rect>
+<rect fill="#3b6eb8" height="20" rx="2" width="20" x="204" y="168"></rect>
+<rect fill="#4d88e0" height="20" rx="2" width="20" x="228" y="168"></rect>
+<rect fill="#3b6eb8" height="20" rx="2" width="20" x="252" y="168"></rect>
+<rect fill="#3b6eb8" height="20" rx="2" width="20" x="276" y="168"></rect>
+<rect fill="#2e4d7b" height="20" rx="2" width="20" x="300" y="168"></rect>
+<!-- Row 9 -->
+<rect fill="#2e4d7b" height="20" rx="2" width="20" x="132" y="192"></rect>
+<rect fill="#3b6eb8" height="20" rx="2" width="20" x="156" y="192"></rect>
+<rect fill="#4d88e0" height="20" rx="2" width="20" x="180" y="192"></rect>
+<rect fill="#4d88e0" height="20" rx="2" width="20" x="204" y="192"></rect>
+<rect fill="#69a5ff" height="20" rx="2" width="20" x="228" y="192"></rect>
+<rect fill="#4d88e0" height="20" rx="2" width="20" x="252" y="192"></rect>
+<rect fill="#4d88e0" height="20" rx="2" width="20" x="276" y="192"></rect>
+<rect fill="#3b6eb8" height="20" rx="2" width="20" x="300" y="192"></rect>
+<rect fill="#2e4d7b" height="20" rx="2" width="20" x="324" y="192"></rect>
+<!-- Row 10: 70s DISCO / FUNK ORANGE TINTED SHADES -->
+<rect fill="#3b6eb8" height="20" rx="2" width="20" x="132" y="216"></rect>
+<g class="funky-glasses">
+<!-- Left Aviator / Disco Lens (Orange/Gold Glow) -->
+<rect fill="#f97316" filter="url(#funkGoldGlow)" height="20" rx="3" width="20" x="156" y="216"></rect>
+<rect fill="#fbbf24" filter="url(#funkGoldGlow)" height="20" rx="3" width="20" x="180" y="216"></rect>
+<rect fill="#f97316" height="20" rx="3" width="20" x="204" y="216"></rect>
+<!-- Gold Bridge -->
+<rect fill="#fde047" height="20" rx="1" width="20" x="228" y="216"></rect>
+<!-- Right Aviator Lens -->
+<rect fill="#f97316" height="20" rx="3" width="20" x="252" y="216"></rect>
+<rect fill="#fbbf24" filter="url(#funkGoldGlow)" height="20" rx="3" width="20" x="276" y="216"></rect>
+<rect fill="#f97316" filter="url(#funkGoldGlow)" height="20" rx="3" width="20" x="300" y="216"></rect>
+</g>
+<rect fill="#3b6eb8" height="20" rx="2" width="20" x="324" y="216"></rect>
+<!-- Row 11 -->
+<rect fill="#2e4d7b" height="20" rx="2" width="20" x="132" y="240"></rect>
+<rect fill="#ea580c" height="20" rx="2" width="20" x="156" y="240"></rect>
+<rect fill="#f97316" height="20" rx="2" width="20" x="180" y="240"></rect>
+<rect fill="#4d88e0" height="20" rx="2" width="20" x="204" y="240"></rect>
+<rect fill="#4d88e0" height="20" rx="2" width="20" x="228" y="240"></rect>
+<rect fill="#4d88e0" height="20" rx="2" width="20" x="252" y="240"></rect>
+<rect fill="#f97316" height="20" rx="2" width="20" x="276" y="240"></rect>
+<rect fill="#ea580c" height="20" rx="2" width="20" x="300" y="240"></rect>
+<rect fill="#2e4d7b" height="20" rx="2" width="20" x="324" y="240"></rect>
+<!-- Row 12: FUNKY SOUL GRIN / GOLD TOOTH PIXEL -->
+<rect fill="#253e63" height="20" rx="2" width="20" x="132" y="264"></rect>
+<rect fill="#2e4d7b" height="20" rx="2" width="20" x="156" y="264"></rect>
+<rect fill="#1b2c4d" height="20" rx="2" width="20" x="180" y="264"></rect>
+<!-- Gold pixel smile -->
+<rect fill="#fde047" filter="url(#funkGoldGlow)" height="20" rx="2" width="20" x="204" y="264"></rect>
+<rect fill="#ffffff" height="20" rx="2" width="20" x="228" y="264"></rect>
+<rect fill="#ffffff" height="20" rx="2" width="20" x="252" y="264"></rect>
+<rect fill="#1b2c4d" height="20" rx="2" width="20" x="276" y="264"></rect>
+<rect fill="#2e4d7b" height="20" rx="2" width="20" x="300" y="264"></rect>
+<rect fill="#253e63" height="20" rx="2" width="20" x="324" y="264"></rect>
+<!-- Row 13 & 14 (Jaw & Chin) -->
+<rect fill="#253e63" height="20" rx="2" width="20" x="156" y="288"></rect>
+<rect fill="#2e4d7b" height="20" rx="2" width="20" x="180" y="288"></rect>
+<rect fill="#2e4d7b" height="20" rx="2" width="20" x="204" y="288"></rect>
+<rect fill="#2e4d7b" height="20" rx="2" width="20" x="228" y="288"></rect>
+<rect fill="#2e4d7b" height="20" rx="2" width="20" x="252" y="288"></rect>
+<rect fill="#2e4d7b" height="20" rx="2" width="20" x="276" y="288"></rect>
+<rect fill="#253e63" height="20" rx="2" width="20" x="300" y="288"></rect>
+<rect fill="#1a2d48" height="20" rx="2" width="20" x="180" y="312"></rect>
+<rect fill="#253e63" height="20" rx="2" width="20" x="204" y="312"></rect>
+<rect fill="#253e63" height="20" rx="2" width="20" x="228" y="312"></rect>
+<rect fill="#253e63" height="20" rx="2" width="20" x="252" y="312"></rect>
+<rect fill="#1a2d48" height="20" rx="2" width="20" x="276" y="312"></rect>
+</g>
+</svg></div><!-- STITCH_SVG_END:ANIMATION_21 -->
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #000;
+    }
+  </style>
+</head>
+<body>
+<!-- STITCH_SVG_START:ANIMATION_14 class="fixed inset-0 w-full h-full" --><div class="fixed inset-0 w-full h-full" id="animated-svg-ANIMATION_14" style="display:block;"><svg height="512" viewbox="0 0 512 512" width="512" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<radialgradient cx="50%" cy="50%" id="bgGrad2" r="65%">
+<stop offset="0%" stop-color="#181a20"></stop>
+<stop offset="100%" stop-color="#0c0d10"></stop>
+</radialgradient>
+<filter height="160%" id="heartGlow" width="160%" x="-30%" y="-30%">
+<fedropshadow dx="0" dy="0" flood-color="#f43f5e" flood-opacity="0.9" stddeviation="6"></fedropshadow>
+</filter>
+<filter height="140%" id="whiteGlow2" width="140%" x="-20%" y="-20%">
+<fedropshadow dx="0" dy="0" flood-color="#ffffff" flood-opacity="0.5" stddeviation="3"></fedropshadow>
+</filter>
+</defs>
+<style>
+    @keyframes heartBeat {
+      0%, 100% { transform: scale(1); }
+      14% { transform: scale(1.15); }
+      28% { transform: scale(1.02); }
+      42% { transform: scale(1.22); }
+      70% { transform: scale(1); }
+    }
+    @keyframes heartFloat1 {
+      0% { transform: translate(110px, 180px) scale(0.4); opacity: 0; }
+      30% { opacity: 0.95; }
+      80% { opacity: 0.8; }
+      100% { transform: translate(70px, 70px) scale(1.1); opacity: 0; }
+    }
+    @keyframes heartFloat2 {
+      0% { transform: translate(370px, 170px) scale(0.4); opacity: 0; }
+      35% { opacity: 0.95; }
+      85% { opacity: 0.7; }
+      100% { transform: translate(410px, 60px) scale(1.2); opacity: 0; }
+    }
+    @keyframes blushPulse {
+      0%, 100% { opacity: 0.4; }
+      42% { opacity: 0.95; }
+    }
+    @keyframes eyeBlinkSmile {
+      0%, 100% { transform: scaleY(1); }
+      40%, 60% { transform: scaleY(0.4) translateY(6px); }
+    }
+    .head-center { transform-origin: 256px 280px; animation: heartBeat 1.4s cubic-bezier(0.2, 0.8, 0.4, 1) infinite; }
+    .heart-float-l { animation: heartFloat1 2.2s cubic-bezier(0.2, 0.8, 0.3, 1) infinite; }
+    .heart-float-r { animation: heartFloat2 2.5s cubic-bezier(0.2, 0.8, 0.3, 1) 0.7s infinite; }
+    .blush-pixels { animation: blushPulse 1.4s ease-in-out infinite; }
+    .eye-hearts { transform-origin: center; animation: eyeBlinkSmile 1.4s ease-in-out infinite; }
+  </style>
+<!-- Background -->
+<rect fill="url(#bgGrad2)" height="512" rx="112" width="512"></rect>
+<rect fill="none" height="508" opacity="0.8" rx="110" stroke="#2e1a24" stroke-width="3" width="508" x="2" y="2"></rect>
+<!-- Floating Pixel Hearts -->
+<g class="heart-float-l" filter="url(#heartGlow)">
+<path d="M 0,6 L 6,0 L 12,0 L 18,6 L 24,0 L 30,0 L 36,6 L 36,12 L 18,30 L 0,12 Z" fill="#fb7185"></path>
+</g>
+<g class="heart-float-r" filter="url(#heartGlow)">
+<path d="M 0,6 L 6,0 L 12,0 L 18,6 L 24,0 L 30,0 L 36,6 L 36,12 L 18,30 L 0,12 Z" fill="#f43f5e"></path>
+</g>
+<!-- AuraDJ Character with Heart Eyes and Blush -->
+<g class="head-center" transform="translate(16, 16)">
+<!-- HEADBAND -->
+<rect fill="#f0f3f8" filter="url(#whiteGlow2)" height="20" rx="2" width="20" x="180" y="120"></rect>
+<rect fill="#f0f3f8" filter="url(#whiteGlow2)" height="20" rx="2" width="20" x="204" y="120"></rect>
+<rect fill="#f0f3f8" filter="url(#whiteGlow2)" height="20" rx="2" width="20" x="228" y="120"></rect>
+<rect fill="#f0f3f8" filter="url(#whiteGlow2)" height="20" rx="2" width="20" x="252" y="120"></rect>
+<rect fill="#f0f3f8" filter="url(#whiteGlow2)" height="20" rx="2" width="20" x="276" y="120"></rect>
+<rect fill="#f0f3f8" height="20" rx="2" width="20" x="156" y="144"></rect>
+<rect fill="#f0f3f8" height="20" rx="2" width="20" x="300" y="144"></rect>
+<rect fill="#f0f3f8" height="20" rx="2" width="20" x="132" y="168"></rect>
+<rect fill="#f0f3f8" height="20" rx="2" width="20" x="324" y="168"></rect>
+<rect fill="#f0f3f8" height="20" rx="2" width="20" x="108" y="192"></rect>
+<rect fill="#f0f3f8" height="20" rx="2" width="20" x="348" y="192"></rect>
+<!-- EARPADS with warm pink accent tone -->
+<rect fill="#ffffff" filter="url(#whiteGlow2)" height="20" rx="2" width="20" x="84" y="216"></rect>
+<rect fill="#e2d8e0" height="20" rx="2" width="20" x="108" y="216"></rect>
+<rect fill="#ffffff" filter="url(#whiteGlow2)" height="20" rx="2" width="20" x="84" y="240"></rect>
+<rect fill="#e2d8e0" height="20" rx="2" width="20" x="108" y="240"></rect>
+<rect fill="#ffffff" filter="url(#whiteGlow2)" height="20" rx="2" width="20" x="84" y="264"></rect>
+<rect fill="#e2d8e0" height="20" rx="2" width="20" x="108" y="264"></rect>
+<rect fill="#ffffff" filter="url(#whiteGlow2)" height="20" rx="2" width="20" x="84" y="288"></rect>
+<rect fill="#e2d8e0" height="20" rx="2" width="20" x="108" y="288"></rect>
+<rect fill="#e2d8e0" height="20" rx="2" width="20" x="348" y="216"></rect>
+<rect fill="#ffffff" filter="url(#whiteGlow2)" height="20" rx="2" width="20" x="372" y="216"></rect>
+<rect fill="#e2d8e0" height="20" rx="2" width="20" x="348" y="240"></rect>
+<rect fill="#ffffff" filter="url(#whiteGlow2)" height="20" rx="2" width="20" x="372" y="240"></rect>
+<rect fill="#e2d8e0" height="20" rx="2" width="20" x="348" y="264"></rect>
+<rect fill="#ffffff" filter="url(#whiteGlow2)" height="20" rx="2" width="20" x="372" y="264"></rect>
+<rect fill="#e2d8e0" height="20" rx="2" width="20" x="348" y="288"></rect>
+<rect fill="#ffffff" filter="url(#whiteGlow2)" height="20" rx="2" width="20" x="372" y="288"></rect>
+<!-- FACE -->
+<rect fill="#3b6eb8" height="20" rx="2" width="20" x="156" y="168"></rect>
+<rect fill="#4d88e0" height="20" rx="2" width="20" x="180" y="168"></rect>
+<rect fill="#4d88e0" height="20" rx="2" width="20" x="204" y="168"></rect>
+<rect fill="#5c98f5" height="20" rx="2" width="20" x="228" y="168"></rect>
+<rect fill="#4d88e0" height="20" rx="2" width="20" x="252" y="168"></rect>
+<rect fill="#4d88e0" height="20" rx="2" width="20" x="276" y="168"></rect>
+<rect fill="#3b6eb8" height="20" rx="2" width="20" x="300" y="168"></rect>
+<!-- Row 9 -->
+<rect fill="#3b6eb8" height="20" rx="2" width="20" x="132" y="192"></rect>
+<rect fill="#4d88e0" height="20" rx="2" width="20" x="156" y="192"></rect>
+<rect fill="#5c98f5" height="20" rx="2" width="20" x="180" y="192"></rect>
+<rect fill="#5c98f5" height="20" rx="2" width="20" x="204" y="192"></rect>
+<rect fill="#69a5ff" height="20" rx="2" width="20" x="228" y="192"></rect>
+<rect fill="#5c98f5" height="20" rx="2" width="20" x="252" y="192"></rect>
+<rect fill="#5c98f5" height="20" rx="2" width="20" x="276" y="192"></rect>
+<rect fill="#4d88e0" height="20" rx="2" width="20" x="300" y="192"></rect>
+<rect fill="#3b6eb8" height="20" rx="2" width="20" x="324" y="192"></rect>
+<!-- Row 10: HEART EYES (Red/Pink glowing hearts) -->
+<rect fill="#4d88e0" height="20" rx="2" width="20" x="132" y="216"></rect>
+<rect fill="#5c98f5" height="20" rx="2" width="20" x="156" y="216"></rect>
+<!-- LEFT EYE - Heart shape pixel -->
+<g class="eye-hearts" filter="url(#heartGlow)">
+<rect fill="#f43f5e" height="20" rx="4" width="24" x="178" y="216"></rect>
+</g>
+<rect fill="#5c98f5" height="20" rx="2" width="20" x="204" y="216"></rect>
+<rect fill="#4d88e0" height="20" rx="2" width="20" x="228" y="216"></rect>
+<rect fill="#5c98f5" height="20" rx="2" width="20" x="252" y="216"></rect>
+<!-- RIGHT EYE - Heart shape pixel -->
+<g class="eye-hearts" filter="url(#heartGlow)">
+<rect fill="#f43f5e" height="20" rx="4" width="24" x="274" y="216"></rect>
+</g>
+<rect fill="#5c98f5" height="20" rx="2" width="20" x="300" y="216"></rect>
+<rect fill="#4d88e0" height="20" rx="2" width="20" x="324" y="216"></rect>
+<!-- Row 11: Cheeks with cute pixel blush -->
+<rect fill="#3b6eb8" height="20" rx="2" width="20" x="132" y="240"></rect>
+<!-- Left blush -->
+<rect class="blush-pixels" fill="#fb7185" filter="url(#heartGlow)" height="20" rx="2" width="20" x="156" y="240"></rect>
+<rect fill="#5c98f5" height="20" rx="2" width="20" x="180" y="240"></rect>
+<rect fill="#5c98f5" height="20" rx="2" width="20" x="204" y="240"></rect>
+<rect fill="#5c98f5" height="20" rx="2" width="20" x="228" y="240"></rect>
+<rect fill="#5c98f5" height="20" rx="2" width="20" x="252" y="240"></rect>
+<rect fill="#5c98f5" height="20" rx="2" width="20" x="276" y="240"></rect>
+<!-- Right blush -->
+<rect class="blush-pixels" fill="#fb7185" filter="url(#heartGlow)" height="20" rx="2" width="20" x="300" y="240"></rect>
+<rect fill="#3b6eb8" height="20" rx="2" width="20" x="324" y="240"></rect>
+<!-- Row 12: Happy Smile curve -->
+<rect fill="#325d9c" height="20" rx="2" width="20" x="132" y="264"></rect>
+<rect fill="#3b6eb8" height="20" rx="2" width="20" x="156" y="264"></rect>
+<rect fill="#1b2c4d" height="20" rx="2" width="20" x="180" y="264"></rect>
+<rect fill="#4d88e0" height="20" rx="2" width="20" x="204" y="264"></rect>
+<rect fill="#4d88e0" height="20" rx="2" width="20" x="228" y="264"></rect>
+<rect fill="#4d88e0" height="20" rx="2" width="20" x="252" y="264"></rect>
+<rect fill="#1b2c4d" height="20" rx="2" width="20" x="276" y="264"></rect>
+<rect fill="#3b6eb8" height="20" rx="2" width="20" x="300" y="264"></rect>
+<rect fill="#325d9c" height="20" rx="2" width="20" x="324" y="264"></rect>
+<!-- Row 13 & 14 -->
+<rect fill="#2d528b" height="20" rx="2" width="20" x="156" y="288"></rect>
+<rect fill="#3b6eb8" height="20" rx="2" width="20" x="180" y="288"></rect>
+<rect fill="#3b6eb8" height="20" rx="2" width="20" x="204" y="288"></rect>
+<rect fill="#3b6eb8" height="20" rx="2" width="20" x="228" y="288"></rect>
+<rect fill="#3b6eb8" height="20" rx="2" width="20" x="252" y="288"></rect>
+<rect fill="#3b6eb8" height="20" rx="2" width="20" x="276" y="288"></rect>
+<rect fill="#2d528b" height="20" rx="2" width="20" x="300" y="288"></rect>
+<rect fill="#254475" height="20" rx="2" width="20" x="180" y="312"></rect>
+<rect fill="#2d528b" height="20" rx="2" width="20" x="204" y="312"></rect>
+<rect fill="#2d528b" height="20" rx="2" width="20" x="228" y="312"></rect>
+<rect fill="#2d528b" height="20" rx="2" width="20" x="252" y="312"></rect>
+<rect fill="#254475" height="20" rx="2" width="20" x="276" y="312"></rect>
+</g>
+</svg></div><!-- STITCH_SVG_END:ANIMATION_14 -->
+</body>
+</html>

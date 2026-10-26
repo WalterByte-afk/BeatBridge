@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #000;
+    }
+  </style>
+</head>
+<body>
+<!-- STITCH_SVG_START:ANIMATION_25 class="fixed inset-0 w-full h-full" --><div class="fixed inset-0 w-full h-full" id="animated-svg-ANIMATION_25" style="display:block;"><svg height="512" viewbox="0 0 512 512" width="512" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<radialgradient cx="50%" cy="50%" id="bgGradLvl" r="65%">
+<stop offset="0%" stop-color="#2a2008"></stop>
+<stop offset="60%" stop-color="#140f04"></stop>
+<stop offset="100%" stop-color="#080602"></stop>
+</radialgradient>
+<filter height="160%" id="goldAscendGlow" width="160%" x="-30%" y="-30%">
+<fedropshadow dx="0" dy="0" flood-color="#fbbf24" flood-opacity="0.95" stddeviation="7"></fedropshadow>
+</filter>
+<filter height="160%" id="superCyanGlow" width="160%" x="-30%" y="-30%">
+<fedropshadow dx="0" dy="0" flood-color="#38bdf8" flood-opacity="0.85" stddeviation="5"></fedropshadow>
+</filter>
+<filter height="140%" id="pureWhiteFlash" width="140%" x="-20%" y="-20%">
+<fedropshadow dx="0" dy="0" flood-color="#ffffff" flood-opacity="0.9" stddeviation="4"></fedropshadow>
+</filter>
+</defs>
+<style>
+    /* Level Up Ascension Pulse & Bob */
+    @keyframes lvlUpAscend {
+      0%, 100% { transform: translateY(0px) scale(1); }
+      20% { transform: translateY(-16px) scale(1.08, 1.05); }
+      40% { transform: translateY(-10px) scale(1.04, 1.02); }
+      60% { transform: translateY(-18px) scale(1.09, 1.06); }
+      80% { transform: translateY(-4px) scale(1.02); }
+    }
+
+    /* Floating Golden Crown / Star Halo above head */
+    @keyframes crownHover {
+      0%, 100% { transform: translateY(0px) scale(1); opacity: 0.95; }
+      50% { transform: translateY(-8px) scale(1.1); opacity: 1; filter: drop-shadow(0 0 10px #f59e0b); }
+    }
+
+    /* Expanding Golden Super Level Rings */
+    @keyframes levelShockwave {
+      0% { r: 120px; opacity: 1; stroke-width: 5px; }
+      100% { r: 245px; opacity: 0; stroke-width: 0.5px; }
+    }
+
+    /* Rising XP Particles / Golden Sparkles */
+    @keyframes xpSparkle1 {
+      0% { transform: translate(110px, 340px) scale(0.3); opacity: 0; }
+      30% { opacity: 1; }
+      80% { opacity: 0.9; }
+      100% { transform: translate(80px, 120px) scale(1.2); opacity: 0; }
+    }
+    @keyframes xpSparkle2 {
+      0% { transform: translate(380px, 350px) scale(0.3); opacity: 0; }
+      35% { opacity: 1; }
+      85% { opacity: 0.85; }
+      100% { transform: translate(410px, 130px) scale(1.3); opacity: 0; }
+    }
+    @keyframes xpSparkle3 {
+      0% { transform: translate(256px, 380px) scale(0.2); opacity: 0; }
+      40% { opacity: 1; }
+      100% { transform: translate(256px, 60px) scale(1.4); opacity: 0; }
+    }
+
+    /* Triumphant "LVL UP" Badge Float */
+    @keyframes badgeGlowPulse {
+      0%, 100% { transform: scale(1); opacity: 0.95; }
+      50% { transform: scale(1.06); opacity: 1; }
+    }
+
+    /* Victorious Glowing Strobe Eyes */
+    @keyframes superLvlEyes {
+      0%, 100% { fill: #ffffff; filter: url(#pureWhiteFlash); }
+      50% { fill: #fef08a; filter: url(#goldAscendGlow); }
+    }
+
+    .head-lvlup { transform-origin: 256px 280px; animation: lvlUpAscend 1.4s cubic-bezier(0.2, 0.8, 0.3, 1) infinite; }
+    .crown-glow { transform-origin: 256px 90px; animation: crownHover 1.4s ease-in-out infinite; }
+    .shockwave-1 { animation: levelShockwave 1.6s cubic-bezier(0.1, 0.8, 0.3, 1) infinite; }
+    .shockwave-2 { animation: levelShockwave 1.6s cubic-bezier(0.1, 0.8, 0.3, 1) 0.8s infinite; }
+    .xp-1 { animation: xpSparkle1 2s ease-out infinite; }
+    .xp-2 { animation: xpSparkle2 2.2s ease-out 0.6s infinite; }
+    .xp-3 { animation: xpSparkle3 1.8s ease-out 1.1s infinite; }
+    .badge-pop { transform-origin: 256px 440px; animation: badgeGlowPulse 1.4s ease-in-out infinite; }
+    .super-eyes { animation: superLvlEyes 0.7s ease-in-out infinite; }
+  </style>
+<!-- Deep Warm Golden Dark Room Background -->
+<rect fill="url(#bgGradLvl)" height="512" rx="112" width="512"></rect>
+<rect fill="none" height="508" opacity="0.85" rx="110" stroke="#78350f" stroke-width="3" width="508" x="2" y="2"></rect>
+<!-- Level-Up Expanding Shockwaves -->
+<circle class="shockwave-1" cx="256" cy="275" fill="none" filter="url(#goldAscendGlow)" r="120" stroke="#f59e0b"></circle>
+<circle class="shockwave-2" cx="256" cy="275" fill="none" filter="url(#goldAscendGlow)" r="120" stroke="#fde047"></circle>
+<!-- Ascending Floating XP Pixel Sparkles -->
+<g class="xp-1" filter="url(#goldAscendGlow)">
+<polygon fill="#fde047" points="10,0 13,8 21,11 13,14 10,22 7,14 -1,11 7,8"></polygon>
+<rect fill="#38bdf8" height="6" rx="1" width="6" x="18" y="18"></rect>
+</g>
+<g class="xp-2" filter="url(#goldAscendGlow)">
+<polygon fill="#facc15" points="12,0 15,9 24,12 15,15 12,24 9,15 0,12 9,9"></polygon>
+<rect fill="#fde047" height="7" rx="1" width="7" x="-8" y="14"></rect>
+</g>
+<g class="xp-3" filter="url(#superCyanGlow)">
+<rect fill="#38bdf8" height="8" rx="2" width="8" x="0" y="0"></rect>
+</g>
+<!-- FLOATING GOLDEN PIXEL CROWN / CHAMPION HALO -->
+<g class="crown-glow" filter="url(#goldAscendGlow)">
+<!-- 5-peak pixel crown -->
+<rect fill="#f59e0b" height="12" rx="2" width="16" x="204" y="80"></rect>
+<rect fill="#fde047" height="28" rx="2" width="16" x="228" y="64"></rect>
+<rect fill="#ffffff" height="36" rx="2" width="16" x="248" y="56"></rect>
+<rect fill="#fde047" height="28" rx="2" width="16" x="268" y="64"></rect>
+<rect fill="#f59e0b" height="12" rx="2" width="16" x="292" y="80"></rect>
+<!-- Crown Base Band -->
+<rect fill="#fbbf24" height="10" rx="3" width="112" x="200" y="96"></rect>
+<rect fill="#38bdf8" height="6" rx="1" width="8" x="216" y="98"></rect>
+<rect fill="#ffffff" height="6" rx="1" width="8" x="252" y="98"></rect>
+<rect fill="#38bdf8" height="6" rx="1" width="8" x="288" y="98"></rect>
+</g>
+<!-- Levelled-Up Ascended Character -->
+<g class="head-lvlup" transform="translate(16, 20)">
+<!-- GLORIOUS GOLDEN LED HEADBAND -->
+<rect fill="#fde047" filter="url(#goldAscendGlow)" height="20" rx="2" width="20" x="180" y="120"></rect>
+<rect fill="#f59e0b" filter="url(#goldAscendGlow)" height="20" rx="2" width="20" x="204" y="120"></rect>
+<rect fill="#ffffff" filter="url(#pureWhiteFlash)" height="20" rx="2" width="20" x="228" y="120"></rect>
+<rect fill="#f59e0b" filter="url(#goldAscendGlow)" height="20" rx="2" width="20" x="252" y="120"></rect>
+<rect fill="#fde047" filter="url(#goldAscendGlow)" height="20" rx="2" width="20" x="276" y="120"></rect>
+<rect fill="#d97706" height="20" rx="2" width="20" x="156" y="144"></rect>
+<rect fill="#d97706" height="20" rx="2" width="20" x="300" y="144"></rect>
+<rect fill="#b45309" height="20" rx="2" width="20" x="132" y="168"></rect>
+<rect fill="#b45309" height="20" rx="2" width="20" x="324" y="168"></rect>
+<rect fill="#92400e" height="20" rx="2" width="20" x="108" y="192"></rect>
+<rect fill="#92400e" height="20" rx="2" width="20" x="348" y="192"></rect>
+<!-- LEFT EARPAD (Gleaming Gold & Cyan Power Plating) -->
+<rect fill="#fde047" filter="url(#goldAscendGlow)" height="20" rx="2" width="20" x="84" y="216"></rect>
+<rect fill="#d97706" height="20" rx="2" width="20" x="108" y="216"></rect>
+<rect fill="#38bdf8" filter="url(#superCyanGlow)" height="20" rx="2" width="20" x="84" y="240"></rect>
+<rect fill="#d97706" height="20" rx="2" width="20" x="108" y="240"></rect>
+<rect fill="#38bdf8" filter="url(#superCyanGlow)" height="20" rx="2" width="20" x="84" y="264"></rect>
+<rect fill="#d97706" height="20" rx="2" width="20" x="108" y="264"></rect>
+<rect fill="#fde047" filter="url(#goldAscendGlow)" height="20" rx="2" width="20" x="84" y="288"></rect>
+<rect fill="#d97706" height="20" rx="2" width="20" x="108" y="288"></rect>
+<!-- RIGHT EARPAD -->
+<rect fill="#d97706" height="20" rx="2" width="20" x="348" y="216"></rect>
+<rect fill="#fde047" filter="url(#goldAscendGlow)" height="20" rx="2" width="20" x="372" y="216"></rect>
+<rect fill="#d97706" height="20" rx="2" width="20" x="348" y="240"></rect>
+<rect fill="#38bdf8" filter="url(#superCyanGlow)" height="20" rx="2" width="20" x="372" y="240"></rect>
+<rect fill="#d97706" height="20" rx="2" width="20" x="348" y="264"></rect>
+<rect fill="#38bdf8" filter="url(#superCyanGlow)" height="20" rx="2" width="20" x="372" y="264"></rect>
+<rect fill="#d97706" height="20" rx="2" width="20" x="348" y="288"></rect>
+<rect fill="#fde047" filter="url(#goldAscendGlow)" height="20" rx="2" width="20" x="372" y="288"></rect>
+<!-- PIXEL FACE (High-Energy Electric Cobalt with Golden Radiance) -->
+<rect fill="#3b6eb8" height="20" rx="2" width="20" x="156" y="168"></rect>
+<rect fill="#4d88e0" height="20" rx="2" width="20" x="180" y="168"></rect>
+<rect fill="#4d88e0" height="20" rx="2" width="20" x="204" y="168"></rect>
+<rect fill="#60a5fa" height="20" rx="2" width="20" x="228" y="168"></rect>
+<rect fill="#4d88e0" height="20" rx="2" width="20" x="252" y="168"></rect>
+<rect fill="#4d88e0" height="20" rx="2" width="20" x="276" y="168"></rect>
+<rect fill="#3b6eb8" height="20" rx="2" width="20" x="300" y="168"></rect>
+<!-- Row 9 -->
+<rect fill="#3b6eb8" height="20" rx="2" width="20" x="132" y="192"></rect>
+<rect fill="#4d88e0" height="20" rx="2" width="20" x="156" y="192"></rect>
+<rect fill="#60a5fa" height="20" rx="2" width="20" x="180" y="192"></rect>
+<rect fill="#60a5fa" height="20" rx="2" width="20" x="204" y="192"></rect>
+<rect fill="#93c5fd" height="20" rx="2" width="20" x="228" y="192"></rect>
+<rect fill="#60a5fa" height="20" rx="2" width="20" x="252" y="192"></rect>
+<rect fill="#60a5fa" height="20" rx="2" width="20" x="276" y="192"></rect>
+<rect fill="#4d88e0" height="20" rx="2" width="20" x="300" y="192"></rect>
+<rect fill="#3b6eb8" height="20" rx="2" width="20" x="324" y="192"></rect>
+<!-- Row 10: ASCENDED SUPER EYES (Golden-White Radiant Star Eyes) -->
+<rect fill="#4d88e0" height="20" rx="2" width="20" x="132" y="216"></rect>
+<rect fill="#60a5fa" height="20" rx="2" width="20" x="156" y="216"></rect>
+<!-- Left Super Eye -->
+<rect class="super-eyes" fill="#ffffff" height="20" rx="2" width="20" x="180" y="216"></rect>
+<rect fill="#60a5fa" height="20" rx="2" width="20" x="204" y="216"></rect>
+<rect fill="#4d88e0" height="20" rx="2" width="20" x="228" y="216"></rect>
+<rect fill="#60a5fa" height="20" rx="2" width="20" x="252" y="216"></rect>
+<!-- Right Super Eye -->
+<rect class="super-eyes" fill="#ffffff" height="20" rx="2" width="20" x="276" y="216"></rect>
+<rect fill="#60a5fa" height="20" rx="2" width="20" x="300" y="216"></rect>
+<rect fill="#4d88e0" height="20" rx="2" width="20" x="324" y="216"></rect>
+<!-- Row 11: Cheerful High-Voltage Cheeks -->
+<rect fill="#3b6eb8" height="20" rx="2" width="20" x="132" y="240"></rect>
+<rect fill="#f59e0b" filter="url(#goldAscendGlow)" height="20" rx="2" width="20" x="156" y="240"></rect>
+<rect fill="#60a5fa" height="20" rx="2" width="20" x="180" y="240"></rect>
+<rect fill="#60a5fa" height="20" rx="2" width="20" x="204" y="240"></rect>
+<rect fill="#60a5fa" height="20" rx="2" width="20" x="228" y="240"></rect>
+<rect fill="#60a5fa" height="20" rx="2" width="20" x="252" y="240"></rect>
+<rect fill="#60a5fa" height="20" rx="2" width="20" x="276" y="240"></rect>
+<rect fill="#f59e0b" filter="url(#goldAscendGlow)" height="20" rx="2" width="20" x="300" y="240"></rect>
+<rect fill="#3b6eb8" height="20" rx="2" width="20" x="324" y="240"></rect>
+<!-- Row 12: TRIUMPHANT WINNER GRIN -->
+<rect fill="#325d9c" height="20" rx="2" width="20" x="132" y="264"></rect>
+<rect fill="#3b6eb8" height="20" rx="2" width="20" x="156" y="264"></rect>
+<rect fill="#4d88e0" height="20" rx="2" width="20" x="180" y="264"></rect>
+<rect fill="#fde047" filter="url(#goldAscendGlow)" height="20" rx="2" width="20" x="204" y="264"></rect>
+<rect fill="#ffffff" filter="url(#pureWhiteFlash)" height="20" rx="2" width="20" x="228" y="264"></rect>
+<rect fill="#fde047" filter="url(#goldAscendGlow)" height="20" rx="2" width="20" x="252" y="264"></rect>
+<rect fill="#4d88e0" height="20" rx="2" width="20" x="276" y="264"></rect>
+<rect fill="#3b6eb8" height="20" rx="2" width="20" x="300" y="264"></rect>
+<rect fill="#325d9c" height="20" rx="2" width="20" x="324" y="264"></rect>
+<!-- Row 13 & 14 (Jaw & Chin) -->
+<rect fill="#2d528b" height="20" rx="2" width="20" x="156" y="288"></rect>
+<rect fill="#3b6eb8" height="20" rx="2" width="20" x="180" y="288"></rect>
+<rect fill="#3b6eb8" height="20" rx="2" width="20" x="204" y="288"></rect>
+<rect fill="#3b6eb8" height="20" rx="2" width="20" x="228" y="288"></rect>
+<rect fill="#3b6eb8" height="20" rx="2" width="20" x="252" y="288"></rect>
+<rect fill="#3b6eb8" height="20" rx="2" width="20" x="276" y="288"></rect>
+<rect fill="#2d528b" height="20" rx="2" width="20" x="300" y="288"></rect>
+<rect fill="#254475" height="20" rx="2" width="20" x="180" y="312"></rect>
+<rect fill="#2d528b" height="20" rx="2" width="20" x="204" y="312"></rect>
+<rect fill="#2d528b" height="20" rx="2" width="20" x="228" y="312"></rect>
+<rect fill="#2d528b" height="20" rx="2" width="20" x="252" y="312"></rect>
+<rect fill="#254475" height="20" rx="2" width="20" x="276" y="312"></rect>
+</g>
+<!-- RETRO ARCADE "LVL UP!" FLOATING PIXEL BANNER -->
+<g class="badge-pop" filter="url(#goldAscendGlow)" transform="translate(146, 420)">
+<!-- Pill Container -->
+<rect fill="#140f04" height="42" rx="10" stroke="#f59e0b" stroke-width="2.5" width="220" x="0" y="0"></rect>
+<rect fill="#261b07" height="34" rx="8" width="212" x="4" y="4"></rect>
+<!-- Pixel Text "LVL UP ✦" -->
+<text fill="#fde047" font-family="monospace, monospace" font-size="20" font-weight="900" letter-spacing="4" text-anchor="middle" x="110" y="26">★ LVL UP ★</text>
+</g>
+</svg></div><!-- STITCH_SVG_END:ANIMATION_25 -->
+</body>
+</html>

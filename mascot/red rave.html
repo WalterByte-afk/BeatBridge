@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #000;
+    }
+  </style>
+</head>
+<body>
+<!-- STITCH_SVG_START:ANIMATION_18 class="fixed inset-0 w-full h-full" --><div class="fixed inset-0 w-full h-full" id="animated-svg-ANIMATION_18" style="display:block;"><svg height="512" viewbox="0 0 512 512" width="512" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<radialgradient cx="50%" cy="50%" id="bgGradError" r="65%">
+<stop offset="0%" stop-color="#2a0d11"></stop>
+<stop offset="100%" stop-color="#0d0406"></stop>
+</radialgradient>
+<filter height="160%" id="errorGlitchGlow" width="160%" x="-30%" y="-30%">
+<fedropshadow dx="0" dy="0" flood-color="#ef4444" flood-opacity="0.9" stddeviation="6"></fedropshadow>
+</filter>
+<filter height="140%" id="alertYellowGlow" width="140%" x="-20%" y="-20%">
+<fedropshadow dx="0" dy="0" flood-color="#f59e0b" flood-opacity="0.8" stddeviation="4"></fedropshadow>
+</filter>
+</defs>
+<style>
+    @keyframes glitchShake {
+      0%, 100% { transform: translate(0px, 0px); }
+      15% { transform: translate(-5px, 2px) skewX(2deg); }
+      30% { transform: translate(6px, -3px) skewX(-3deg); }
+      45% { transform: translate(-3px, -1px); }
+      60% { transform: translate(4px, 4px) skewX(1deg); }
+      75% { transform: translate(-2px, -2px); }
+      90% { transform: translate(1px, 2px); }
+    }
+    @keyframes alertPulse {
+      0%, 100% { opacity: 0.3; stroke: #ef4444; }
+      50% { opacity: 1; stroke: #f87171; }
+    }
+    @keyframes xEyeBlink {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.9); }
+    }
+    @keyframes sweatDrip {
+      0% { transform: translateY(0px) scale(0.4); opacity: 0; }
+      30% { opacity: 0.9; }
+      80% { opacity: 0.8; }
+      100% { transform: translateY(45px) scale(1.1); opacity: 0; }
+    }
+    .head-glitch { transform-origin: 256px 280px; animation: glitchShake 0.7s infinite; }
+    .radar-alert { animation: alertPulse 1.2s ease-in-out infinite; }
+    .x-eyes { transform-origin: center; animation: xEyeBlink 0.6s steps(2) infinite; }
+    .sweat-drop { animation: sweatDrip 1.5s cubic-bezier(0.4, 0, 0.8, 1) infinite; }
+  </style>
+<!-- Background with Error Warning Grid -->
+<rect fill="url(#bgGradError)" height="512" rx="112" width="512"></rect>
+<rect fill="none" height="508" opacity="0.9" rx="110" stroke="#451119" stroke-width="3" width="508" x="2" y="2"></rect>
+<!-- Warning Diagonal Danger Stripes along top corners -->
+<g opacity="0.35">
+<line stroke="#ef4444" stroke-width="4" x1="30" x2="90" y1="90" y2="30"></line>
+<line stroke="#ef4444" stroke-width="4" x1="60" x2="120" y1="110" y2="50"></line>
+<line stroke="#ef4444" stroke-width="4" x1="420" x2="480" y1="30" y2="90"></line>
+<line stroke="#ef4444" stroke-width="4" x1="390" x2="450" y1="50" y2="110"></line>
+</g>
+<!-- Pulsing Warning Radar Rings -->
+<circle class="radar-alert" cx="256" cy="280" fill="none" r="180" stroke-dasharray="14 14" stroke-width="2"></circle>
+<!-- Animated Sweat Drop -->
+<g class="sweat-drop" filter="url(#alertYellowGlow)" transform="translate(370, 180)">
+<polygon fill="#38bdf8" points="10,0 4,14 16,14"></polygon>
+<circle cx="10" cy="16" fill="#38bdf8" r="6"></circle>
+</g>
+<!-- Glitching / Desynced Character -->
+<g class="head-glitch" transform="translate(16, 16)">
+<!-- HEADBAND (Flashing Alert Red/Orange) -->
+<rect fill="#ef4444" filter="url(#errorGlitchGlow)" height="20" rx="2" width="20" x="180" y="120"></rect>
+<rect fill="#f59e0b" filter="url(#alertYellowGlow)" height="20" rx="2" width="20" x="204" y="120"></rect>
+<rect fill="#ef4444" filter="url(#errorGlitchGlow)" height="20" rx="2" width="20" x="228" y="120"></rect>
+<rect fill="#f59e0b" filter="url(#alertYellowGlow)" height="20" rx="2" width="20" x="252" y="120"></rect>
+<rect fill="#ef4444" filter="url(#errorGlitchGlow)" height="20" rx="2" width="20" x="276" y="120"></rect>
+<rect fill="#ef4444" height="20" rx="2" width="20" x="156" y="144"></rect>
+<rect fill="#ef4444" height="20" rx="2" width="20" x="300" y="144"></rect>
+<rect fill="#ef4444" height="20" rx="2" width="20" x="132" y="168"></rect>
+<rect fill="#ef4444" height="20" rx="2" width="20" x="324" y="168"></rect>
+<rect fill="#ef4444" height="20" rx="2" width="20" x="108" y="192"></rect>
+<rect fill="#ef4444" height="20" rx="2" width="20" x="348" y="192"></rect>
+<!-- LEFT EARPAD (Emergency Red Warning) -->
+<rect fill="#ef4444" filter="url(#errorGlitchGlow)" height="20" rx="2" width="20" x="84" y="216"></rect>
+<rect fill="#7f1d1d" height="20" rx="2" width="20" x="108" y="216"></rect>
+<rect fill="#ef4444" filter="url(#errorGlitchGlow)" height="20" rx="2" width="20" x="84" y="240"></rect>
+<rect fill="#7f1d1d" height="20" rx="2" width="20" x="108" y="240"></rect>
+<rect fill="#ef4444" filter="url(#errorGlitchGlow)" height="20" rx="2" width="20" x="84" y="264"></rect>
+<rect fill="#7f1d1d" height="20" rx="2" width="20" x="108" y="264"></rect>
+<rect fill="#ef4444" filter="url(#errorGlitchGlow)" height="20" rx="2" width="20" x="84" y="288"></rect>
+<rect fill="#7f1d1d" height="20" rx="2" width="20" x="108" y="288"></rect>
+<!-- RIGHT EARPAD -->
+<rect fill="#7f1d1d" height="20" rx="2" width="20" x="348" y="216"></rect>
+<rect fill="#ef4444" filter="url(#errorGlitchGlow)" height="20" rx="2" width="20" x="372" y="216"></rect>
+<rect fill="#7f1d1d" height="20" rx="2" width="20" x="348" y="240"></rect>
+<rect fill="#ef4444" filter="url(#errorGlitchGlow)" height="20" rx="2" width="20" x="372" y="240"></rect>
+<rect fill="#7f1d1d" height="20" rx="2" width="20" x="348" y="264"></rect>
+<rect fill="#ef4444" filter="url(#errorGlitchGlow)" height="20" rx="2" width="20" x="372" y="264"></rect>
+<rect fill="#7f1d1d" height="20" rx="2" width="20" x="348" y="288"></rect>
+<rect fill="#ef4444" filter="url(#errorGlitchGlow)" height="20" rx="2" width="20" x="372" y="288"></rect>
+<!-- PIXEL FACE (Glitching dark slate & red error tone) -->
+<rect fill="#3b4a68" height="20" rx="2" width="20" x="156" y="168"></rect>
+<rect fill="#4d5f80" height="20" rx="2" width="20" x="180" y="168"></rect>
+<rect fill="#4d5f80" height="20" rx="2" width="20" x="204" y="168"></rect>
+<rect fill="#5c7095" height="20" rx="2" width="20" x="228" y="168"></rect>
+<rect fill="#4d5f80" height="20" rx="2" width="20" x="252" y="168"></rect>
+<rect fill="#4d5f80" height="20" rx="2" width="20" x="276" y="168"></rect>
+<rect fill="#3b4a68" height="20" rx="2" width="20" x="300" y="168"></rect>
+<!-- Row 9 -->
+<rect fill="#3b4a68" height="20" rx="2" width="20" x="132" y="192"></rect>
+<rect fill="#4d5f80" height="20" rx="2" width="20" x="156" y="192"></rect>
+<rect fill="#5c7095" height="20" rx="2" width="20" x="180" y="192"></rect>
+<rect fill="#5c7095" height="20" rx="2" width="20" x="204" y="192"></rect>
+<rect fill="#6982ab" height="20" rx="2" width="20" x="228" y="192"></rect>
+<rect fill="#5c7095" height="20" rx="2" width="20" x="252" y="192"></rect>
+<rect fill="#5c7095" height="20" rx="2" width="20" x="276" y="192"></rect>
+<rect fill="#4d5f80" height="20" rx="2" width="20" x="300" y="192"></rect>
+<rect fill="#3b4a68" height="20" rx="2" width="20" x="324" y="192"></rect>
+<!-- Row 10: "X X" ERROR GLITCH PIXEL EYES -->
+<rect fill="#4d5f80" height="20" rx="2" width="20" x="132" y="216"></rect>
+<rect fill="#5c7095" height="20" rx="2" width="20" x="156" y="216"></rect>
+<!-- LEFT X EYE -->
+<g class="x-eyes" filter="url(#errorGlitchGlow)">
+<path d="M 180,216 L 198,234 M 198,216 L 180,234" stroke="#ef4444" stroke-linecap="round" stroke-width="4"></path>
+</g>
+<rect fill="#5c7095" height="20" rx="2" width="20" x="204" y="216"></rect>
+<rect fill="#4d5f80" height="20" rx="2" width="20" x="228" y="216"></rect>
+<rect fill="#5c7095" height="20" rx="2" width="20" x="252" y="216"></rect>
+<!-- RIGHT X EYE -->
+<g class="x-eyes" filter="url(#errorGlitchGlow)">
+<path d="M 276,216 L 294,234 M 294,216 L 276,234" stroke="#ef4444" stroke-linecap="round" stroke-width="4"></path>
+</g>
+<rect fill="#5c7095" height="20" rx="2" width="20" x="300" y="216"></rect>
+<rect fill="#4d5f80" height="20" rx="2" width="20" x="324" y="216"></rect>
+<!-- Row 11 -->
+<rect fill="#3b4a68" height="20" rx="2" width="20" x="132" y="240"></rect>
+<rect fill="#4d5f80" height="20" rx="2" width="20" x="156" y="240"></rect>
+<rect fill="#5c7095" height="20" rx="2" width="20" x="180" y="240"></rect>
+<rect fill="#5c7095" height="20" rx="2" width="20" x="204" y="240"></rect>
+<rect fill="#5c7095" height="20" rx="2" width="20" x="228" y="240"></rect>
+<rect fill="#5c7095" height="20" rx="2" width="20" x="252" y="240"></rect>
+<rect fill="#5c7095" height="20" rx="2" width="20" x="276" y="240"></rect>
+<rect fill="#4d5f80" height="20" rx="2" width="20" x="300" y="240"></rect>
+<rect fill="#3b4a68" height="20" rx="2" width="20" x="324" y="240"></rect>
+<!-- Row 12: WAVY SQUIGGLE / WORRIED MOUTH -->
+<rect fill="#2d3b55" height="20" rx="2" width="20" x="132" y="264"></rect>
+<rect fill="#3b4a68" height="20" rx="2" width="20" x="156" y="264"></rect>
+<rect fill="#7f1d1d" height="20" rx="2" width="20" x="180" y="264"></rect>
+<rect fill="#ef4444" filter="url(#errorGlitchGlow)" height="20" rx="2" width="20" x="204" y="264"></rect>
+<rect fill="#1e293b" height="20" rx="2" width="20" x="228" y="264"></rect>
+<rect fill="#ef4444" filter="url(#errorGlitchGlow)" height="20" rx="2" width="20" x="252" y="264"></rect>
+<rect fill="#7f1d1d" height="20" rx="2" width="20" x="276" y="264"></rect>
+<rect fill="#3b4a68" height="20" rx="2" width="20" x="300" y="264"></rect>
+<rect fill="#2d3b55" height="20" rx="2" width="20" x="324" y="264"></rect>
+<!-- Row 13 & 14 (Jaw & Chin) -->
+<rect fill="#242f45" height="20" rx="2" width="20" x="156" y="288"></rect>
+<rect fill="#3b4a68" height="20" rx="2" width="20" x="180" y="288"></rect>
+<rect fill="#3b4a68" height="20" rx="2" width="20" x="204" y="288"></rect>
+<rect fill="#3b4a68" height="20" rx="2" width="20" x="228" y="288"></rect>
+<rect fill="#3b4a68" height="20" rx="2" width="20" x="252" y="288"></rect>
+<rect fill="#3b4a68" height="20" rx="2" width="20" x="276" y="288"></rect>
+<rect fill="#242f45" height="20" rx="2" width="20" x="300" y="288"></rect>
+<rect fill="#1b2436" height="20" rx="2" width="20" x="180" y="312"></rect>
+<rect fill="#242f45" height="20" rx="2" width="20" x="204" y="312"></rect>
+<rect fill="#242f45" height="20" rx="2" width="20" x="228" y="312"></rect>
+<rect fill="#242f45" height="20" rx="2" width="20" x="252" y="312"></rect>
+<rect fill="#1b2436" height="20" rx="2" width="20" x="276" y="312"></rect>
+</g>
+</svg></div><!-- STITCH_SVG_END:ANIMATION_18 -->
+</body>
+</html>

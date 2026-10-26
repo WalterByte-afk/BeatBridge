@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #000;
+    }
+  </style>
+</head>
+<body>
+<!-- STITCH_SVG_START:ANIMATION_20 class="fixed inset-0 w-full h-full" --><div class="fixed inset-0 w-full h-full" id="animated-svg-ANIMATION_20" style="display:block;"><svg height="512" viewbox="0 0 512 512" width="512" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<radialgradient cx="50%" cy="50%" id="bgGradScan" r="65%">
+<stop offset="0%" stop-color="#141c2c"></stop>
+<stop offset="100%" stop-color="#080c14"></stop>
+</radialgradient>
+<filter height="160%" id="cyberCyanGlow" width="160%" x="-30%" y="-30%">
+<fedropshadow dx="0" dy="0" flood-color="#00f0ff" flood-opacity="0.9" stddeviation="5"></fedropshadow>
+</filter>
+<filter height="160%" id="purpleSpectrumGlow" width="160%" x="-30%" y="-30%">
+<fedropshadow dx="0" dy="0" flood-color="#a855f7" flood-opacity="0.8" stddeviation="5"></fedropshadow>
+</filter>
+</defs>
+<style>
+    @keyframes scanlineSweep {
+      0% { transform: translateY(110px); opacity: 0; }
+      15% { opacity: 0.95; }
+      85% { opacity: 0.95; }
+      100% { transform: translateY(340px); opacity: 0; }
+    }
+    @keyframes eyeScanSweep {
+      0%, 100% { transform: translateX(-8px); }
+      50% { transform: translateX(8px); }
+    }
+    @keyframes eqBarPulse1 {
+      0%, 100% { transform: scaleY(0.25); }
+      50% { transform: scaleY(1); }
+    }
+    @keyframes eqBarPulse2 {
+      0%, 100% { transform: scaleY(0.8); }
+      50% { transform: scaleY(0.3); }
+    }
+    @keyframes eqBarPulse3 {
+      0%, 100% { transform: scaleY(0.4); }
+      50% { transform: scaleY(0.95); }
+    }
+    .laser-scanline { animation: scanlineSweep 2.2s linear infinite; }
+    .scan-pupil { animation: eyeScanSweep 1.8s ease-in-out infinite; }
+    .eq-bar-1 { transform-origin: bottom; animation: eqBarPulse1 0.7s ease-in-out infinite; }
+    .eq-bar-2 { transform-origin: bottom; animation: eqBarPulse2 0.85s ease-in-out infinite; }
+    .eq-bar-3 { transform-origin: bottom; animation: eqBarPulse3 0.65s ease-in-out infinite; }
+    .head-scanning { transform-origin: 256px 280px; }
+  </style>
+<!-- Background with Sci-Fi Grid -->
+<rect fill="url(#bgGradScan)" height="512" rx="112" width="512"></rect>
+<rect fill="none" height="508" opacity="0.8" rx="110" stroke="#1e293b" stroke-width="3" width="508" x="2" y="2"></rect>
+<!-- Spectral EQ Analyzer Bars floating beside ears -->
+<!-- Left EQ Bar stack -->
+<g filter="url(#cyberCyanGlow)" transform="translate(48, 230)">
+<rect class="eq-bar-1" fill="#00f0ff" height="50" rx="2" width="8" x="0" y="0"></rect>
+<rect class="eq-bar-2" fill="#38bdf8" height="50" rx="2" width="8" x="12" y="0"></rect>
+<rect class="eq-bar-3" fill="#818cf8" height="50" rx="2" width="8" x="24" y="0"></rect>
+</g>
+<!-- Right EQ Bar stack -->
+<g filter="url(#purpleSpectrumGlow)" transform="translate(432, 230)">
+<rect class="eq-bar-3" fill="#818cf8" height="50" rx="2" width="8" x="0" y="0"></rect>
+<rect class="eq-bar-1" fill="#a855f7" height="50" rx="2" width="8" x="12" y="0"></rect>
+<rect class="eq-bar-2" fill="#c084fc" height="50" rx="2" width="8" x="24" y="0"></rect>
+</g>
+<!-- Horizontal Laser Scanline Sweeping down through character -->
+<g class="laser-scanline" filter="url(#cyberCyanGlow)">
+<line opacity="0.9" stroke="#00f0ff" stroke-width="3" x1="80" x2="432" y1="0" y2="0"></line>
+<polygon fill="#ffffff" points="256,-6 262,0 256,6 250,0"></polygon>
+</g>
+<!-- Scanning / Analyzer Character -->
+<g class="head-scanning" transform="translate(16, 16)">
+<!-- HEADBAND (Cyber Cyan / Violet telemetry) -->
+<rect fill="#00f0ff" filter="url(#cyberCyanGlow)" height="20" rx="2" width="20" x="180" y="120"></rect>
+<rect fill="#00f0ff" filter="url(#cyberCyanGlow)" height="20" rx="2" width="20" x="204" y="120"></rect>
+<rect fill="#a855f7" filter="url(#purpleSpectrumGlow)" height="20" rx="2" width="20" x="228" y="120"></rect>
+<rect fill="#00f0ff" filter="url(#cyberCyanGlow)" height="20" rx="2" width="20" x="252" y="120"></rect>
+<rect fill="#00f0ff" filter="url(#cyberCyanGlow)" height="20" rx="2" width="20" x="276" y="120"></rect>
+<rect fill="#0284c7" height="20" rx="2" width="20" x="156" y="144"></rect>
+<rect fill="#0284c7" height="20" rx="2" width="20" x="300" y="144"></rect>
+<rect fill="#0284c7" height="20" rx="2" width="20" x="132" y="168"></rect>
+<rect fill="#0284c7" height="20" rx="2" width="20" x="324" y="168"></rect>
+<rect fill="#0284c7" height="20" rx="2" width="20" x="108" y="192"></rect>
+<rect fill="#0284c7" height="20" rx="2" width="20" x="348" y="192"></rect>
+<!-- LEFT EARPAD (HUD Tech Grid) -->
+<rect fill="#00f0ff" filter="url(#cyberCyanGlow)" height="20" rx="2" width="20" x="84" y="216"></rect>
+<rect fill="#0369a1" height="20" rx="2" width="20" x="108" y="216"></rect>
+<rect fill="#00f0ff" filter="url(#cyberCyanGlow)" height="20" rx="2" width="20" x="84" y="240"></rect>
+<rect fill="#0369a1" height="20" rx="2" width="20" x="108" y="240"></rect>
+<rect fill="#00f0ff" filter="url(#cyberCyanGlow)" height="20" rx="2" width="20" x="84" y="264"></rect>
+<rect fill="#0369a1" height="20" rx="2" width="20" x="108" y="264"></rect>
+<rect fill="#00f0ff" filter="url(#cyberCyanGlow)" height="20" rx="2" width="20" x="84" y="288"></rect>
+<rect fill="#0369a1" height="20" rx="2" width="20" x="108" y="288"></rect>
+<!-- RIGHT EARPAD -->
+<rect fill="#0369a1" height="20" rx="2" width="20" x="348" y="216"></rect>
+<rect fill="#a855f7" filter="url(#purpleSpectrumGlow)" height="20" rx="2" width="20" x="372" y="216"></rect>
+<rect fill="#0369a1" height="20" rx="2" width="20" x="348" y="240"></rect>
+<rect fill="#a855f7" filter="url(#purpleSpectrumGlow)" height="20" rx="2" width="20" x="372" y="240"></rect>
+<rect fill="#0369a1" height="20" rx="2" width="20" x="348" y="264"></rect>
+<rect fill="#a855f7" filter="url(#purpleSpectrumGlow)" height="20" rx="2" width="20" x="372" y="264"></rect>
+<rect fill="#0369a1" height="20" rx="2" width="20" x="348" y="288"></rect>
+<rect fill="#a855f7" filter="url(#purpleSpectrumGlow)" height="20" rx="2" width="20" x="372" y="288"></rect>
+<!-- PIXEL FACE -->
+<rect fill="#1e3a5f" height="20" rx="2" width="20" x="156" y="168"></rect>
+<rect fill="#2d5282" height="20" rx="2" width="20" x="180" y="168"></rect>
+<rect fill="#2d5282" height="20" rx="2" width="20" x="204" y="168"></rect>
+<rect fill="#3b68a3" height="20" rx="2" width="20" x="228" y="168"></rect>
+<rect fill="#2d5282" height="20" rx="2" width="20" x="252" y="168"></rect>
+<rect fill="#2d5282" height="20" rx="2" width="20" x="276" y="168"></rect>
+<rect fill="#1e3a5f" height="20" rx="2" width="20" x="300" y="168"></rect>
+<!-- Row 9 -->
+<rect fill="#1e3a5f" height="20" rx="2" width="20" x="132" y="192"></rect>
+<rect fill="#2d5282" height="20" rx="2" width="20" x="156" y="192"></rect>
+<rect fill="#3b68a3" height="20" rx="2" width="20" x="180" y="192"></rect>
+<rect fill="#3b68a3" height="20" rx="2" width="20" x="204" y="192"></rect>
+<rect fill="#4d7db8" height="20" rx="2" width="20" x="228" y="192"></rect>
+<rect fill="#3b68a3" height="20" rx="2" width="20" x="252" y="192"></rect>
+<rect fill="#3b68a3" height="20" rx="2" width="20" x="276" y="192"></rect>
+<rect fill="#2d5282" height="20" rx="2" width="20" x="300" y="192"></rect>
+<rect fill="#1e3a5f" height="20" rx="2" width="20" x="324" y="192"></rect>
+<!-- Row 10: SCANNING TRACKER EYES (Sweeping Reticles) -->
+<rect fill="#2d5282" height="20" rx="2" width="20" x="132" y="216"></rect>
+<rect fill="#3b68a3" height="20" rx="2" width="20" x="156" y="216"></rect>
+<!-- Left Eye Reticle -->
+<g class="scan-pupil">
+<rect fill="#00f0ff" filter="url(#cyberCyanGlow)" height="20" rx="3" width="20" x="180" y="216"></rect>
+<rect fill="#ffffff" height="8" rx="1" width="8" x="186" y="222"></rect>
+</g>
+<rect fill="#3b68a3" height="20" rx="2" width="20" x="204" y="216"></rect>
+<rect fill="#2d5282" height="20" rx="2" width="20" x="228" y="216"></rect>
+<rect fill="#3b68a3" height="20" rx="2" width="20" x="252" y="216"></rect>
+<!-- Right Eye Reticle -->
+<g class="scan-pupil">
+<rect fill="#00f0ff" filter="url(#cyberCyanGlow)" height="20" rx="3" width="20" x="276" y="216"></rect>
+<rect fill="#ffffff" height="8" rx="1" width="8" x="282" y="222"></rect>
+</g>
+<rect fill="#3b68a3" height="20" rx="2" width="20" x="300" y="216"></rect>
+<rect fill="#2d5282" height="20" rx="2" width="20" x="324" y="216"></rect>
+<!-- Row 11 -->
+<rect fill="#1e3a5f" height="20" rx="2" width="20" x="132" y="240"></rect>
+<rect fill="#2d5282" height="20" rx="2" width="20" x="156" y="240"></rect>
+<rect fill="#3b68a3" height="20" rx="2" width="20" x="180" y="240"></rect>
+<rect fill="#3b68a3" height="20" rx="2" width="20" x="204" y="240"></rect>
+<rect fill="#3b68a3" height="20" rx="2" width="20" x="228" y="240"></rect>
+<rect fill="#3b68a3" height="20" rx="2" width="20" x="252" y="240"></rect>
+<rect fill="#3b68a3" height="20" rx="2" width="20" x="276" y="240"></rect>
+<rect fill="#2d5282" height="20" rx="2" width="20" x="300" y="240"></rect>
+<rect fill="#1e3a5f" height="20" rx="2" width="20" x="324" y="240"></rect>
+<!-- Row 12: DIGITAL TELEMETRY FLAT MOUTH LINE -->
+<rect fill="#162942" height="20" rx="2" width="20" x="132" y="264"></rect>
+<rect fill="#1e3a5f" height="20" rx="2" width="20" x="156" y="264"></rect>
+<rect fill="#00f0ff" filter="url(#cyberCyanGlow)" height="20" rx="2" width="20" x="180" y="264"></rect>
+<rect fill="#00f0ff" filter="url(#cyberCyanGlow)" height="20" rx="2" width="20" x="204" y="264"></rect>
+<rect fill="#ffffff" filter="url(#cyberCyanGlow)" height="20" rx="2" width="20" x="228" y="264"></rect>
+<rect fill="#00f0ff" filter="url(#cyberCyanGlow)" height="20" rx="2" width="20" x="252" y="264"></rect>
+<rect fill="#00f0ff" filter="url(#cyberCyanGlow)" height="20" rx="2" width="20" x="276" y="264"></rect>
+<rect fill="#1e3a5f" height="20" rx="2" width="20" x="300" y="264"></rect>
+<rect fill="#162942" height="20" rx="2" width="20" x="324" y="264"></rect>
+<!-- Row 13 & 14 (Jaw & Chin) -->
+<rect fill="#162942" height="20" rx="2" width="20" x="156" y="288"></rect>
+<rect fill="#1e3a5f" height="20" rx="2" width="20" x="180" y="288"></rect>
+<rect fill="#1e3a5f" height="20" rx="2" width="20" x="204" y="288"></rect>
+<rect fill="#1e3a5f" height="20" rx="2" width="20" x="228" y="288"></rect>
+<rect fill="#1e3a5f" height="20" rx="2" width="20" x="252" y="288"></rect>
+<rect fill="#1e3a5f" height="20" rx="2" width="20" x="276" y="288"></rect>
+<rect fill="#162942" height="20" rx="2" width="20" x="300" y="288"></rect>
+<rect fill="#101d30" height="20" rx="2" width="20" x="180" y="312"></rect>
+<rect fill="#162942" height="20" rx="2" width="20" x="204" y="312"></rect>
+<rect fill="#162942" height="20" rx="2" width="20" x="228" y="312"></rect>
+<rect fill="#162942" height="20" rx="2" width="20" x="252" y="312"></rect>
+<rect fill="#101d30" height="20" rx="2" width="20" x="276" y="312"></rect>
+</g>
+</svg></div><!-- STITCH_SVG_END:ANIMATION_20 -->
+</body>
+</html>
