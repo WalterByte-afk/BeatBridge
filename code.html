@@ -93,6 +93,7 @@ YT MUSIC
 </span>
 </div>
 <div class="flex items-center gap-1.5">
+<button class="w-8 h-8 rounded-full bg-[#1b1d25] border border-[#2a2d3a] flex items-center justify-center text-[#fbbf24] hover:text-white hover:bg-[#252834] active:scale-95 transition-all text-xs" id="btn-tip" title="Tip / Support with Crypto">⚡</button>
 <button class="w-8 h-8 rounded-full bg-[#1b1d25] border border-[#2a2d3a] flex items-center justify-center text-[#7e8597] hover:text-white hover:bg-[#252834] active:scale-95 transition-all" id="btn-settings" title="Settings">
 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
 <circle cx="12" cy="12" r="3"></circle>
@@ -371,6 +372,46 @@ YT MUSIC
 
     <div class="text-[7.5px] font-mono text-[#5e6678] text-center">
       🎧 Listen on YouTube Music to gain XP, unlock badges & level up!
+    </div>
+  </div>
+</div>
+
+<!-- CRYPTO DONATION & TIP MODAL -->
+<div id="modal-crypto-tip" class="fixed inset-0 bg-black/85 backdrop-blur-sm z-50 hidden flex items-center justify-center p-3 select-none">
+  <div class="w-[330px] bg-[#14161f] border border-[#2b3044] rounded-2xl p-4 flex flex-col gap-3 shadow-2xl relative">
+    <button id="btn-close-tip" class="absolute top-3 right-3 text-[#7d869a] hover:text-white text-xs font-mono w-6 h-6 rounded-full bg-[#1b1e2a] flex items-center justify-center">✕</button>
+    
+    <div class="flex items-center gap-2.5">
+      <div class="w-10 h-10 rounded-xl bg-[#132219] border border-[#1b3d2b] flex items-center justify-center overflow-hidden p-1 flex-shrink-0">
+        <img src="assets/donate.svg" alt="Tip Jar" class="w-full h-full" />
+      </div>
+      <div>
+        <div class="text-[8.5px] font-mono text-[#45c8b2] uppercase tracking-wider font-bold">COMMUNITY TIP JAR</div>
+        <div class="text-sm font-bold text-white leading-tight">Support BeatBridge</div>
+        <div class="text-[8.5px] font-mono text-[#a6adbe]">100% Free & Open Source</div>
+      </div>
+    </div>
+
+    <!-- Crypto Tabs -->
+    <div class="flex gap-1 bg-[#0f1016] p-1 rounded-xl border border-[#232737]">
+      <button class="crypto-tab flex-1 py-1 text-center rounded-lg text-[9px] font-mono font-bold bg-[#587bf8] text-white" data-coin="usdt">USDT</button>
+      <button class="crypto-tab flex-1 py-1 text-center rounded-lg text-[9px] font-mono font-bold text-[#7d869a] hover:text-white" data-coin="sol">SOL</button>
+      <button class="crypto-tab flex-1 py-1 text-center rounded-lg text-[9px] font-mono font-bold text-[#7d869a] hover:text-white" data-coin="eth">ETH</button>
+      <button class="crypto-tab flex-1 py-1 text-center rounded-lg text-[9px] font-mono font-bold text-[#7d869a] hover:text-white" data-coin="btc">BTC</button>
+    </div>
+
+    <!-- QR & Address Card -->
+    <div class="bg-[#0f1016] border border-[#232737] rounded-xl p-3 flex flex-col items-center gap-2">
+      <img id="tip-qr-img" src="assets/donate/USDT.jpg" alt="QR Code" class="w-28 h-28 rounded-lg border border-[#2a2f42] object-contain bg-white p-1" />
+      <div class="text-[8px] font-mono text-[#45c8b2] font-semibold" id="tip-network-badge">NETWORK: BNB SMART CHAIN (BEP20)</div>
+      <div class="w-full bg-[#181b26] p-2 rounded-lg border border-[#262c3f] flex items-center justify-between gap-1">
+        <span class="text-[8px] font-mono text-white truncate max-w-[210px]" id="tip-address-text">0x22f61aDAd0E7b10707AD9385C06e24E8f1d49517</span>
+        <button id="btn-copy-address" class="px-2 py-1 rounded bg-[#587bf8] hover:bg-[#6e8dfa] active:scale-95 text-white font-mono text-[7.5px] font-bold transition-all flex-shrink-0">COPY</button>
+      </div>
+    </div>
+
+    <div class="text-[7.5px] font-mono text-[#5e6678] text-center">
+      ❤️ Thank you for fueling open-source development!
     </div>
   </div>
 </div>

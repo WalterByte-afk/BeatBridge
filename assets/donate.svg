@@ -1,0 +1,297 @@
+<svg height="512" viewbox="0 0 512 512" width="512" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<radialgradient cx="50%" cy="50%" id="bgGradTip" r="65%">
+<stop offset="0%" stop-color="#18231c"></stop>
+<stop offset="60%" stop-color="#0d1410"></stop>
+<stop offset="100%" stop-color="#050806"></stop>
+</radialgradient>
+<filter height="160%" id="goldCoinGlow" width="160%" x="-30%" y="-30%">
+<fedropshadow dx="0" dy="0" flood-color="#f59e0b" flood-opacity="0.9" stddeviation="6"></fedropshadow>
+</filter>
+<filter height="160%" id="emeraldJarGlow" width="160%" x="-30%" y="-30%">
+<fedropshadow dx="0" dy="0" flood-color="#10b981" flood-opacity="0.85" stddeviation="5"></fedropshadow>
+</filter>
+<filter height="160%" id="cyanSparkGlow" width="160%" x="-30%" y="-30%">
+<fedropshadow dx="0" dy="0" flood-color="#38bdf8" flood-opacity="0.9" stddeviation="5"></fedropshadow>
+</filter>
+<filter height="140%" id="whiteGlint" width="140%" x="-20%" y="-20%">
+<fedropshadow dx="0" dy="0" flood-color="#ffffff" flood-opacity="0.9" stddeviation="4"></fedropshadow>
+</filter>
+</defs>
+<style>
+    /* Jar Joyful Bounce & Jiggle when coins drop */
+    @keyframes jarJiggle {
+      0%, 100% { transform: translateY(0px) scale(1); }
+      18% { transform: translateY(-8px) scale(0.97, 1.04); }
+      35% { transform: translateY(5px) scale(1.04, 0.96); }
+      50% { transform: translateY(-4px) scale(0.99, 1.02); }
+      70% { transform: translateY(2px) scale(1.02, 0.98); }
+    }
+
+    /* Falling Golden Pixel Coin 1 */
+    @keyframes coinDrop1 {
+      0% { transform: translate(256px, 10px) scale(0.6) rotate(0deg); opacity: 0; }
+      15% { opacity: 1; }
+      45% { transform: translate(248px, 120px) scale(1.05) rotate(90deg); opacity: 1; }
+      55% { transform: translate(252px, 160px) scale(0.85) rotate(135deg); opacity: 0.9; }
+      75% { transform: translate(250px, 260px) scale(0.9) rotate(180deg); opacity: 0.3; }
+      80%, 100% { transform: translate(250px, 300px) scale(0.7); opacity: 0; }
+    }
+
+    /* Falling Coin 2 with slight offset rhythm */
+    @keyframes coinDrop2 {
+      0% { transform: translate(220px, 0px) scale(0.5); opacity: 0; }
+      20% { opacity: 0; }
+      30% { transform: translate(230px, 30px) scale(0.7); opacity: 1; }
+      60% { transform: translate(242px, 140px) scale(1) rotate(-45deg); opacity: 1; }
+      75% { transform: translate(240px, 200px) scale(0.8); opacity: 0.5; }
+      85%, 100% { transform: translate(240px, 280px) scale(0.6); opacity: 0; }
+    }
+
+    /* Floating Rising Sparkles / Thank-You Shimmer */
+    @keyframes sparkleFloat1 {
+      0% { transform: translate(110px, 340px) scale(0.2); opacity: 0; }
+      30% { opacity: 1; }
+      80% { opacity: 0.85; }
+      100% { transform: translate(70px, 140px) scale(1.2); opacity: 0; }
+    }
+    @keyframes sparkleFloat2 {
+      0% { transform: translate(400px, 350px) scale(0.2); opacity: 0; }
+      35% { opacity: 1; }
+      85% { opacity: 0.85; }
+      100% { transform: translate(430px, 150px) scale(1.3); opacity: 0; }
+    }
+    @keyframes heartFloatTip {
+      0% { transform: translate(256px, 130px) scale(0.3); opacity: 0; }
+      30% { opacity: 1; transform: translate(256px, 90px) scale(1.1); }
+      70% { opacity: 0.9; transform: translate(265px, 45px) scale(1); }
+      100% { transform: translate(250px, 10px) scale(0.7); opacity: 0; }
+    }
+
+    /* Golden Ring Shockwave from coin impact */
+    @keyframes tipRingImpact {
+      0%, 40% { r: 10px; opacity: 0; stroke-width: 0px; }
+      45% { r: 20px; opacity: 1; stroke-width: 4px; }
+      80% { r: 110px; opacity: 0; stroke-width: 1px; }
+      100% { opacity: 0; }
+    }
+
+    /* AuraDJ Pixel Face Inside the Glass Jar */
+    @keyframes happyCheekPulse {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 1; }
+    }
+    @keyframes mascotEyeWinkJoy {
+      0%, 100% { transform: scale(1); }
+      45%, 60% { transform: scaleY(0.2) translateY(8px); }
+    }
+
+    .jar-body { transform-origin: 256px 360px; animation: jarJiggle 1.6s cubic-bezier(0.2, 0.8, 0.3, 1) infinite; }
+    .coin-drop-1 { animation: coinDrop1 1.6s cubic-bezier(0.3, 0.8, 0.4, 1) infinite; }
+    .coin-drop-2 { animation: coinDrop2 1.6s cubic-bezier(0.3, 0.8, 0.4, 1) 0.8s infinite; }
+    .spark-1 { animation: sparkleFloat1 2.2s ease-out infinite; }
+    .spark-2 { animation: sparkleFloat2 2.4s ease-out 0.7s infinite; }
+    .heart-tip { animation: heartFloatTip 2.4s ease-out 0.4s infinite; }
+    .impact-shock { transform-origin: 256px 145px; animation: tipRingImpact 1.6s cubic-bezier(0.1, 0.8, 0.3, 1) infinite; }
+    .cheek-blush { animation: happyCheekPulse 1.6s ease-in-out infinite; }
+    .joy-eye-left { transform-origin: 216px 292px; animation: mascotEyeWinkJoy 1.6s ease-in-out infinite; }
+  </style>
+<!-- Dark Emerald / Neon Vault Room Background -->
+
+
+<!-- Coin Impact Soundwave / Ripple at Jar Rim -->
+<circle class="impact-shock" cx="256" cy="145" fill="none" filter="url(#goldCoinGlow)" r="20" stroke="#fbbf24"></circle>
+<!-- Floating Pixel Sparkles & Diamonds -->
+<g class="spark-1" filter="url(#goldCoinGlow)">
+<polygon fill="#fde047" points="0,-8 3,-2 9,0 3,2 0,8 -3,2 -9,0 -3,-2"></polygon>
+<rect fill="#34d399" height="6" rx="1" width="6" x="8" y="10"></rect>
+</g>
+<g class="spark-2" filter="url(#cyanSparkGlow)">
+<polygon fill="#38bdf8" points="0,-10 4,-3 11,0 4,3 0,10 -4,3 -11,0 -4,-3"></polygon>
+<rect fill="#fde047" height="6" rx="1" width="6" x="-10" y="8"></rect>
+</g>
+<!-- Floating Heart from Generous Tip -->
+<g class="heart-tip" filter="url(#goldCoinGlow)">
+<path d="M 0,4 L 4,0 L 8,0 L 12,4 L 16,0 L 20,0 L 24,4 L 24,8 L 12,20 L 0,8 Z" fill="#f43f5e"></path>
+</g>
+<!-- FALLING COIN 1 (Pixel Golden Coin with Currency Symbol) -->
+<g class="coin-drop-1" filter="url(#goldCoinGlow)">
+<!-- 28x28 Pixel Gold Coin -->
+<rect fill="#f59e0b" height="28" rx="6" stroke="#fde047" stroke-width="2" width="28" x="-14" y="-14"></rect>
+<rect fill="#fbbf24" height="20" rx="3" width="20" x="-10" y="-10"></rect>
+<!-- Pixel Music Note / DJ Currency Symbol inside Coin -->
+<rect fill="#78350f" height="12" width="3" x="-4" y="-7"></rect>
+<rect fill="#78350f" height="4" width="6" x="-1" y="-7"></rect>
+<circle cx="-5" cy="5" fill="#78350f" r="3.5"></circle>
+<!-- White Glint -->
+<rect fill="#ffffff" filter="url(#whiteGlint)" height="3" width="3" x="3" y="-8"></rect>
+</g>
+<!-- FALLING COIN 2 -->
+<g class="coin-drop-2" filter="url(#goldCoinGlow)">
+<rect fill="#d97706" height="22" rx="5" stroke="#fde047" stroke-width="2" width="22" x="-11" y="-11"></rect>
+<rect fill="#f59e0b" height="16" rx="2" width="16" x="-8" y="-8"></rect>
+<rect fill="#78350f" height="10" width="4" x="-2" y="-5"></rect>
+<rect fill="#78350f" height="3" width="8" x="-4" y="-2"></rect>
+<rect fill="#ffffff" filter="url(#whiteGlint)" height="3" width="3" x="2" y="-6"></rect>
+</g>
+<!-- MAIN ANIMATED PIXEL TIP JAR UNIT -->
+<g class="jar-body">
+<!-- JAR LID & RIM (Hardware Grooved Ceramic / Matte Slate Cap) -->
+<!-- Jar Lip Top Flange -->
+<rect fill="#334155" height="14" rx="4" stroke="#475569" stroke-width="1.5" width="152" x="180" y="130"></rect>
+<rect fill="#1e293b" height="10" rx="2" width="140" x="186" y="132"></rect>
+<!-- Coin Slot Opening (Top Opening where coin enters) -->
+<rect fill="#020617" height="6" rx="2" width="80" x="216" y="134"></rect>
+<rect fill="#0f172a" height="4" rx="1" width="72" x="220" y="135"></rect>
+<!-- Lip Highlights -->
+<rect fill="#64748b" height="3" width="20" x="190" y="132"></rect>
+<rect fill="#64748b" height="3" width="20" x="302" y="132"></rect>
+<!-- Jar Neck Ring -->
+<rect fill="#1e293b" height="12" rx="2" stroke="#334155" stroke-width="1" width="120" x="196" y="144"></rect>
+<rect fill="#0f172a" height="8" rx="1" width="108" x="202" y="146"></rect>
+<!-- MAIN GLASS JAR BODY (Outer Glass Glow & Shading) -->
+<!-- Glass Background Body -->
+<rect fill="#0c1a14" height="236" opacity="0.9" rx="36" width="240" x="136" y="156"></rect>
+<!-- Outer Glass Border with Emerald Neon Reflection -->
+<rect fill="none" filter="url(#emeraldJarGlow)" height="236" opacity="0.85" rx="36" stroke="#10b981" stroke-width="4" width="240" x="136" y="156"></rect>
+<rect fill="none" height="228" opacity="0.4" rx="32" stroke="#34d399" stroke-width="1.5" width="232" x="140" y="160"></rect>
+<!-- Glass Specular Reflection Highlight (Left Curved Bevel) -->
+<path d="M 152 180 L 152 350 Q 152 370 170 376" fill="none" opacity="0.25" stroke="#ffffff" stroke-linecap="round" stroke-width="4"></path>
+<path d="M 160 190 L 160 330" fill="none" opacity="0.4" stroke="#6ee7b7" stroke-linecap="round" stroke-width="2"></path>
+<!-- Glass Reflection Right Top Glint -->
+<path d="M 346 178 L 358 190" fill="none" opacity="0.3" stroke="#ffffff" stroke-linecap="round" stroke-width="3"></path>
+<!-- INSIDE THE JAR: PILE OF GOLDEN PIXEL COINS & GEMS AT THE BOTTOM -->
+<g filter="url(#goldCoinGlow)">
+<!-- Base Layer of Coins -->
+<rect fill="#b45309" height="18" rx="5" stroke="#d97706" stroke-width="1" width="36" x="156" y="340"></rect>
+<rect fill="#f59e0b" height="18" rx="5" stroke="#fbbf24" stroke-width="1" width="40" x="186" y="346"></rect>
+<rect fill="#d97706" height="20" rx="5" stroke="#fde047" stroke-width="1" width="42" x="220" y="342"></rect>
+<rect fill="#f59e0b" height="20" rx="5" stroke="#fde047" stroke-width="1" width="44" x="256" y="344"></rect>
+<rect fill="#b45309" height="18" rx="5" stroke="#fbbf24" stroke-width="1" width="38" x="294" y="342"></rect>
+<rect fill="#d97706" height="18" rx="5" stroke="#f59e0b" stroke-width="1" width="34" x="326" y="344"></rect>
+<!-- Second Tier of Stacked Coins -->
+<rect fill="#f59e0b" height="18" rx="5" stroke="#fde047" stroke-width="1" width="38" x="170" y="330"></rect>
+<rect fill="#fbbf24" height="18" rx="5" stroke="#ffffff" stroke-width="1" width="44" x="204" y="332"></rect>
+<rect fill="#f59e0b" height="18" rx="5" stroke="#fde047" stroke-width="1" width="42" x="244" y="328"></rect>
+<rect fill="#fbbf24" height="18" rx="5" stroke="#fde047" stroke-width="1" width="40" x="280" y="330"></rect>
+<rect fill="#d97706" height="18" rx="5" stroke="#fbbf24" stroke-width="1" width="36" x="314" y="332"></rect>
+<!-- Top Sparkling Coin Details -->
+<circle cx="226" cy="336" fill="#ffffff" filter="url(#whiteGlint)" r="3"></circle>
+<circle cx="265" cy="334" fill="#ffffff" filter="url(#whiteGlint)" r="3"></circle>
+<circle cx="300" cy="338" fill="#ffffff" filter="url(#whiteGlint)" r="2.5"></circle>
+<!-- Pixel Diamond / Gemstone inside Tips -->
+<polygon fill="#38bdf8" filter="url(#cyanSparkGlow)" points="180,336 186,330 192,336 186,344" stroke="#7dd3fc" stroke-width="1"></polygon>
+<polygon fill="#34d399" filter="url(#emeraldJarGlow)" points="325,338 331,332 337,338 331,346" stroke="#6ee7b7" stroke-width="1"></polygon>
+</g>
+<!-- AURADJ PIXEL-ART MASCOT FLOATING HAPPILY INSIDE THE JAR -->
+<!-- Scaled Pixel Mascot Character (centered inside the glass dome) -->
+<g transform="translate(48, 50)">
+<!-- HEADBAND (Emerald Green Winner Edition) -->
+<rect fill="#34d399" filter="url(#emeraldJarGlow)" height="16" rx="2" width="16" x="180" y="160"></rect>
+<rect fill="#10b981" filter="url(#emeraldJarGlow)" height="16" rx="2" width="16" x="198" y="160"></rect>
+<rect fill="#ffffff" filter="url(#whiteGlint)" height="16" rx="2" width="16" x="216" y="160"></rect>
+<rect fill="#10b981" filter="url(#emeraldJarGlow)" height="16" rx="2" width="16" x="234" y="160"></rect>
+<rect fill="#34d399" filter="url(#emeraldJarGlow)" height="16" rx="2" width="16" x="252" y="160"></rect>
+<!-- Headband Arms -->
+<rect fill="#059669" height="16" rx="2" width="16" x="162" y="178"></rect>
+<rect fill="#059669" height="16" rx="2" width="16" x="270" y="178"></rect>
+<rect fill="#047857" height="16" rx="2" width="16" x="144" y="196"></rect>
+<rect fill="#047857" height="16" rx="2" width="16" x="288" y="196"></rect>
+<!-- LEFT EARPAD (Gleaming Gold Plated Cushion) -->
+<rect fill="#fbbf24" filter="url(#goldCoinGlow)" height="16" rx="2" width="16" x="124" y="214"></rect>
+<rect fill="#b45309" height="16" rx="2" width="16" x="142" y="214"></rect>
+<rect fill="#f59e0b" filter="url(#goldCoinGlow)" height="16" rx="2" width="16" x="124" y="232"></rect>
+<rect fill="#b45309" height="16" rx="2" width="16" x="142" y="232"></rect>
+<rect fill="#fbbf24" filter="url(#goldCoinGlow)" height="16" rx="2" width="16" x="124" y="250"></rect>
+<rect fill="#b45309" height="16" rx="2" width="16" x="142" y="250"></rect>
+<rect fill="#f59e0b" filter="url(#goldCoinGlow)" height="16" rx="2" width="16" x="124" y="268"></rect>
+<rect fill="#b45309" height="16" rx="2" width="16" x="142" y="268"></rect>
+<!-- RIGHT EARPAD -->
+<rect fill="#b45309" height="16" rx="2" width="16" x="288" y="214"></rect>
+<rect fill="#fbbf24" filter="url(#goldCoinGlow)" height="16" rx="2" width="16" x="306" y="214"></rect>
+<rect fill="#b45309" height="16" rx="2" width="16" x="288" y="232"></rect>
+<rect fill="#f59e0b" filter="url(#goldCoinGlow)" height="16" rx="2" width="16" x="306" y="232"></rect>
+<rect fill="#b45309" height="16" rx="2" width="16" x="288" y="250"></rect>
+<rect fill="#fbbf24" filter="url(#goldCoinGlow)" height="16" rx="2" width="16" x="306" y="250"></rect>
+<rect fill="#b45309" height="16" rx="2" width="16" x="288" y="268"></rect>
+<rect fill="#f59e0b" filter="url(#goldCoinGlow)" height="16" rx="2" width="16" x="306" y="268"></rect>
+<!-- PIXEL FACE (Cobalt Retro Blue) -->
+<!-- Row 1 -->
+<rect fill="#2563eb" height="16" rx="2" width="16" x="162" y="196"></rect>
+<rect fill="#3b82f6" height="16" rx="2" width="16" x="180" y="196"></rect>
+<rect fill="#3b82f6" height="16" rx="2" width="16" x="198" y="196"></rect>
+<rect fill="#60a5fa" height="16" rx="2" width="16" x="216" y="196"></rect>
+<rect fill="#3b82f6" height="16" rx="2" width="16" x="234" y="196"></rect>
+<rect fill="#3b82f6" height="16" rx="2" width="16" x="252" y="196"></rect>
+<rect fill="#2563eb" height="16" rx="2" width="16" x="270" y="196"></rect>
+<!-- Row 2 -->
+<rect fill="#2563eb" height="16" rx="2" width="16" x="144" y="214"></rect>
+<rect fill="#3b82f6" height="16" rx="2" width="16" x="162" y="214"></rect>
+<rect fill="#60a5fa" height="16" rx="2" width="16" x="180" y="214"></rect>
+<rect fill="#60a5fa" height="16" rx="2" width="16" x="198" y="214"></rect>
+<rect fill="#93c5fd" height="16" rx="2" width="16" x="216" y="214"></rect>
+<rect fill="#60a5fa" height="16" rx="2" width="16" x="234" y="214"></rect>
+<rect fill="#60a5fa" height="16" rx="2" width="16" x="252" y="214"></rect>
+<rect fill="#3b82f6" height="16" rx="2" width="16" x="270" y="214"></rect>
+<rect fill="#2563eb" height="16" rx="2" width="16" x="288" y="214"></rect>
+<!-- Row 3: EYES - JOYFUL / GRATEFUL EXPRESSION -->
+<rect fill="#3b82f6" height="16" rx="2" width="16" x="144" y="232"></rect>
+<rect fill="#60a5fa" height="16" rx="2" width="16" x="162" y="232"></rect>
+<!-- Left Eye: Cheerful Playful Winking Pixel Eye -->
+<g class="joy-eye-left">
+<rect fill="#ffffff" filter="url(#whiteGlint)" height="16" rx="2" width="16" x="180" y="232"></rect>
+</g>
+<rect fill="#60a5fa" height="16" rx="2" width="16" x="198" y="232"></rect>
+<rect fill="#3b82f6" height="16" rx="2" width="16" x="216" y="232"></rect>
+<rect fill="#60a5fa" height="16" rx="2" width="16" x="234" y="232"></rect>
+<!-- Right Eye: Glowing Star / Joyful Open Eye -->
+<rect fill="#ffffff" filter="url(#whiteGlint)" height="16" rx="2" width="16" x="252" y="232"></rect>
+<rect fill="#60a5fa" height="16" rx="2" width="16" x="270" y="232"></rect>
+<rect fill="#3b82f6" height="16" rx="2" width="16" x="288" y="232"></rect>
+<!-- Row 4: CHEEKS & BLUSH -->
+<rect fill="#2563eb" height="16" rx="2" width="16" x="144" y="250"></rect>
+<!-- Left Rosy Pixel Blush -->
+<rect class="cheek-blush" fill="#fb7185" filter="url(#goldCoinGlow)" height="16" rx="2" width="16" x="162" y="250"></rect>
+<rect fill="#60a5fa" height="16" rx="2" width="16" x="180" y="250"></rect>
+<rect fill="#60a5fa" height="16" rx="2" width="16" x="198" y="250"></rect>
+<rect fill="#60a5fa" height="16" rx="2" width="16" x="216" y="250"></rect>
+<rect fill="#60a5fa" height="16" rx="2" width="16" x="234" y="250"></rect>
+<rect fill="#60a5fa" height="16" rx="2" width="16" x="252" y="250"></rect>
+<!-- Right Rosy Pixel Blush -->
+<rect class="cheek-blush" fill="#fb7185" filter="url(#goldCoinGlow)" height="16" rx="2" width="16" x="270" y="250"></rect>
+<rect fill="#2563eb" height="16" rx="2" width="16" x="288" y="250"></rect>
+<!-- Row 5: BIG HAPPY DONATION SMILE (Cat Grin / Open Grateful Mouth) -->
+<rect fill="#1d4ed8" height="16" rx="2" width="16" x="144" y="268"></rect>
+<rect fill="#2563eb" height="16" rx="2" width="16" x="162" y="268"></rect>
+<rect fill="#fde047" filter="url(#goldCoinGlow)" height="16" rx="2" width="16" x="180" y="268"></rect>
+<rect fill="#ffffff" filter="url(#whiteGlint)" height="16" rx="2" width="16" x="198" y="268"></rect>
+<rect fill="#ffffff" filter="url(#whiteGlint)" height="16" rx="2" width="16" x="216" y="268"></rect>
+<rect fill="#ffffff" filter="url(#whiteGlint)" height="16" rx="2" width="16" x="234" y="268"></rect>
+<rect fill="#fde047" filter="url(#goldCoinGlow)" height="16" rx="2" width="16" x="252" y="268"></rect>
+<rect fill="#2563eb" height="16" rx="2" width="16" x="270" y="268"></rect>
+<rect fill="#1d4ed8" height="16" rx="2" width="16" x="288" y="268"></rect>
+<!-- Row 6: CHIN & JAW -->
+<rect fill="#1e40af" height="16" rx="2" width="16" x="162" y="286"></rect>
+<rect fill="#2563eb" height="16" rx="2" width="16" x="180" y="286"></rect>
+<rect fill="#2563eb" height="16" rx="2" width="16" x="198" y="286"></rect>
+<rect fill="#2563eb" height="16" rx="2" width="16" x="216" y="286"></rect>
+<rect fill="#2563eb" height="16" rx="2" width="16" x="234" y="286"></rect>
+<rect fill="#2563eb" height="16" rx="2" width="16" x="252" y="286"></rect>
+<rect fill="#1e40af" height="16" rx="2" width="16" x="270" y="286"></rect>
+</g>
+<!-- FRONT GLASS LABEL / VINTAGE HARDWARE BADGE: "TIPS" / "$ DJ" -->
+<!-- Translucent Front Plate (stitched to the jar) -->
+<g transform="translate(166, 320)">
+<!-- Label Backing Pill -->
+<rect fill="#0f172a" filter="url(#goldCoinGlow)" height="42" rx="10" stroke="#fbbf24" stroke-width="2" width="180" x="0" y="0"></rect>
+<rect fill="#090d16" height="34" rx="7" width="172" x="4" y="4"></rect>
+<!-- Screws / Rivets on Hardware Label -->
+<circle cx="12" cy="21" fill="#64748b" r="2.5"></circle>
+<circle cx="168" cy="21" fill="#64748b" r="2.5"></circle>
+<!-- Pixel Label Text "✦ TIP JAR ✦" -->
+<text fill="#fbbf24" filter="url(#goldCoinGlow)" font-family="monospace, monospace" font-size="14" font-weight="900" letter-spacing="3" text-anchor="middle" x="90" y="24">✦ TIPS ✦</text>
+<!-- Sub-LED indicator -->
+<circle cx="90" cy="32" fill="#34d399" filter="url(#emeraldJarGlow)" r="2"></circle>
+</g>
+</g>
+</svg>

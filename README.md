@@ -201,13 +201,19 @@ Honestly, probably better. At least you won't shout awkward motivational speeche
 
 ---
 
-## ☕ Support / Tip Jar
+## ☕ Support & Tip Jar
 
-BeatBridge is 100% free and open-source under the **MIT License**. If it saved your party, gym session, or late-night coding streak, feel free to drop some gas into the tip jar:
+<div align="center">
+  <img src="assets/donate.svg" width="110" height="110" alt="BeatBridge Tip Jar Animation" />
+  <p><b>BeatBridge is 100% free and open-source under the MIT License.</b><br/>If it saved your playlist, party, or late-night coding session, drop some gas in the tip jar!</p>
+</div>
 
-* **USDT (TRC20):** `TPF6tQ8r2P...` *(Update with your address)*
-* **Solana:** `Beat...`
-* **Bitcoin:** `bc1q...`
+| Crypto | Network | Wallet Address | QR Code |
+| :--- | :---: | :--- | :---: |
+| **USDT** | **BNB Smart Chain (BEP20)** | `0x22f61aDAd0E7b10707AD9385C06e24E8f1d49517` | <img src="assets/donate/USDT.jpg" width="95" height="95" /> |
+| **SOL** | **Solana** | `CPAZavanFM3JoixS1gHag1QcY9BsD59NXLr9jyuykjtB` | <img src="assets/donate/SOL.jpg" width="95" height="95" /> |
+| **ETH** | **Ethereum (ERC20) / BSC** | `0x22f61aDAd0E7b10707AD9385C06e24E8f1d49517` | <img src="assets/donate/ETH.jpg" width="95" height="95" /> |
+| **BTC** | **Bitcoin (BEP20/BSC)** | `0x22f61aDAd0E7b10707AD9385C06e24E8f1d49517` | <img src="assets/donate/BTC.jpg" width="95" height="95" /> |
 
 ---
 

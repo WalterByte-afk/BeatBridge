@@ -469,6 +469,99 @@ window.AuraDJ = (function() {
         updateMascotVibe();
       }
     }, 2500);
+
+    setupCryptoTipModal();
+  }
+
+  /**
+   * Setup Crypto Tip Drawer & Modal Listeners
+   */
+  function setupCryptoTipModal() {
+    const tipBtn = document.getElementById('btn-tip');
+    const tipModal = document.getElementById('modal-crypto-tip');
+    const closeBtn = document.getElementById('btn-close-tip');
+    const copyBtn = document.getElementById('btn-copy-address');
+    const qrImg = document.getElementById('tip-qr-img');
+    const addrText = document.getElementById('tip-address-text');
+    const netBadge = document.getElementById('tip-network-badge');
+    const tabs = document.querySelectorAll('.crypto-tab');
+
+    const cryptoData = {
+      usdt: {
+        address: '0x22f61aDAd0E7b10707AD9385C06e24E8f1d49517',
+        network: 'NETWORK: BNB SMART CHAIN (BEP20)',
+        qr: 'assets/donate/USDT.jpg'
+      },
+      sol: {
+        address: 'CPAZavanFM3JoixS1gHag1QcY9BsD59NXLr9jyuykjtB',
+        network: 'NETWORK: SOLANA',
+        qr: 'assets/donate/SOL.jpg'
+      },
+      eth: {
+        address: '0x22f61aDAd0E7b10707AD9385C06e24E8f1d49517',
+        network: 'NETWORK: ETHEREUM (ERC20) / BSC',
+        qr: 'assets/donate/ETH.jpg'
+      },
+      btc: {
+        address: '0x22f61aDAd0E7b10707AD9385C06e24E8f1d49517',
+        network: 'NETWORK: BITCOIN (BEP20 / BSC)',
+        qr: 'assets/donate/BTC.jpg'
+      }
+    };
+
+    if (tipBtn && tipModal) {
+      tipBtn.addEventListener('click', () => {
+        tipModal.classList.remove('hidden');
+        tipModal.classList.add('flex');
+      });
+    }
+
+    if (closeBtn && tipModal) {
+      closeBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        tipModal.classList.add('hidden');
+        tipModal.classList.remove('flex');
+      });
+    }
+
+    if (tipModal) {
+      tipModal.addEventListener('click', (e) => {
+        if (e.target === tipModal) {
+          tipModal.classList.add('hidden');
+          tipModal.classList.remove('flex');
+        }
+      });
+    }
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const coin = tab.dataset.coin;
+        if (!cryptoData[coin]) return;
+
+        tabs.forEach(t => {
+          t.className = 'crypto-tab flex-1 py-1 text-center rounded-lg text-[9px] font-mono font-bold text-[#7d869a] hover:text-white';
+        });
+        tab.className = 'crypto-tab flex-1 py-1 text-center rounded-lg text-[9px] font-mono font-bold bg-[#587bf8] text-white';
+
+        if (qrImg) qrImg.src = cryptoData[coin].qr;
+        if (addrText) addrText.textContent = cryptoData[coin].address;
+        if (netBadge) netBadge.textContent = cryptoData[coin].network;
+      });
+    });
+
+    if (copyBtn && addrText) {
+      copyBtn.addEventListener('click', () => {
+        navigator.clipboard.writeText(addrText.textContent.trim()).then(() => {
+          const original = copyBtn.textContent;
+          copyBtn.textContent = 'COPIED! ✓';
+          copyBtn.className = 'px-2 py-1 rounded bg-[#45c8b2] text-[#0f1016] font-mono text-[7.5px] font-bold transition-all flex-shrink-0';
+          setTimeout(() => {
+            copyBtn.textContent = original;
+            copyBtn.className = 'px-2 py-1 rounded bg-[#587bf8] hover:bg-[#6e8dfa] active:scale-95 text-white font-mono text-[7.5px] font-bold transition-all flex-shrink-0';
+          }, 1500);
+        });
+      });
+    }
   }
 
   /**
