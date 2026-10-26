@@ -305,10 +305,10 @@
           state
         });
 
-        // 1500ms delay: outgoing deck's resonant HPF sweep + echo freeze builds up before Track B enters
+        // 800ms musical pre-roll: outgoing deck's warm HPF sweep + echo wash initiates before Track B enters
         setTimeout(() => {
           skipToNextTrack();
-        }, 1500);
+        }, 800);
       } else if (timeRemaining > 20 && automixTriggeredForCurrentTrack) {
         // Reset if user seeks back in track
         automixTriggeredForCurrentTrack = false;

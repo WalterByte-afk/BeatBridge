@@ -770,58 +770,53 @@ function startOutgoingTransition(deck, bpm, barSec, duration) {
   const startTime = now + 0.02;
   const endTime = startTime + duration;
   const beatSec = 60 / bpm;
-  const delayTime = Math.min(beatSec * 0.75, 1.5); // Dotted 8th note
+  const delayTime = Math.min(beatSec * 0.75, 0.45); // Dotted 8th note for lush stereo bridge
 
-  // 1. Resonant HPF Sweep: 10 Hz → 4500 Hz
-  //    Q rises to create the iconic "DJ filter lift" resonant riser, building peak tension
+  // 1. Warm Resonant HPF Sweep: 20 Hz → 2400 Hz (smooth, musical DJ filter lift without harsh whistling)
   deck.transitionFilter.type = 'highpass';
   deck.transitionFilter.frequency.cancelScheduledValues(startTime);
   deck.transitionFilter.Q.cancelScheduledValues(startTime);
-  deck.transitionFilter.frequency.setValueAtTime(10, startTime);
-  deck.transitionFilter.frequency.exponentialRampToValueAtTime(4500, endTime);
-  deck.transitionFilter.Q.setValueAtTime(0.7, startTime);
-  deck.transitionFilter.Q.linearRampToValueAtTime(9.0, startTime + duration * 0.7);
-  deck.transitionFilter.Q.linearRampToValueAtTime(3.0, endTime);
+  deck.transitionFilter.frequency.setValueAtTime(20, startTime);
+  deck.transitionFilter.frequency.exponentialRampToValueAtTime(2400, endTime);
+  deck.transitionFilter.Q.setValueAtTime(0.7071, startTime);
+  deck.transitionFilter.Q.linearRampToValueAtTime(1.4, startTime + duration * 0.6);
+  deck.transitionFilter.Q.linearRampToValueAtTime(0.8, endTime);
 
-  // 2. Echo/Delay Freeze — builds gradually, captures rhythmic content
+  // 2. Lush Ambient Echo / Delay Wash — seamlessly bridges into the next track
   deck.echoDelay.delayTime.setValueAtTime(delayTime, startTime);
 
   deck.echoSend.gain.cancelScheduledValues(startTime);
   deck.echoSend.gain.setValueAtTime(0.0, startTime);
-  deck.echoSend.gain.linearRampToValueAtTime(0.65, startTime + duration * 0.25);
+  deck.echoSend.gain.linearRampToValueAtTime(0.55, startTime + duration * 0.2);
 
   deck.echoReturn.gain.cancelScheduledValues(startTime);
   deck.echoReturn.gain.setValueAtTime(0.0, startTime);
-  deck.echoReturn.gain.linearRampToValueAtTime(0.5, startTime + duration * 0.25);
+  deck.echoReturn.gain.linearRampToValueAtTime(0.45, startTime + duration * 0.2);
 
-  // Echo HPF sweeps up — each repeat gets thinner/airier
   deck.echoFilter.frequency.cancelScheduledValues(startTime);
-  deck.echoFilter.frequency.setValueAtTime(400, startTime);
-  deck.echoFilter.frequency.exponentialRampToValueAtTime(2500, endTime);
+  deck.echoFilter.frequency.setValueAtTime(500, startTime);
+  deck.echoFilter.frequency.exponentialRampToValueAtTime(2200, endTime);
 
-  // Feedback builds gradually for rhythmic echo tail
   deck.echoFeedback.gain.cancelScheduledValues(startTime);
   deck.echoFeedback.gain.setValueAtTime(0.5, startTime);
-  deck.echoFeedback.gain.linearRampToValueAtTime(0.75, startTime + duration * 0.6);
+  deck.echoFeedback.gain.linearRampToValueAtTime(0.68, startTime + duration * 0.5);
 
-  // 3. ZERO FADEOUT - Active Vocal Ducking & Stem Isolation:
-  // Human vocals live in the 300Hz - 3.5kHz band (mids). We duck mids down to 0.05 over 1.5 bars!
-  // This cleans out the singing voice so only the drums/rhythm bridge across, eliminating vocal clashing & fadeout.
+  // 3. Gentle Vocal Ducking: preserve musical warmth while clearing the singing voice
   deck.lowGain.gain.cancelScheduledValues(startTime);
   deck.lowGain.gain.setValueAtTime(1.0, startTime);
 
   deck.midGain.gain.cancelScheduledValues(startTime);
   deck.midGain.gain.setValueAtTime(1.0, startTime);
-  deck.midGain.gain.exponentialRampToValueAtTime(0.05, startTime + Math.min(barSec * 1.5, 2.5));
+  deck.midGain.gain.exponentialRampToValueAtTime(0.2, startTime + Math.min(barSec * 1.5, 2.0));
 
   deck.highGain.gain.cancelScheduledValues(startTime);
   deck.highGain.gain.setValueAtTime(1.0, startTime);
-  deck.highGain.gain.linearRampToValueAtTime(0.7, endTime);
+  deck.highGain.gain.linearRampToValueAtTime(0.75, endTime);
 
   deck.masterGain.gain.cancelScheduledValues(startTime);
   deck.masterGain.gain.setValueAtTime(1.0, startTime);
 
-  console.log(`[AuraDJ] Phase 1: Outgoing HPF riser sweep + vocal ducking + echo freeze (${duration.toFixed(1)}s, echo=${(delayTime * 1000).toFixed(0)}ms)`);
+  console.log(`[AuraDJ] Phase 1: Butter-smooth HPF sweep + echo wash (${duration.toFixed(1)}s, echo=${(delayTime * 1000).toFixed(0)}ms)`);
 }
 
 /**
@@ -974,48 +969,49 @@ function executeEnergyRiserTransition(outDeck, inDeck, bpm, barSec) {
 function startIncomingTransition(inDeck, outDeck, bpm, barSec) {
   const ctx = getAudioContext();
   const now = ctx.currentTime;
-  const buildDuration = Math.max(barSec * 6, 8.0);
+  const buildDuration = Math.min(Math.max(barSec * 2, 2.5), 4.0);
 
-  // 1. LPF Sweep: 200 Hz → 20000 Hz (track "opens up" from rumble to full clarity)
+  // 1. Warm LPF Sweep: 700 Hz → 20,000 Hz (track enters with immediate warmth & clarity, no underwater muffling)
   inDeck.transitionFilter.type = 'lowpass';
   inDeck.transitionFilter.frequency.cancelScheduledValues(now);
   inDeck.transitionFilter.Q.cancelScheduledValues(now);
-  inDeck.transitionFilter.frequency.setValueAtTime(200, now);
+  inDeck.transitionFilter.frequency.setValueAtTime(700, now);
   inDeck.transitionFilter.frequency.exponentialRampToValueAtTime(20000, now + buildDuration);
-  inDeck.transitionFilter.Q.setValueAtTime(2.5, now); // Resonant punch on the sweep
-  inDeck.transitionFilter.Q.linearRampToValueAtTime(0.7, now + buildDuration);
+  inDeck.transitionFilter.Q.setValueAtTime(0.9, now);
+  inDeck.transitionFilter.Q.linearRampToValueAtTime(0.7071, now + buildDuration);
 
-  // 2. Master gain ON at full
+  // 2. Master gain ON smoothly
   inDeck.masterGain.gain.cancelScheduledValues(now);
-  inDeck.masterGain.gain.setValueAtTime(1.0, now);
+  inDeck.masterGain.gain.setValueAtTime(0.85, now);
+  inDeck.masterGain.gain.linearRampToValueAtTime(1.0, now + 0.8);
 
-  // 3. Bass CUT — will be swapped in via scheduleBassSwap on the downbeat
+  // 3. Gentle Low Entrance: enters at 0.25 and ramps to 0.7 before full drop
   inDeck.lowGain.gain.cancelScheduledValues(now);
-  inDeck.lowGain.gain.setValueAtTime(0.05, now);
+  inDeck.lowGain.gain.setValueAtTime(0.25, now);
+  inDeck.lowGain.gain.linearRampToValueAtTime(0.7, now + Math.min(barSec * 1.2, 1.8));
 
-  // 4. Mids/Highs swell in smoothly
+  // 4. Mids/Highs enter with full, crisp fidelity
   inDeck.midGain.gain.cancelScheduledValues(now);
-  inDeck.midGain.gain.setValueAtTime(0.5, now);
-  inDeck.midGain.gain.linearRampToValueAtTime(1.0, now + buildDuration * 0.5);
+  inDeck.midGain.gain.setValueAtTime(0.75, now);
+  inDeck.midGain.gain.linearRampToValueAtTime(1.0, now + 1.2);
   inDeck.highGain.gain.cancelScheduledValues(now);
-  inDeck.highGain.gain.setValueAtTime(0.6, now);
-  inDeck.highGain.gain.linearRampToValueAtTime(1.0, now + buildDuration * 0.4);
+  inDeck.highGain.gain.setValueAtTime(0.85, now);
+  inDeck.highGain.gain.linearRampToValueAtTime(1.0, now + 1.0);
 
   // 5. No echo on incoming track
   inDeck.echoSend.gain.setValueAtTime(0.0, now);
   inDeck.echoReturn.gain.setValueAtTime(0.0, now);
 
-  // 6. Schedule bass swap after ~3 bars (musically timed)
-  const swapDelay = Math.max(barSec * 3, 4.0);
+  // 6. Schedule musical bass swap on the first downbeat measure
+  const swapDelay = Math.min(Math.max(barSec * 1.5, 1.8), 3.0);
   scheduleBassSwap(outDeck, inDeck, now + swapDelay, bpm, barSec);
 
-  console.log(`[AuraDJ] Phase 2: Incoming LPF sweep (${buildDuration.toFixed(1)}s). Bass swap in ${swapDelay.toFixed(1)}s`);
+  console.log(`[AuraDJ] Phase 2: Warm incoming transition (${buildDuration.toFixed(1)}s). Downbeat bass drop in ${swapDelay.toFixed(1)}s`);
 }
 
 /**
  * Bass Swap Scheduler — swaps low-end between outgoing and incoming decks.
- * After the swap, outgoing deck's dry signal is CUT INSTANTLY (zero volume fadeout),
- * while echo feedback creates a pure ambient reverb tail that decays naturally.
+ * Smoothly crossfades sub-bass over 150ms while dissolving outgoing audio into a lush reverb tail.
  */
 function scheduleBassSwap(outDeck, inDeck, targetTime, bpm, barSec) {
   if (bassSwapTimeout) clearTimeout(bassSwapTimeout);
@@ -1034,7 +1030,7 @@ function scheduleBassSwap(outDeck, inDeck, targetTime, bpm, barSec) {
       return;
     }
 
-    // Vocal clash guard: delay 2 beats if vocals detected in outgoing track
+    // Vocal clash guard: delay 1-2 beats if vocals detected in outgoing track
     if (vocalDetected) {
       console.log(`[AuraDJ] Vocal clash! Holding bass swap by 2 beats (${twoBeatsDelaySec.toFixed(2)}s)`);
       swapTime += twoBeatsDelaySec;
@@ -1044,38 +1040,35 @@ function scheduleBassSwap(outDeck, inDeck, targetTime, bpm, barSec) {
 
     const execTime = Math.max(ctx.currentTime, swapTime);
 
-    // Outgoing bass: quick 50ms cut (click-free)
+    // Outgoing bass: smooth 150ms cross-drop (click-free, zero abrupt silence)
     outDeck.lowGain.gain.setValueAtTime(outDeck.lowGain.gain.value, execTime);
-    outDeck.lowGain.gain.linearRampToValueAtTime(0.0, execTime + 0.05);
+    outDeck.lowGain.gain.linearRampToValueAtTime(0.0, execTime + 0.15);
 
-    // Incoming bass: punch in on the downbeat drop over 50ms
+    // Incoming bass: punches in with full power on the downbeat drop
     inDeck.lowGain.gain.setValueAtTime(inDeck.lowGain.gain.value, execTime);
-    inDeck.lowGain.gain.linearRampToValueAtTime(1.0, execTime + 0.05);
+    inDeck.lowGain.gain.linearRampToValueAtTime(1.0, execTime + 0.15);
 
-    // ZERO FADEOUT: Immediately silence outgoing dry track on the drop!
-    // A 35ms micro-ramp eliminates speaker click while cutting dry audio immediately.
-    // The dry track NEVER does a slow 3-second fadeout!
+    // Smooth Musical Handoff: blend dry outgoing audio into the echo cloud over 450ms
     outDeck.masterGain.gain.cancelScheduledValues(execTime);
     outDeck.masterGain.gain.setValueAtTime(outDeck.masterGain.gain.value, execTime);
-    outDeck.masterGain.gain.linearRampToValueAtTime(0.0, execTime + 0.035);
+    outDeck.masterGain.gain.linearRampToValueAtTime(0.0, execTime + 0.45);
 
-    // Echo freeze: boost feedback as dry signal dies, creating pure ambient delay tail
-    const dissolveSec = Math.max(barSec * 1.5, 2.5);
+    // Echo freeze: lush ambient tail naturally floats behind Track B's groove
+    const dissolveSec = Math.max(barSec * 1.5, 3.0);
     outDeck.echoFeedback.gain.cancelScheduledValues(execTime);
-    outDeck.echoFeedback.gain.setValueAtTime(0.75, execTime);
-    outDeck.echoFeedback.gain.linearRampToValueAtTime(0.4, execTime + dissolveSec * 0.4);
+    outDeck.echoFeedback.gain.setValueAtTime(0.7, execTime);
+    outDeck.echoFeedback.gain.linearRampToValueAtTime(0.35, execTime + dissolveSec * 0.4);
     outDeck.echoFeedback.gain.linearRampToValueAtTime(0.0, execTime + dissolveSec);
 
-    // Echo return naturally dissolves in the background
     outDeck.echoReturn.gain.cancelScheduledValues(execTime);
-    outDeck.echoReturn.gain.setValueAtTime(0.5, execTime);
+    outDeck.echoReturn.gain.setValueAtTime(0.45, execTime);
     outDeck.echoReturn.gain.linearRampToValueAtTime(0.2, execTime + dissolveSec * 0.5);
     outDeck.echoReturn.gain.linearRampToValueAtTime(0.0, execTime + dissolveSec);
 
     if (activeTransitionCtx) activeTransitionCtx.bassSwapped = true;
     engineState.transitionPhase = 'BASS_SWAPPED';
     engineState.status = 'BASS DROP';
-    console.log(`[AuraDJ] *** BASS SWAP EXECUTED AT ${execTime.toFixed(2)}s (DRY SIGNAL CUT TO 0) ***`);
+    console.log(`[AuraDJ] *** BUTTER-SMOOTH BASS SWAP AT ${execTime.toFixed(2)}s ***`);
     broadcastEngineState();
   }
 
