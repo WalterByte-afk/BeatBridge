@@ -105,8 +105,8 @@ YT MUSIC
 <!-- 2. Retro LED Pixel Character Capsule & Dot-Matrix BPM Display -->
 <section class="flex items-center justify-between gap-2.5 pt-0.5">
 <!-- Left: Dot-Matrix Pixel Headphone Mascot Screen -->
-<div class="w-[118px] h-[86px] pixel-screen rounded-2xl border border-[#272b38] flex flex-col justify-between p-2 relative shadow-inner cursor-pointer hover:border-[#45c8b2]/50 transition-all" id="mascot-card-btn" title="Click for DJ Level & Streak Stats">
-<div class="flex items-center justify-between text-[9px] text-[#5e6678]">
+<div class="w-[124px] h-[86px] pixel-screen rounded-2xl border border-[#272b38] flex flex-col justify-between p-1.5 px-2 relative shadow-inner cursor-pointer hover:border-[#45c8b2]/50 transition-all select-none flex-shrink-0" id="mascot-card-btn" title="Click for DJ Level & Streak Stats">
+<div class="flex items-center justify-between text-[9px] text-[#5e6678] leading-none">
   <div class="flex items-center gap-0.5 text-[#fbbf24] font-mono text-[8px] font-bold" title="Listening Streak">
     <span>🔥</span><span id="streak-days">1</span>d
   </div>
@@ -116,8 +116,8 @@ YT MUSIC
   </div>
 </div>
 <!-- Pixel Headphone Mascot Animated SVG Viewport -->
-<div class="flex justify-center items-center my-auto w-full h-[44px] relative overflow-hidden" id="mascot-viewport">
-  <div id="mascot-svg-mount" style="width: 78px; height: 44px; display: flex; align-items: center; justify-content: center;"></div>
+<div class="flex justify-center items-center my-auto w-full h-[38px] relative overflow-hidden" id="mascot-viewport">
+  <div id="mascot-svg-mount" style="width: 68px; height: 38px; display: flex; align-items: center; justify-content: center;"></div>
   <!-- Level Up Banner Overlay -->
   <div id="mascot-levelup-banner" class="absolute inset-0 bg-[#fbbf24]/25 backdrop-blur-[2px] border border-[#fbbf24] rounded-lg hidden flex-col items-center justify-center text-center animate-bounce z-10 pointer-events-none">
     <span class="text-[8px] font-mono font-black text-[#fbbf24] tracking-wider">LEVEL UP!</span>
@@ -125,12 +125,12 @@ YT MUSIC
   </div>
 </div>
 <!-- Bottom Capsule Readout & XP Progress Bar -->
-<div class="space-y-0.5">
-  <div class="text-[7.5px] font-mono tracking-tight text-[#7e8597] uppercase flex items-center justify-between font-medium">
-    <span class="text-[#45c8b2] font-bold truncate max-w-[55px]" id="pod-vibe-label">NORMAL</span>
-    <span class="text-[#a6adbe]" id="pod-xp-text">0/150 XP</span>
+<div class="space-y-0.5 leading-none">
+  <div class="text-[7.5px] font-mono tracking-tight text-[#7e8597] uppercase flex items-center justify-between font-medium whitespace-nowrap overflow-hidden">
+    <span class="text-[#45c8b2] font-bold truncate max-w-[50px] flex-shrink-0" id="pod-vibe-label">NORMAL</span>
+    <span class="text-[#a6adbe] font-bold text-right flex-shrink-0" id="pod-xp-text">0/150</span>
   </div>
-  <div class="w-full bg-[#13151c] h-[2.5px] rounded-full overflow-hidden border border-[#242838]">
+  <div class="w-full bg-[#13151c] h-[2px] rounded-full overflow-hidden border border-[#242838]">
     <div id="xp-progress-bar" style="width: 0%; height: 100%; background: linear-gradient(90deg, #587bf8, #45c8b2); transition: width 0.3s ease;"></div>
   </div>
 </div>

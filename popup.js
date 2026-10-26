@@ -427,7 +427,7 @@ window.AuraDJ = (function() {
     const pct = Math.min(100, Math.max(0, Math.round((progress / needed) * 100)));
 
     const podXp = document.getElementById('pod-xp-text');
-    if (podXp) podXp.textContent = `${progress}/${needed} XP`;
+    if (podXp) podXp.textContent = `${progress}/${needed}`;
 
     const xpBar = document.getElementById('xp-progress-bar');
     if (xpBar) xpBar.style.width = `${pct}%`;
